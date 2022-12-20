@@ -816,7 +816,329 @@ int main()
 }
 ```
 
+# 13. 左值引用和右值引用
+
+> 参考文章https://paul.pub/cpp-value-category/
+>
+> 对于左值和右值，我们可以简单的理解为：***左值对应了具有内存地址的对象，而右值对象仅仅是临时使用的值。***
+>
+> ```c++
+> // 例如下面例子中，很显然s1和s2是左值，因为其具有相应的内存地址，"Hello"和"World"很显然是一个临时使用的值，用来初
+> // 始构造我们的变量
+> std::string s1 = "Hello";
+> std::string s2 = "World";
+> // s3是左值，而右边的表达式虽然其中每一个变量是左值，但是组合起来就变成了右值
+> std::string s3 = s1 + s2;
+> 
+> ```
+
+在C++之前，引用分为`const`引用和非`const`引用。这两种引用在C++中都称为左值引用( rvalue reference)。
+
+***注意：我们是无法将非`const`左值引用指向右值的***。
+
+```c++
+// 下面的代码是不会通过编译的
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+        string s1 = "Hello, ";
+        string s2 = "world! ";
+        string &s3 = s1 + s2;
+        cout << s3 << endl;
+        return 0;
+}
+```
+
+编译器会报错：
+
+```error
+.\main.cpp: In function 'int main()':
+.\main.cpp:11:18: error: cannot bind non-const lvalue reference of type 'std::__cxx11::string&' {aka 'std::__cxx11::basic_string<char>&'} to an rvalue of type 'std::__cxx11::basic_string<char>'
+  string &s3 = s1 + s2;
+```
+
+意思翻译翻译过来也就是你不能将非`const`左值引用指向右值的。
+
+***但是，`const`类型的左值引用是可以绑定到右值的。***也就是说，下面的代码是可以通过编译的：
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+        string s1 = "Hello, ";
+        string s2 = "world! ";
+        const string &s3 = s1 + s2;
+        cout << s3 << endl;
+        return 0;
+}
+```
+
+不过，由于这个引用是const的，因此你无法修改其值的内容。
+
+***C++11新增了右值引用，左值引用的写法是`&`，右值引用的写法是`&&`***。
+
+右值是一个临时的值，右值引用是指向右值的引用。右值引用延长了临时值的生命周期，并且允许我们修改其值。
+
+例如：
+
+```c++
+std::string s1 = "Hello ";
+std::string s2 = "world";
+std::string&& s_rref = s1 + s2;    // the result of s1 + s2 is an rvalue
+s_rref += ", my friend";           // I can change the temporary string!
+std::cout << s_rref << '\n';       // prints "Hello world, my friend"
+```
+
+右值引用使得我们可以创建出以此为基础的函数重载，例如：
+
+```
+void func(X& x) {
+    cout << "lvalue reference version" << endl;
+}
+
+void func(X&& x) {
+    cout << "rvalue reference version" << endl;
+}
+```
+
+```c++
+X returnX() {
+    return X();
+}
+
+int main(int argc, char** argv) {
+    X x;
+    func(x);
+    func(returnX());
+}
+```
+
+输出结果为：
+
+```output
+lvalue reference version
+rvalue reference version
+```
+
+## 13.1 移动语义
+
+我们知道，在C++中，我们可以为类定义拷贝构造函数和拷贝复制运算符。
+
+```c++
+class X
+{
+public:
+    X(const X& other) // copy constructor
+    {
+        m_data = new int[other.m_size];
+        std::copy(other.m_data, other.m_data + other.m_size, m_data);
+        m_size = other.m_size;
+    }
+
+    X& operator=(X other) // copy assignment
+    {
+        if(this == &other) return *this;
+        delete[] m_data;
+        m_data = new int[other.m_size];
+        std::copy(other.m_data, other.m_data + other.m_size, m_data);
+        m_size = other.m_size;
+        return *this;
+    }
+
+    X& operator=(const X& other) // copy assignment
+    {
+        if(this == &other) return *this;
+        delete[] m_data;
+        m_data = new int[other.m_size];
+        std::copy(other.m_data, other.m_data + other.m_size, m_data);
+        m_size = other.m_size;
+        return *this;
+    }
+
+private:
+    int*   m_data;
+    size_t m_size;
+};
+```
+
+> 当然，如果你为类定义了拷贝构造函数和拷贝赋值运算符，你通常还应当为其定义析构函数。这称之为[Rule of Three](https://en.wikipedia.org/wiki/Rule_of_three_(C++_programming))。
+
+拷贝意味着会将原来的数据复制一份新的出来。这么做的好处是：新的数据和原先的数据是相互独立的，修改其中一个不会去影响另一个。但是坏处是：这么做会消耗运算时间和存储空间。例如你有一个包含了10^10个元素的集合数据，将其拷贝一份就不那么轻松了。
+
+<img src=".\pictures\32.png" alt="32" style="zoom: 33%;" />
+
+但是移动操作就会轻松很多，因为他不涉及新数据的产生，仅仅是将原先的数据更改其所有者。
+
+<img src=".\pictures\33.png" alt="32" style="zoom:33%;" />
+
+在C++11中，我们可以这样为类定义移动构造函数和移动肤质运算符：
+
+```c++
+X(X&&);
+X& operator=(X&&);
+```
+
+我们继续上面的定义：
+
+```C++
+X(X&& other)
+{
+    m_data = other.m_data;
+    m_size = other.m_size;
+    // 注意下面的语句，就相当于转移数据所有权，局部变量other已经没有用了
+    other.m_date = nullptr;
+    other.m_size = 0;
+}
+
+X& operator=(X&& other)
+{
+    if(this == &other) return *this;
+    
+    delete[] m_data;
+    
+    m_data = other.m_data;
+    m_size = other.m_size;
+    
+    other.m_data = nullptr;
+    other.m_size = 0;
+    
+    return *this;
+}
+```
+
+现在，该类有了拷贝和移动两种操作，那编译器如何知道该选择哪个呢？***答案是，根据传入的参数类型：如果是左值引用，则使用拷贝操作；如果是右值引用，则使用移动操作。***
+
+```c++
+X createX(int size)
+{
+  return X(size);
+}
+
+int main()
+{
+  X h1(1000);                // regular constructor
+  X h2(h1);                  // copy constructor (lvalue in input)
+  X h3 = createX(2000);      // move constructor (rvalue in input) 
+
+  h2 = h3;                   // assignment operator (lvalue in input)
+  h2 = createX(500);         // move assignment operator (rvalue in input)
+}
+```
+
+***还有一点就是，如果是左值，我们也是可以调用移动操作的，我们此时需要借用`std::move`。***
+
+### ***13.1 线程的所有权的转移：*** 
+
+> ***该处的`std::move`我们可能在C++11线程的学习中使用很多，因为有的时候由于我们的需求，需要将一个线程的所有权转交给另一个线程。这个时候就需要用到`std::move`来帮助我们实现这个目的。***
+>
+> ```c++
+> void some_function();
+> void some_other_function();
+> 
+> std::thread t1(some_function);
+> 
+> std::thread t2 = std::move(t1);
+> 
+> t1 = std::thread(some_other_function);
+> // 注意，这里我们将临时产生的线程的控制权转移给了t1,但是我们并没有显示的去调用`std::move()`转移其所有权，这是因为，所有者是一个临时对象，是一个右值，移动赋值操作符会隐式的调用。
+> ```
+
+
+
+### ***13.2 智能指针的控制权的转移：***
+
+> ***还有我们学习智能指针的时候，知道智能指针`unique_ptr`也成为独享指针，即不能同时有多个智能指针指向同一块内存，那如果我们在函数之间传递智能指针怎么办？***
+>
+> ```c++
+> void pass_up(unique_ptr<int> up)
+> {
+>     cout << "In pass_up: " << *up <<endl;
+> }
+> 
+> void main()
+> {
+>     auto up = make_unique<int>(123);
+>     pass_up(up);
+> }
+> ```
+>
+> 上述代码会出现错误，原因在于我们在传递指针的时候，会有一个复制up的操作，显然这个操作是不允许的，所以会报错。
+>
+> 这个时候我们可以选择直接传给函数指针指向的资源：
+>
+> `pass_up(*up);`
+>
+> 除此之外，还可以使用第二种方法：
+>
+> `pass_up(up.get());`
+>
+> 其中`up.get()`获得的是资源的裸指针。
+>
+> 以上方法仅仅让我们去访问对应的资源，但是如果我们想要通过函数直接改变`unique_ptr`本身怎么办？
+>
+> 我们可以将函数的参数设置为智能指针的引用：
+>
+> ```c++
+> void pass_up(unique_ptr<int> &up)
+> {
+>     cout << "In pass_up: " << *up <<endl;
+>     up.reset();
+> }
+> 
+> void main()
+> {
+>     auto up = make_unique<int>(123);
+>     pass_up(up);
+>     if(up == nullptr) cout << "up is reset."<<endl;
+> }
+> ```
+>
+> 最后还有一种方法就是利用`std::move`来转移`unique_ptr`的控制权。转移之后，原来的智能指针会变成`nulptr`
+
+
+
+### 13.3 移动语义给我们带来的好处
+
+有了右值引用和移动操作之后，STL里面的集合操作就会变得更加的高效，例如：
+
+```c++
+std::string str = "Hello";
+std::vector<std::string> v;
+
+v.push_back(str);               // ①
+v.push_back(std::move(str));    // ②
+```
+
+这里的1是将复制一个字符串添加到集合当中，而2则是将已有的对象移动进集合当中，如果我们移动个上千万个数据，这自然是更高效的。
 
 
 
 
+
+# 14. C++ 三法则和五法则
+
+## 14.1  C++ 三法则
+
+三法则讲述的是，如果一个类定义了以下任何一项，那么它可能应该明确定义所有三个：
+
+- 析构函数，***destructor***;
+- 拷贝构造函数，***copy constructor***;
+- 拷贝复制运算符，***copy assignment operator***;
+
+为什么呢？
+
+其实都是为深拷贝所服务的，如果我们想要深拷贝的话，我们就需要去自定义一个拷贝构造函数和拷贝复制运算符函数。既然我们涉及到深拷贝了，那么一定存在指针，所以需要析构函数来释放内存，否则就会导致内存泄漏。
+
+## 14.2 C++ 五法则
+
+五法则讲述的则是：
+
+- 析构函数，***destructor***；
+- 复制构造函数，***copy constructor***；
+- 复制赋值运算符，***copy assignment operator***；
+- 移动构造函数，***move constructor***；
+- 移动赋值运算符，***move assignment operator***；
