@@ -688,6 +688,23 @@ virtual void test() = 0;
 
 > 所以说我们在继承这一块，我们不仅需要在基类中声明必要的虚函数，还需要声明虚析构函数，以保证我们之后析构对象的时候，可以析构正确。
 
+## 11.5 static成员初始化
+
+一般情况下，一个`static`类成员是静态分布的，而不是每一个类对象的一部分。也就是说***static成员声明充当类外定义的声明，也可以这样理解，`static`类成员的定义和声明是分开的。***
+
+```c++
+class Node{
+    //...
+    static int node_count;   // 声明
+};
+
+int Node::node_count = 0; // 定义
+```
+
+当然了，在极少数的情况下，在类内声明初始化`static`成员也是有可能的。条件是`static`成员必须是整型或者枚举类型的`const`, 或者是字面值类型的`constexpr`。
+
+
+
 # 12. lambda表达式
 
 一个`lambda`表达式表示一个可以调用的代码单元，我们可以将其理解为一个未命名的内联函数，因为如我们所见，`lambda`表达式总是出现在我们的函数内部，即内联函数。
@@ -1142,3 +1159,38 @@ v.push_back(std::move(str));    // ②
 - 复制赋值运算符，***copy assignment operator***；
 - 移动构造函数，***move constructor***；
 - 移动赋值运算符，***move assignment operator***；
+
+# 15. 常量
+
+C++支持如下两种不变概念。
+
+- `const`: 大致的意思是“我承诺不会去改变这个值（***即我们不能通过该变量去修改对应的值***）”。主要用于说明接口，这样在于我们在把变量传入函数的时候就不必担心变量会在函数内被改变了。编译器负责确认并运行`const`的承诺。
+- `constexpr`: 大致的意思是“在编译的时候求值”。***这才是真正的常量***。***作用是允许将数据置于只读内存（不太可能被破坏）中以及提高性能。*** 
+
+```C++
+const int dmv = 17; // dwv 是一个命名的常量
+int var = 17;       // var不是常量
+constexpr double max1 = 1.4*square(dwv); // 如果square(17)是常量表达式，则正确，这个需要square函数声明为constexpr
+constexpr double max2 = 1.4*square(var); // 错误，因为var不是常量表达式
+const double max3 = 1.4*square(var); // 正确，可以在运行的时候求值
+double sum(const vector<double>&); // 此处声明的是一个函数，说明该函数不会去修改参数的值
+vector<double> v{1,2,3,4,5}; // v不是常量
+const double s1 = sum(v); // OK,在运行的时候求值
+constexpr double s2 = sum(v); // 错误, constexpr需要在编译的时候求值，即所有的值都是常量表达式
+```
+
+***如果某一个函数用在常量表达式中，即该表达式在编译的时候求值，则该函数必须定义为`constexpr`***.例如：
+
+```c++
+constexpr double square(double x) { return x*x; }
+```
+
+当一个函数定义为`constexpr`的时候，该函数就是可以在编译器可以运行的函数，在编译器运行的函数，你想想，他的能耐能有多大，所以说，定位为`constexr`的函数的限制十分的多：
+
+- 函数必须返回一个值，不能是void;
+- 函数体内只能有一条语句，return；
+- 函数调用之前必须被定义；
+- 函数必须使用`constexpr`进行声明；
+
+`constexpr`的作用是指示或者确保在编译的时候求值，而`const`的主要任务是规定接口的不可修改性。
+
