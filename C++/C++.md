@@ -1193,4 +1193,3 @@ constexpr double square(double x) { return x*x; }
 - 函数必须使用`constexpr`进行声明；
 
 `constexpr`的作用是指示或者确保在编译的时候求值，而`const`的主要任务是规定接口的不可修改性。
-
