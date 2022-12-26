@@ -1,3 +1,107 @@
+
+
+
+
+
+
+# 第二章 线程管理
+
+## 2.1 线程基本操作
+
+我们除了向线程构造函数传递函数名之外：
+
+```c++
+void do_some_work();
+std::thread my_thread(do_some_work);
+```
+
+还可以通过含有函数操作符类型的实例进行构造：
+
+```c++
+class background_task
+{
+public:
+	void operator()() const
+  {
+    do_something();
+    do_some_thing_else();
+  }
+};
+
+background_task f;
+
+std::thread my_thread(f);
+```
+
+注意：我们所提供的函数对象会复制到新线程的存储空间中，函数对象的执行和调用全部都会在线程的内存空间中进行。
+
+> 对于这里有一件事情需要我们注意，当我们将函数对象传入到线程构造函数的时候，需要避免“最令人头痛的语法解析”。如果你传递的是一个临时的变量，而不是一个命名之后的变量，C++编译器会将其解析为函数的声明，而不是对类型对象的定义。
+>
+> 比如说下面这段代码：
+>
+> ```c++
+> #include<thread>
+> #include<iostream>
+> using namespace std;
+> class FUNC{
+> private:
+> 	int test;  
+> public:
+>   void operator()() const
+>   {
+>    		cout << this_thread::get_id() <<endl;
+>   }
+> };
+> 
+> int main()
+> {
+>   	thread my_thread(FUNC());  
+> }
+> ```
+>
+> 在编译器看来是长下面这样的：
+>
+> ```c++
+> #include<thread>
+> #include<iostream>
+> 
+> using namespace std;
+> class FUNC
+> {
+>   
+>   private: 
+>   int test;
+>   
+>   public: 
+>   inline void operator()() const
+>   {
+>     std::operator<<(std::cout, std::this_thread::get_id()).operator<<(std::endl);
+>   } 
+>   // inline FUNC() noexcept = default;
+> };
+> 
+> int main()
+> {
+>   std::thread my_thread(FUNC (*)());
+>   return 0;
+> }
+> ```
+>
+> 我们可以看到我们传进去的临时变量被编译器识别为一个函数指针（该函数指针指向没有参数并返回FUNC对象的函数）
+>
+> 我们可以看到编译器将其看作了一个函数，函数的参数是一个函数指针，函数名字为`FUNC`，并且该函数返回一个`std::thread`对象的函数。
+>
+> ***如何避免这个问题：***
+>
+> 我们可以像下面这样书写：
+>
+> ```c++
+> std::thread my_thread((FUNC()));  // 1，使用多组括号
+> std::thread my_thread{FUNC()};    // 2, 使用统一的初始化语法
+> ```
+>
+> 还有就是，我们使用`Lambda`表达式也可以避免这个问题。
+
 # 第三章 共享数据
 
 ## 3.2 使用互斥量

@@ -833,6 +833,347 @@ int main()
 }
 ```
 
+## 12.1 参考刘元老师笔记（http://mtw.so/6lHAIT）
+
+在泛型算法中，我们可以传进来一个***谓词***，来帮助泛型算法更好的进行运算。
+
+例如：我们可以在`find_if`函数中传入第三个参数，这个参数是一个接受且只接受一个参数的可调用对象（`这里需要注意，第三个参数是只能接受一个参数的可调用对象,如果我们传进来含有多余参数的可调用对象，就会报错`），其可以帮助`find_if`判断是否找到了我们需要的元素：
+
+```c++\
+bool getOdd(int numToPredicate) { return numToPredicate == 0; }
+int main()
+{
+	vector<int> vec({1, 2, 3});
+	find_if(vec.cbegin(), vec.cend(), getOdd);
+}
+```
+
+但是有的时候，我们需要向函数里面传递两个参数才可以确定我们是否找到了我们需要的元素，在不进行额外的操作的时候，我们是无法使用的，这个时候，***我们就可以使用到lambda表达式，因为lambda表达式可以捕获局部变量，这样的话我们就实现了往里面传入多个参数的功能。***
+
+## 12.2 值的捕获
+
+***类似于参数传递，变量的捕获方式也 可以是值或者引用。采用值捕获的前提是变量可以拷贝。与参数不同，被捕获的变量的值是在lambda创建时的拷贝，而不是调用的时候拷贝，编译器会在编译的时候，创建一个相对应的类，然后在类中重载调用运算符（）重载的时候，其中写的是我们lambda函数的主体部分。***比如说下面的例子：
+
+```c++
+// 我们书写了含有lambda表达式的式子
+stable_sort(words.begin(), words.end(), 
+	[](const string& str1, const string& str2)
+		{ return str1.size() < str2.size(); });
+
+// 编译器看来是这样的：
+class ShorterString
+{
+public:
+	bool operator()(const string& str1, const string& str2) const
+	{
+		return str1.size() < str2.size();// 我们所写lambda表达式的主体
+  }
+};
+```
+
+## 12.3 值捕获
+
+值的捕获又分为两种，一种是lambda表达式中可以修改的，另一种是lambda表达式中不可以修改的。这二者通过`mutable`关键字来进行区分：
+
+```c++
+// 下面lambda表达式内是不可以修改捕捉到的值的
+int test;
+auto f = [test] {test = 5; };
+// 上面的代码会报错，原因是`cannot assign to a variable captured by copy in a non-mutable lambda`
+// 翻译过来就是无法赋值给不可变lambda中由copy捕获的变量
+
+// 下面的代码成功运行
+int test;
+auto f = [test]() mutable{ test = 5; }
+```
+
+这大概已经是`mutable`的使用方法了，但是为什么呢？
+
+原因其实也很简单，我们接下来来看一下：
+
+我们将下面的代码以编译器的视角来看一下, 我们先查看不加关键字`mutable`的情况，为什么选择下面这么长的代码，因为这段代码在测试的时候发现了右值引用相关的知识点，很有趣的：
+
+```c++
+// 测试代码，测试不加关键字mutable的情况
+#include <iostream>
+using namespace std;
+class Test
+{
+public:
+        Test(int val) : _val(val) { cout << "Test::Test()" << endl; }
+        Test(const Test& other) : _val(other._val) { cout << "Test::Test(const Test&)" << endl; }
+        ~Test() { cout << "Test::~Test()" << endl; }
+        Test& operator=(const Test& other) { this->_val = other._val; cout << "Test::operator=(const Test& other)" << endl; return *this; }
+private:
+        int _val;
+};
+
+int main()
+{
+        Test test(5);
+        auto func_value = [test]() { return test; };
+        func_value();
+}
+```
+
+下面的代码是编译器看见的代码：
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+class Test
+{
+  public: 
+  inline Test(int val)
+  : _val{val}
+  {
+    std::operator<<(std::cout, "Test::Test()").operator<<(std::endl);
+  }
+  inline Test(const Test & other)
+  : _val{other._val}
+  {
+    std::operator<<(std::cout, "Test::Test(const Test&)").operator<<(std::endl);
+  }
+  
+  inline ~Test() noexcept
+  {
+    std::operator<<(std::cout, "Test::~Test()").operator<<(std::endl);
+  }
+  inline Test & operator=(const Test & other)
+  {
+    this->_val = other._val;
+    std::operator<<(std::cout, "Test::operator=(const Test& other)").operator<<(std::endl);
+    return *this;
+  }
+  private: 
+  int _val;
+};
+
+int main()
+{
+  Test test = Test(5);
+    
+  class __lambda_21_27
+  {
+    public: 
+    inline Test operator()() const  //这一行是关键所在
+    {
+      return Test(test);
+    }
+    private: 
+    Test test;
+    public: 
+    // inline __lambda_21_27 & operator=(const __lambda_21_27 &) /* noexcept */ = delete;
+    __lambda_21_27(const Test & _test)
+    : test{_test}
+    {}
+  };
+  __lambda_21_27 func_value = __lambda_21_27{test};
+  func_value.operator()();
+  return 0;
+}
+
+```
+
+从上面的代码中我们可以看到编译器是先将lambda表达式先转换成一个类，然后通过实例化该类以及调用相关的函数从而实现了lambda表达式的功能。
+
+好了我们回到为什么不加关键字`mutable`，lambda表达式就无法修改捕获到的值呢？
+
+从上面的代码中我们可以看到，如果我们捕捉一个变量的话，lambda相应的类就会生成一个相应的私有成员变量，然后其拷贝构造函数声明方式为：
+
+```c++
+ __lambda_21_27(const Test & _test)
+    : test{_test}
+    {}
+```
+
+这里很正常，因为我们平时声明拷贝构造函数就是声明为`const `的引用,然后将其值再初始化给`test`, ***然后还有就是，我们捕捉到的值是左值，并不是右值。这一点其实就不用看，如果你和我意见不一样，在下面的引用捕获你可以体会到是左值。***
+
+关键看第40行的代码：
+
+```c++
+    public: 
+    inline Test operator()() const  //这一行是关键所在
+    {
+      return Test(test);
+    }
+```
+
+我们可以看到这里重载了调用运算符`()`，并且将其声明为`const`，这就是一切的来源了，就是因为其声明为`const`的原因，才导致我们不可以在lambda表达式中去修改相应的变量，虽然说，我们已经通过copy得到了一份副本，但是对于这一份副本，我们声明为`const`,就是不可以修改。
+
+好，看到这里你应该可以猜到如果加上关键字`mutable`会发生什么了，没错就是将重载函数的`const`声明去掉了：
+
+```c++
+#include <iostream>
+using namespace std;
+
+class Test
+{
+public:
+        Test(int val) : _val(val) { cout << "Test::Test()" << endl; }
+        Test(const Test& other) : _val(other._val) { cout << "Test::Test(const Test&)" << endl; }
+        ~Test() { cout << "Test::~Test()" << endl; }
+        Test& operator=(const Test& other) { this->_val = other._val; cout << "Test::operator=(const Test& other)" << endl; return *this; }
+private:
+        int _val;
+};
+int main()
+{
+        Test test(5);
+        auto func_value = [test]() mutable { test = Test(6); };
+        func_value();
+}
+```
+
+编译器看到的是下面代码：
+
+```c++
+#include <iostream>
+
+using namespace std;
+class Test
+{
+  public: 
+  inline Test(int val)
+  : _val{val}
+  {
+    std::operator<<(std::cout, "Test::Test()").operator<<(std::endl);
+  }
+  inline Test(const Test & other)
+  : _val{other._val}
+  {
+    std::operator<<(std::cout, "Test::Test(const Test&)").operator<<(std::endl);
+  }
+  inline ~Test() noexcept
+  {
+    std::operator<<(std::cout, "Test::~Test()").operator<<(std::endl);
+  }
+  inline Test & operator=(const Test & other)
+  {
+    this->_val = other._val;
+    std::operator<<(std::cout, "Test::operator=(const Test& other)").operator<<(std::endl);
+    return *this;
+  }
+ 
+  private: 
+  int _val;
+};
+int main()
+{
+  Test test = Test(5);
+    
+  class __lambda_21_27
+  {
+    public: 
+    inline /*constexpr */ void operator()()  // 我在这里我在这里
+      																	  // 我们在这里可以很清晰的看到，该函数没有const所以我们是可以对lambda中的
+      																		// 变量进行修改的
+    {
+      test.operator=(Test(Test(6)));
+    }
+    private: 
+    Test test;
+    public: 
+    // inline __lambda_21_27 & operator=(const __lambda_21_27 &) /* noexcept */ = delete;
+    __lambda_21_27(const Test & _test)
+    : test{_test}
+    {}
+  };
+  __lambda_21_27 func_value = __lambda_21_27{test};
+  func_value.operator()();
+  return 0;
+}
+
+```
+
+重点在于第38行：
+
+```c++
+    inline /*constexpr */ void operator()()  // 我在这里我在这里
+      																	  // 我们在这里可以很清晰的看到，该函数没有const所以我们是可以对lambda中的
+      																		// 变量进行修改的
+    {
+      test.operator=(Test(Test(6)));
+    }
+```
+
+我们也可以看到这里对`test`进行了修改，怎么修改的呢，是通过调用重载赋值运算符`=`来修改的，这里有一处代码实践了之前学到的知识：
+
+> 我们是可以通过`const `引用来引用右值的！！！
+
+我们可以看到重载赋值运算符函数里面的参数`Test(Test(6))`,首先，我们是先构造一个临时变量这才是右值，然后为什么外面又要嵌套一层呢，因为这里是右值，编译器又将其强转化为Test类型的变量，这里是编译器的处理。我们其实也可以直接使用`Test(6)`进行传参，因为我们是可以通过`const`引用来引用右值的：
+
+```c++
+// 我们可以看到对应的重载赋值运算符的参数类型就是const 的引用
+// 这下我们对为什么重载赋值运算符的参数是 const Test & other有了进一步的认识
+// 因为我们这样可以实现接受右值的传参
+inline Test & operator=(const Test & other)
+  {
+    this->_val = other._val;
+    std::operator<<(std::cout, "Test::operator=(const Test& other)").operator<<(std::endl);
+    return *this;
+  }
+```
+
+## 12.4 引用捕获
+
+看完上面的简述之后，我们接下来继续看另一种捕获，引用捕获：
+
+```c++
+#include<iostream>
+#include<string>
+int main()
+{
+	std::string test;
+  	auto f = [&test]{ test = "test";};
+  	f();
+  	std::cout << test;
+}
+```
+
+使用起来很方便，我们可以直接想引用正常变量的时候引用他。
+
+接下来我们可以查看编译器是怎么看的：
+
+```c++
+#include<iostream>
+#include<string>
+int main()
+{
+  std::basic_string<char> test = std::basic_string<char>();
+    
+  class __lambda_6_13
+  {
+    public: 
+    inline /*constexpr */ void operator()() const // 这里虽然说是const修饰，但是这里是引用，所以说我们可以对其进行修改
+      																				// 我们只是不可以修改引用指向哪里，但是并不代表我们不可以修改引用对
+      																				// 的值，当然了如果我们想要修改其引用指向哪里，一样的，添加关键字
+                                                  // mutable
+    {
+      test.operator=("test");
+    }
+    
+    private: 
+    std::basic_string<char> & test;
+    
+    public:
+    __lambda_6_13(std::basic_string<char> & _test)
+    : test{_test}
+    {}
+    
+  };
+  __lambda_6_13 f = __lambda_6_13{test};
+  f.operator()();
+  std::operator<<(std::cout, test);
+  return 0;
+}
+
+```
+
+
+
 # 13. 左值引用和右值引用
 
 > 参考文章https://paul.pub/cpp-value-category/
