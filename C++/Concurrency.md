@@ -102,6 +102,208 @@ std::thread my_thread(f);
 >
 > 还有就是，我们使用`Lambda`表达式也可以避免这个问题。
 
+## 2.2  等待线程完成
+
+有的时候，我们需要等待线程来保证线程访问数据的有效性。因为有的时候，在主线程已经退出的情况下，线程函数仍然持有局部变量的引用或者指针。
+
+我们等待线程，通常是使用`join()`函数。
+
+***当我们需要对等待中的线程进行更加灵活的控制的话，***比如说看一下某一个线程是否结束，或者只等待一段时间（超过时间就会判定为超时）。想要做到这些，我们需要使用其他的机制来完成，比如说条件变量`future`。调用`join()`，还可以清理线程相关的内存，这样的话`std::thread`对象将不再与已经完成的线程有任何的关联。这意味着，***我们只可以对一个线程使用一次`join()`，一旦使用过`join()`.`std::thread`对象就不可以再次汇入了***。当对其使用`joinable()`时，将返回`false`.
+
+## 2.3 特殊情况下的等待
+
+所谓特殊情况也就是当主线程运行的时候产生异常的话，而我们处理异常的时候就需要考虑调用`join()`函数，以防止线程被异常处理程序所终止，常见的操作像下面所写：
+
+```c++
+struct func{
+  int &i;
+  func(int &i_) : i(i_) {}
+  void operator ()()
+  {
+    for(unsigned j = 0; j < 1000000 ; ++j)
+      do_something(i); // 存在访问隐患，空引用
+  }
+}
+
+void f()
+{
+  int some_local_state=0;
+  fun my_func(some_local_state);
+  std::thread t(my_func);
+  
+  try
+  {
+    do_something_in_current_thread();
+  }
+  catch(···)
+  {
+    t.join(); // 1
+    throw;
+  }
+  t.join(); //2
+}
+```
+
+我们可以看到上面的程序中如果主线程抛出了异常，就会先调用`join()`，来避免线程被异常所终止。
+
+这种方式看起来感觉会产生代码的冗余，或者看着特别的不爽，下面还有另外一种方法：***资源获取即初始化方式（RAII，Resource Acquisition is Initialization）***,我们可以将线程封装成一个类，然后在析构函数中使用`join()`。
+
+```c++
+class thread_guard
+{
+  std::thread &t;
+public:
+  explicit thread_guard(std::thread & t_) : t(t_) {}
+  // 这里加上关键字explicit是因为要告诉编译器拒绝隐式转换
+  ~thread_guard(){
+    if(t.joinable())  // 新的处理方案
+    {
+      t.join();
+    }
+  }
+  thread_guard(thread_guard const&) = delete;
+  thread_guard& operator=(thread_guard const &) = delete;
+  // 直接对对象进行拷贝和赋值是很危险的
+}；
+  
+struct func;
+
+void f()
+{
+  int some_local_state = 0;
+  func my_func(some_local_state);
+  std::thread t(my_func);
+  thread_guard g(t);
+  // 这样的话，即使do_something_in_current_thread中抛出异常，这个线程的析构函数依旧会被调用
+ 	// 我们就不需要再手动的在各种情况下去调用`join`函数
+  do_something_in_current_thread();
+  
+}
+```
+
+## 2.4 传递参数问题
+
+```c++
+#include<thread>
+#include<iostream>
+#include<string>
+void  f(int i, std::string const & s)
+{
+  std::cout<< i << s;
+}
+
+
+int main()
+{
+  std::thread t(f,3,"hello");
+  t.join();
+}
+```
+
+像这样，我们传递参数时十分简单的，只需要将这些参数作为`std::thread`构造函数的附加参数即可。***需要注意的是，这些参数会拷贝至新线程的内存空间中，即使函数中的参数是引用的形式，拷贝操作也是会执行的.***
+
+我们可以参看一下代码：
+
+```c++
+#include <chrono>
+#include <iostream>
+#include <ratio>
+#include <thread>
+
+using namespace std;
+
+class Test
+{
+public:
+        Test(int val) : _val(val) { cout <<this_thread::get_id()<< "Test::Test()" << endl; }
+
+        Test(const Test& other) : _val(other._val) { cout <<this_thread::get_id()<< "Test::Test(const Test&)" << endl; }
+        ~Test() { cout <<this_thread::get_id()<< "Test::~Test()" << endl; }
+        Test& operator=(const Test& other) { this->_val = other._val; cout <<this_thread::get_id()<< "Test::operator=(const Test& other)" << endl; return *this; }
+private:
+        int _val;
+};
+
+void fun(int c, Test t)
+{
+        cout <<endl<< this_thread::get_id()<<"I'm working."<<endl;
+}
+int main()
+{
+        Test test(3);
+        cout<< this_thread::get_id();
+        thread t(fun, 2, test);
+
+        t.join();
+}
+```
+
+上面代码的执行结果为：
+
+```c++
+1Test::Test()
+11Test::Test(const Test&)
+1Test::Test(const Test&)
+1Test::~Test()
+// 以上输出结果是因为在编译器看来，我们写的Test test(6)实际上是这样的：
+// Test test = Test(3);
+// 即先构造出一个临时的对象，然后利用初始拷贝构造
+2Test::Test(const Test&)
+2I'm working.
+2Test::~Test()
+2Test::~Test()
+// 从以上部分我们可以看到我们往线程里面传参之后，线程的构造函数会自动进行copy构造
+1Test::~Test()
+```
+
+无论我们传进去什么值，无论是引用还是什么，`std::thread`的构造函数是并不知情的，构造函数无视函数参数类型，盲目的拷贝已经提供的变量。***而且内部代码会将拷贝的参数以右值的方式进行传递***，这就会导致一个问题，如果说我们第20行的代码修改为下面的样子：
+
+```c++
+void fun(int c, Test &t)
+```
+
+即加上一个引用，那么在线程中就以一个右值来调用该函数，但是该函数的参数是引用（不是右值），***所以说这里会出现编译错误。***
+
+解决方法其实也很简单，对于熟悉`std::bind`的开发者来讲，很简单：我们可以使用`std::ref`将参数转化为引用的形式：
+
+```C++
+std::thread t(fun, 2, std::ref(t));
+// 这样的话，对应的函数就会收到t的引用，并非数据的简单拷贝
+```
+
+`std::thread`构造函数和`std::bind`的操作在标准库中是以相同的机制进行定义的，比如说我们也可以传递一个成员函数指针作为线程函数，并提供一个合适的对象指针作为第一个参数：***bind函数就是这样来绑定参数的。***
+
+```c++
+class X
+{
+public:
+  void do_length_work();
+};
+
+X my_x;
+
+std::thread t(&X::do_length_work, &my_x);
+// 这里传递的第一个参数就是所谓的this指针，我们知道实际上对象调用成员函数就是通过传递指针来实现的
+```
+
+## 2.5 转移所有权
+
+***`std::uniqoe_ptr`和`std::thread`都是可移动，但是其不是可以赋值的。***
+
+```c++
+void some_function();
+void some_other_function();
+
+std::thread t1(some_function);
+std::thread t2 = std::move(t1);
+t1 = std::thread(some_other_function);
+std::thread t3;
+t3 = std::move(t2);
+t1 = std::move(t3);  // 此处会报错，因为t1已经有一个关联的线程了，这里系统会直接调用std::terminal终止程序运行
+```
+
+![image-20221227134358817](./pictures/37.png)
+
 # 第三章 共享数据
 
 ## 3.2 使用互斥量

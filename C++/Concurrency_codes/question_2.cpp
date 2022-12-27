@@ -1,26 +1,33 @@
+#include <chrono>
+#include <functional>
 #include <iostream>
+#include <ratio>
+#include <thread>
 
 using namespace std;
 
 class Test
 {
 public:
-	Test(int val) : _val(val) { cout << "Test::Test()" << endl; }
-	Test(const Test& other) : _val(other._val) { cout << "Test::Test(const Test&)" << endl; }
-	~Test() { cout << "Test::~Test()" << endl; }
-	Test& operator=(const Test& other) { this->_val = other._val; cout << "Test::operator=(const Test& other)" << endl; return *this; }
+	Test(int val) : _val(val) { cout <<this_thread::get_id()<< "Test::Test()" << endl; }
+
+	Test(const Test& other) : _val(other._val) { cout <<this_thread::get_id()<< "Test::Test(const Test&)" << endl; }
+	~Test() { cout <<this_thread::get_id()<< "Test::~Test()" << endl; }
+	Test& operator=(const Test& other) { this->_val = other._val; cout <<this_thread::get_id()<< "Test::operator=(const Test& other)" << endl; return *this; }
 private:
 	int _val;
 };
 
+
+void fun(int c, Test &t)
+{
+	cout <<endl<< this_thread::get_id()<<"I'm working."<<endl;
+}
 int main()
 {
-	Test test(5);
-	Test tes(6);
+	Test test(3);
+	cout<< this_thread::get_id();
+	thread t(fun, 2, std::ref(test));
 
-	auto func_value = [test, tes]() mutable { test = Test(7); test = Test(6); };
-	//auto func_reference = [&]() mutable { test = Test(6); };
-
-	func_value();
-	//func_reference();
+	t.join();
 }
