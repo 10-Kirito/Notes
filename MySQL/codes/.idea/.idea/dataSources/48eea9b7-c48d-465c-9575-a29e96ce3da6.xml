@@ -19584,7 +19584,7 @@ VARIABLE_NAME</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="3612" parent="539" name="customer_id">
-      <AutoIncrement>599</AutoIncrement>
+      <AutoIncrement>600</AutoIncrement>
       <DasType>smallint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -19671,7 +19671,7 @@ VARIABLE_NAME</ColNames>
       <Turn>before-row</Turn>
     </trigger>
     <column id="3629" parent="540" name="film_id">
-      <AutoIncrement>1000</AutoIncrement>
+      <AutoIncrement>1001</AutoIncrement>
       <DasType>smallint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -19988,7 +19988,7 @@ film_id</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="3689" parent="546" name="payment_id">
-      <AutoIncrement>16049</AutoIncrement>
+      <AutoIncrement>16050</AutoIncrement>
       <DasType>smallint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -20071,7 +20071,7 @@ film_id</ColNames>
       <Turn>before-row</Turn>
     </trigger>
     <column id="3705" parent="547" name="rental_id">
-      <AutoIncrement>16049</AutoIncrement>
+      <AutoIncrement>16050</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -20645,16 +20645,19 @@ teacher_id</ColNames>
     </column>
     <foreign-key id="3823" parent="560" name="fk_select_student">
       <ColNames>student_id</ColNames>
+      <OnUpdate>cascade</OnUpdate>
       <RefColNames>student_id</RefColNames>
       <RefTableName>student</RefTableName>
     </foreign-key>
     <foreign-key id="3824" parent="560" name="fk_select_class">
       <ColNames>class_id</ColNames>
+      <OnUpdate>cascade</OnUpdate>
       <RefColNames>class_id</RefColNames>
       <RefTableName>class</RefTableName>
     </foreign-key>
     <foreign-key id="3825" parent="560" name="fk_select_teacher">
       <ColNames>teacher_id</ColNames>
+      <OnUpdate>cascade</OnUpdate>
       <RefColNames>teacher_id</RefColNames>
       <RefTableName>teacher</RefTableName>
     </foreign-key>
@@ -20680,7 +20683,7 @@ teacher_id</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="3830" parent="561" name="student_id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1108</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

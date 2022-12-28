@@ -308,6 +308,16 @@ t1 = std::move(t3);  // 此处会报错，因为t1已经有一个关联的线程
 
 ## 3.2 使用互斥量
 
+> 2022年12月28日19点25分感悟：
+>
+> 锁是针对线程来讲的，比如说一个线程到达一个位置之后，在这个位置上它获得了一把锁。这个时候如果说有另外的线程到达了同样的地方，那么它会看到这里有一把锁已经被别的线程获得了，那么后来的线程就不可以继续执行程序，程序在这里就会陷入阻塞，这里也就是实现了所谓的对数据的保护，***注意啊，这里对数据的保护可不是说，线程不允许访问保护的数据了，不是的，线程仍旧可以去访问，只不过线程被另外的方法拖住了，恰巧实现了对响应数据的保护。***
+>
+> ***哪有什么岁月静好，只不过有人替你负重前行！！***
+>
+> PS: 这里的说法好像也不对，先不管先学习吧！
+
+
+
 保护共享数据最基本的方式，是使用C++标准库提供的互斥量。
 
 ***关键就是访问共享数据之前，将数据锁住，在访问结束之后，再将数据解锁。线程库需要保证，当线程使用互斥量锁住共享数据的时候，其他的线程都必须等到之前的那个线程对数据进行解锁之后，才能进行访问数据。***
@@ -439,5 +449,187 @@ int main()
 > 具体的模板参数推导我们可以直接交给C++17的编译器完成。
 
 ***注意：***在上述的代码中，我们是直接使用全局变量，这没有问题，但是大部分情况下，我们一般是将互斥量和需要保护的数据封装在同一个类当中，而不是定义为全局变量，遵循面向对象设计的准则。
+
+## 3.3 死锁
+
+一个线程A对资源a进行上锁，然后等待获得资源b, 但是很不巧与此同时另外的一个线程B先对资源b进行上锁，并且等待获得资源a，这就会使得场面陷入僵局，这就是所谓的死锁。
+
+当我们进行对同一个类的两个不同实例A和B进行数据的交换的时候，我们为了保证数据交换操作的正确性，我们就需要避免并发的修改数据，并确保每一个实例上的互斥量都可以锁住自己要保护的区域：
+
+## 3.4 不变量
+
+> 对于不变量，我个人理解就是在所有的线程看来，我所访问的变量应该存在，他不应该没有，这就是大家默认的不变量。
+>
+> 结合实例来理解一下就是，现在有一个双向链表和两个线程：
+>
+> ```c++
+> // 下面是具体结点的结构
+> class Node{
+> private:
+>   Node* prev_ = nullptr;
+>   Node* next_ = nullptr;
+>   DataType data;
+> }
+> ```
+>
+> 线程A现在对该链表进行删除操作，删除分三步，首先将要删除的结点的***前面的结点***指向***后面的结点***，还有就是将要删除的结点***后面的结点***指向***前面的结点***，最后释放数据。很不巧啊，线程A刚刚将第一步骤做完，线程B就来从前往后然后从后往前遍历该链表，由于在线程B的眼中或者更多的线程的眼中，***在双向链表当中，如果结点A下一个结点是B，那么B的上一个结点一定是A***。但是这里出错了，因为我们将结点A指向了结点C即我们删除的结点的后面一个结点，***这里就相当于破坏了不变量。***
+
+## 3.5 一个程序的感悟
+
+***先上程序：本段程序是来自https://en.cppreference.com/w/cpp/thread/lock的一段测试程序：***
+
+```c++
+#include <mutex>
+#include <thread>
+#include <iostream>
+#include <vector>
+#include <functional>
+#include <chrono>
+#include <string>
+ 
+struct Employee {
+    Employee(std::string id) : id(id) {}
+    std::string id;
+    std::vector<std::string> lunch_partners;
+    std::mutex m;
+    std::string output() const
+    {
+        std::string ret = "Employee " + id + " has lunch partners: ";
+        for( const auto& partner : lunch_partners )
+            ret += partner + " ";
+        return ret;
+    }
+};
+ 
+void send_mail(Employee &, Employee &)
+{
+    // simulate a time-consuming messaging operation
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+}
+ 
+void assign_lunch_partner(Employee &e1, Employee &e2)
+{
+  // 1
+    static std::mutex io_mutex;
+    {
+        std::lock_guard<std::mutex> lk(io_mutex);
+        std::cout << e1.id << " and " << e2.id << " are waiting for locks" << std::endl;
+    }
+ 
+  
+  // 2
+    // use std::lock to acquire two locks without worrying about 
+    // other calls to assign_lunch_partner deadlocking us
+    {
+        std::lock(e1.m, e2.m);
+        std::lock_guard<std::mutex> lk1(e1.m, std::adopt_lock);
+        std::lock_guard<std::mutex> lk2(e2.m, std::adopt_lock);
+// Equivalent code (if unique_locks are needed, e.g. for condition variables)
+//        std::unique_lock<std::mutex> lk1(e1.m, std::defer_lock);
+//        std::unique_lock<std::mutex> lk2(e2.m, std::defer_lock);
+//        std::lock(lk1, lk2);
+// Superior solution available in C++17
+//        std::scoped_lock lk(e1.m, e2.m);
+        {
+            std::lock_guard<std::mutex> lk(io_mutex);
+            std::cout << e1.id << " and " << e2.id << " got locks" << std::endl;
+        }
+        e1.lunch_partners.push_back(e2.id);
+        e2.lunch_partners.push_back(e1.id);
+    }
+    send_mail(e1, e2);
+    send_mail(e2, e1);
+}
+ 
+int main()
+{
+    Employee alice("alice"), bob("bob"), christina("christina"), dave("dave");
+ 
+    // assign in parallel threads because mailing users about lunch assignments
+    // takes a long time
+    std::vector<std::thread> threads;
+    threads.emplace_back(assign_lunch_partner, std::ref(alice), std::ref(bob));
+    threads.emplace_back(assign_lunch_partner, std::ref(christina), std::ref(bob));
+    threads.emplace_back(assign_lunch_partner, std::ref(christina), std::ref(alice));
+    threads.emplace_back(assign_lunch_partner, std::ref(dave), std::ref(bob));
+ 
+    for (auto &thread : threads) thread.join();
+    std::cout << alice.output() << '\n'  << bob.output() << '\n'
+              << christina.output() << '\n' << dave.output() << '\n';
+}
+```
+
+该段程序中我们可以看到我们是将数据和锁封装到一个类当中，然后实例化出4个对象出来，当然了每一个对象中都有一个单独的锁对应着，程序的执行结果为：
+
+![image-20221228223140096](.\pictures\38.png)
+
+> 在这里，对锁的认识重新做一次总结，锁就是对线程来讲的，如果说一个线程调用锁的动作，将该锁锁定的话，那么另外的线程如果同样去调用这个锁的`lock`函数的话就会被组织执行，一直到获得锁。
+
+此处声明了一个锁，该锁的目的是为了对输出做一个规范，防止多个线程争抢着要输出，就是怕出现下面的现象：
+
+```c++
+    static std::mutex io_mutex; // 设置为静态的锁，是为了确保所有的线程都可以访问到该锁，因为该变量是该函数的一部分
+    {
+        std::lock_guard<std::mutex> lk(io_mutex);
+        std::cout << e1.id << " and " << e2.id << " are waiting for locks" << std::endl;
+    }
+```
+
+![image-20221228223548962](.\pictures\39.png)
+
+还有就是此处使用的是代码块，所以说代码块中的局部变量在代码块结束之后就会被释放掉，即一个线程获得锁`io_mutex`之后，执行完输出字符的动作，就会释放掉该锁，接着下一个线程就会再次获得该锁，继续进行输出。
+
+第二处的代码：
+
+```c++
+{
+        std::lock(e1.m, e2.m);
+        std::lock_guard<std::mutex> lk1(e1.m, std::adopt_lock);
+        std::lock_guard<std::mutex> lk2(e2.m, std::adopt_lock);
+// Equivalent code (if unique_locks are needed, e.g. for condition variables)
+//        std::unique_lock<std::mutex> lk1(e1.m, std::defer_lock);
+//        std::unique_lock<std::mutex> lk2(e2.m, std::defer_lock);
+//        std::lock(lk1, lk2);
+// Superior solution available in C++17
+//        std::scoped_lock lk(e1.m, e2.m);
+        {
+            std::lock_guard<std::mutex> lk(io_mutex);
+            std::cout << e1.id << " and " << e2.id << " got locks" << std::endl;
+        }
+        e1.lunch_partners.push_back(e2.id);
+        e2.lunch_partners.push_back(e1.id);
+    }
+    send_mail(e1, e2);
+    send_mail(e2, e1);
+}
+```
+
+其中再次使用锁`io_mutex`，这里是所有的输出都全部使用一个锁来进行管理，这样的话，下面的图是结构也理所应当，就是最开始的线程肯定是第一个获得该锁，然后迅速运行到这里又获得该锁，才回导致另一个线程迟迟不输出：
+
+![image-20221228223140096](.\pictures\38.png)
+
+你也肯定可以注意到该代码块中是嵌套着一个代码块，做到了用完即让给别人的效果，绝不占着茅坑不拉屎。
+
+接下来就是我对于这段程序最大的疑惑了，他这里为什么要同时要让该线程获得两个锁呢？
+
+我一开始对于锁的认识还是不够，以为我一个锁不久可以解决问题了吗？每一个线程运行到这里不都是要去调用`std::lock(e1.m, e2.m)`吗？如果我这里换成一个那不也要调用吗？那不一样会阻塞吗？
+
+***错错错错错！！！***
+
+我犯了一个很致命的问题，这里的e1是引用别的对象的，从下面的代码我们也可以看到, 不同的线程传参的时候是传进去不一样的参数的，比如说第一个线程使用的是`alice`和`bob`的锁，第二个线程使用的是`christina` 和`bob`的锁，如果说你说仅仅使用一个锁就可以解决问题，好我们都是用第一个参数e1来解决问题，当第一个线程访问`alice`的锁的时候，发现该锁并没有被别的线程所获得，所以线程1美滋滋的去执行任务去了，这里是有对bob的数据进行修改的哦.
+
+接着与此同时第二个线程访问`christina`的时候发现锁也没有被别人所获取，线程2也美滋滋的去执行任务去了，这里就出现问题了，由于线程2也要对bob的数据进行修改，那么也就是说可能会有两个线程对同一块数据进行修改，我们这还是没有考虑最后那个线程的问题呢，加上最后一个线程，那就是同时有三个线程对bob的数据进行修改，这必然会出现恶意竞争的问题。
+
+所以说这也就是为什么我们要同时对两块共享内存使用所来进行一个保护。
+
+```c++
+    std::vector<std::thread> threads;
+    threads.emplace_back(assign_lunch_partner, std::ref(alice), std::ref(bob));
+    threads.emplace_back(assign_lunch_partner, std::ref(christina), std::ref(bob));
+    threads.emplace_back(assign_lunch_partner, std::ref(christina), std::ref(alice));
+    threads.emplace_back(assign_lunch_partner, std::ref(dave), std::ref(bob));
+```
+
+看到这里，我们可以来继续死锁的话题聊一聊，我们为了防止出现像上面的恶意竞争问题，我们使用多个锁，死锁是怎么产生的呢？就是因为对多个锁进行安排的时候没安排妥当，导致线程处于等待状态，所以说我们引进了***按照相同的顺序进行上锁***，或者***使用层次锁***, 还有就是按照上面***所讲述的使用`std::lock()`来将多个锁同时进行上锁操作***。
 
 # 第四章 同步操作
