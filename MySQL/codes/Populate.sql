@@ -12,7 +12,13 @@ ALTER TABLE select_class ADD CONSTRAINT fk_select_class FOREIGN KEY (class_id) R
 ALTER TABLE select_class ADD CONSTRAINT fk_select_teacher FOREIGN KEY (teacher_id) REFERENCES teacher (teacher_id);
 
 
+alter table open_class drop foreign key fk_open_class;
+alter table open_class drop foreign key fk_open_tercher;
 
+drop table open_class;
+
+
+drop table select_class;
 # show create table select_class;
 # show create table open_class;
 # alter table open_class modify column term varchar(30);
@@ -68,11 +74,11 @@ VALUES ('201202','08305002','0103','星期三1-4');
 INSERT INTO open_class(term, class_id, teacher_id, schooltime)
 VALUES ('201202','08305003','0102','星期五5-8');
 INSERT INTO open_class(term, class_id, teacher_id, schooltime)
-VALUES ('201201','08305004','0101','星期二1-4');
+VALUES ('201301','08305004','0101','星期二1-4');
 INSERT INTO open_class(term, class_id, teacher_id, schooltime)
-VALUES ('201201','08305001','0102','星期三5-8');
+VALUES ('201301','08305001','0102','星期三5-8');
 INSERT INTO open_class(term, class_id, teacher_id, schooltime)
-VALUES ('201202','08305001','0101','星期三5-8');
+VALUES ('201302','08302001','0201','星期三5-8');
 -- change the primary key of table --
 -- alter table open_class drop primary key ;
 -- alter table open_class add primary key (term,class_id,teacher_id);
