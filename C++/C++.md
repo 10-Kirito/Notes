@@ -142,7 +142,7 @@ int main(int argc,char **argv)
 
 在C++中，在源文件中：
 
-<img src=".\pictures\1.png" alt="image-20221203115901804" style="zoom:67%;" />
+<img src="./pictures/1.png" alt="image-20221203115901804" style="zoom:67%;" />
 
 # 3. 编写自己的头文件
 
@@ -336,7 +336,7 @@ class MyClass
  }
  ```
 
-![image-20221203165015029](.\pictures\2.png)
+![image-20221203165015029](./pictures/2.png)
 
 ### 4.5.2 `const`修饰成员函数的重载
 
@@ -387,7 +387,7 @@ int main()
 
 我们进行反汇编：
 
-![image-20221203181116426](.\pictures\3.png)
+![image-20221203181116426](./pictures/3.png)
 
 但是如果到了C++我们想要去定义一个：
 
@@ -1327,11 +1327,11 @@ private:
 
 拷贝意味着会将原来的数据复制一份新的出来。这么做的好处是：新的数据和原先的数据是相互独立的，修改其中一个不会去影响另一个。但是坏处是：这么做会消耗运算时间和存储空间。例如你有一个包含了10^10个元素的集合数据，将其拷贝一份就不那么轻松了。
 
-<img src=".\pictures\32.png" alt="32" style="zoom: 33%;" />
+<img src="./pictures/32.png" alt="32" style="zoom: 33%;" />
 
 但是移动操作就会轻松很多，因为他不涉及新数据的产生，仅仅是将原先的数据更改其所有者。
 
-<img src=".\pictures\33.png" alt="32" style="zoom:33%;" />
+<img src="./pictures/33.png" alt="32" style="zoom:33%;" />
 
 在C++11中，我们可以这样为类定义移动构造函数和移动赋值运算符：
 

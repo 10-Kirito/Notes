@@ -84,7 +84,7 @@ TARGET = HELLO #可以指定相应名字
 
 **基本的模块：**
 
-![image-20220911214448176](C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20220911214448176.png)
+
 
 ### 1.4 快捷键
 
@@ -104,19 +104,19 @@ TARGET = HELLO #可以指定相应名字
 
 ### 2.1 查看我们经常使用的一个**按钮类**：
 
-![image-20220911233306248](C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20220911233306248.png)
+
 
 **Inherits**的意思是继承的意思，即其父类:
 
-![image-20220911234355638](C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20220911234355638.png)
+
 
 ### 2.2 查看我们经常使用的网络通讯
 
-![image-20220911233616593](C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20220911233616593.png)
+
 
 如果我们用到了这个类的时候，我们需要在项目配置文件中写入network，如下图所示：
 
-![image-20220911234121988](C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20220911234121988.png)
+
 
 ## 3.button控件的简单使用-怎么组合起来
 
@@ -126,13 +126,13 @@ TARGET = HELLO #可以指定相应名字
 
 比如下图所示：
 
-![image-20220911235312067](C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20220911235312067.png)
+
 
 这显然不是我们想要的效果，我们想要的是在主窗口之中，含有一个按钮。就是让**按钮对象依赖在主窗口**中！
 
 我们需要给这个控件找一个父亲，就是将该控件和主窗口连接起来，父亲（widget）显示，其孩子（button）也可以显示。
 
-![image-20220912000053938](C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20220912000053938.png)
+
 
 ### 3.2 显示文本
 
@@ -166,7 +166,7 @@ setWindowTitle("窗口");
 
 ## 4.对象树
 
-![image-20220912081043484](C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20220912081043484.png)
+
 
 **设置父亲之后，就不需要再去管该控件的析构的调用了，它会自己调用相关的析构函数！（简化了内存回收机制）**
 

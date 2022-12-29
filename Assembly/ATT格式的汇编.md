@@ -54,7 +54,7 @@ _start:
 
 执行结果：
 
-![image-20221028220529844](C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20221028220529844.png)
+
 
 ` ld hello3.o -o hello3 -lc -I /lib64/ld-linux-x86-64.so.2 `中的`-lc`是链接`libc.so`，-I是链接器的意思。
 
@@ -66,8 +66,7 @@ _start:
 
 我们可以使用`ldd`命令来查看一个可执行文件的依赖库：
 
-<img src="C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20221028222431506.png" alt="image-20221028222431506" style="zoom:80%;" />
+
 
 可以使用`readelf -l 'test'`命令查看一个程序的程序头：
 
-<img src="C:\Users\z1769\AppData\Roaming\Typora\typora-user-images\image-20221028223236040.png" alt="image-20221028223236040" style="zoom:80%;" />

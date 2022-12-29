@@ -124,11 +124,11 @@ class D
 
 *javaapi是将生成的帮助文档存放的文件名，author和version是如果有作者和版本信息的话，就将其提取出来，后面的是要提取的文件名字。*
 
-![image-20220713131206898](.\pictures\7.png)
+![image-20220713131206898](./pictures/7.png)
 
 *这样的话，我们就有一个和源代码配套的API帮助文档，如下图所示：*
 
-<img src=".\pictures\8.png" alt="image-20220713131510346" style="zoom:50%;" />
+<img src="./pictures/8.png" alt="image-20220713131510346" style="zoom:50%;" />
 
 *当然了，利用IDEA软件也可以进行相关的操作，暂且不讲！*
 
@@ -537,7 +537,7 @@ if(str!=null&&str.length()!=0)
 
 *我们可以指定控制格式化输出外观的各种标志，比如说打印整数和负数的符号、在数字的前面补0、添加分组分隔符等等。*
 
-![image-20220726183143444](.\pictures\9.png)
+![image-20220726183143444](./pictures/9.png)
 
 ##### （3）printf方法中日期与时间的格式化选项
 
@@ -560,9 +560,9 @@ public class OutputTest
 }
 ```
 
-![image-20220726184315375](.\pictures\10.png)
+![image-20220726184315375](./pictures/10.png)
 
-![image-20220726184334380](.\pictures\11.png)
+![image-20220726184334380](./pictures/11.png)
 
 
 
@@ -622,7 +622,7 @@ char[] passwd = cons.readPassword("Password:");
 //此时输入密码的时候就是不可见的，如下图所示
 ```
 
-![image-20220726181213890](.\pictures\12.png)
+![image-20220726181213890](./pictures/12.png)
 
 #### 2.9 Java中的文件输入与输出
 
@@ -816,7 +816,7 @@ System.out.println(Arrays.toString(a));
 
 *在Java中，允许将一个**数组变量拷贝到另一个数组变量**，直接赋值即可。（在Java中数组本质上类似于C/C++里面的指针（但是没有指针运算），在定义数组的时候，new操作是申请一片内存空间，并且将该内存的首地址返回赋值给数组变量，所以当我们将一个数组变量赋值给另一个数组变量的时候，两个数组变量指向的是同一片内存空间，所以我们修改一个数组的时候，另一个数组也会跟着发生变化！）*
 
-![image-20220729222625830](.\pictures\13.png)
+![image-20220729222625830](./pictures/13.png)
 
 ```java
 int [] a = {1,2,3,4,5,6,7};

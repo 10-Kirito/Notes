@@ -1,8 +1,8 @@
 # ***OOP是数据和算法的结合！GP(Generic programming ，泛型编程)是将数据和算法分开！***
 
- <img src=".\pictures\4.png" alt="image-20221123203435465" style="zoom: 33%;" />
+ <img src="./pictures/4.png" alt="image-20221123203435465" style="zoom: 33%;" />
 
-<img src=".\pictures\5.png" alt="image-20221123204822780" style="zoom: 33%;" />
+<img src="./pictures/5.png" alt="image-20221123204822780" style="zoom: 33%;" />
 
 - 容器是用来存储我们的数据；
 - 分配器主要就是为了我们内存分配所服务的，我们使用容器是看不到其中的内存分布的；
@@ -11,9 +11,9 @@
 - 仿函数就是一个函数,标准库中会给我们提供很多的仿函数；
 - Adapter仿函数适配器，官方给的仿函数功能一般是不能满足我们想实现的逻辑，对我们的部件进行一些转化，以适应我们想要实现的逻辑；
 
-<img src=".\pictures\6.png" alt="image-20221123232614151" style="zoom: 33%;" />
+<img src="./pictures/6.png" alt="image-20221123232614151" style="zoom: 33%;" />
 
-<img src=".\pictures\7.png" alt="image-20221124004904634" style="zoom: 50%;" />
+<img src="./pictures/7.png" alt="image-20221124004904634" style="zoom: 50%;" />
 
 ## 0. ***第一个简单程序***
 
@@ -96,7 +96,7 @@ vector 'empty' is indeed empty.
 >
 > 就是说返回的是一个迭代器，也就是指针，***只不过是泛化的指针***,现在暂且这样理解。
 
-<img src=".\pictures\8.png" alt="image-20221124001937326" style="zoom: 67%;" />
+<img src="./pictures/8.png" alt="image-20221124001937326" style="zoom: 67%;" />
 
 > 我们选择容器的标准，取决于数据的分布、数量、以及我们对其要做的动作等等。
 
@@ -110,7 +110,7 @@ vector 'empty' is indeed empty.
 
 注意括号里面的n只有在达到十万或者几百万的时候，O(n)才有意义。
 
-<img src=".\pictures\9.png" alt="image-20221124005740679" style="zoom:67%;" />
+<img src="./pictures/9.png" alt="image-20221124005740679" style="zoom:67%;" />
 
 ## 3. ***前闭后开区间 [ )***
 
@@ -118,7 +118,7 @@ vector 'empty' is indeed empty.
 
 即如图中所示的，begin这个泛化指针指向的是容器中的第一个元素，end这个泛化指针指向的是容器中最后一个元素的下一个元素，***注意不是指向最后一个元素***。
 
-<img src=".\pictures\10.png" alt="image-20221124010258331" style="zoom:80%;" />
+<img src="./pictures/10.png" alt="image-20221124010258331" style="zoom:80%;" />
 
 每一个容器的iterator，即迭代器都是不一样的，如果我们想要声明一个迭代器变量：
 
@@ -168,7 +168,7 @@ for( auto& elem : vec) {
 
 ## 4.***容器与分类***
 
-<img src=".\pictures\11.png" alt="image-20221124213456776" style="zoom:80%;" />
+<img src="./pictures/11.png" alt="image-20221124213456776" style="zoom:80%;" />
 
 容器又分为三类：
 
@@ -180,7 +180,7 @@ for( auto& elem : vec) {
 
 ***序列容器：***
 
-<img src=".\pictures\12.png" alt="image-20221124220026441" style="zoom:50%;" />
+<img src="./pictures/12.png" alt="image-20221124220026441" style="zoom:50%;" />
 
 Array的大小是一定的，其多大就会是多大，后面不会动态变化；
 
@@ -194,7 +194,7 @@ Array的大小是一定的，其多大就会是多大，后面不会动态变化
 
 ***关系型容器：***对于大量的数据来说最有用的！
 
-<img src=".\pictures\13.png" alt="image-20221124220005615" style="zoom:50%;" />
+<img src="./pictures/13.png" alt="image-20221124220005615" style="zoom:50%;" />
 
 利用红黑树，一种特殊的二分树，高度平衡二分树，左边和右边的高度会动态平衡。
 
@@ -216,7 +216,7 @@ Array的大小是一定的，其多大就会是多大，后面不会动态变化
 
 ***key可以重复；***
 
-<img src=".\pictures\14.png" alt="image-20221124220055093" style="zoom:50%;" />
+<img src="./pictures/14.png" alt="image-20221124220055093" style="zoom:50%;" />
 
 ## ---------序列容器--------
 
@@ -395,7 +395,7 @@ int main()
 
 ## 8. forward_list 单向链表测试
 
-![image-20221125231420317](.\pictures\15.png)
+![image-20221125231420317](./pictures/15.png)
 
 单项链表仅仅提供`push_front()`函数。
 
@@ -411,7 +411,7 @@ int main()
 
 deque号称是连续的，但是其并不连续的，其实际是一段一段的叠放在一起，分段连续。
 
-<img src=".\pictures\16.png" alt="image-20221125232729949" style="zoom: 50%;" />
+<img src="./pictures/16.png" alt="image-20221125232729949" style="zoom: 50%;" />
 
 下面的map存放的是指针，存放的是各段的先后顺序。
 
@@ -421,7 +421,7 @@ deque号称是连续的，但是其并不连续的，其实际是一段一段的
 
 ## 11. stack容器 
 
-<img src=".\pictures\17.png" alt="image-20221125233846313" style="zoom:67%;" />
+<img src="./pictures/17.png" alt="image-20221125233846313" style="zoom:67%;" />
 
 ## 12. queue
 
@@ -429,19 +429,19 @@ deque号称是连续的，但是其并不连续的，其实际是一段一段的
 >
 > 该两种也成为容器的Adaptor,即适配器。
 >
-> <img src=".\pictures\18.png" alt="image-20221125234250084" style="zoom:67%;" />
+> <img src="./pictures/18.png" alt="image-20221125234250084" style="zoom:67%;" />
 >
-> <img src=".\pictures\19.png" alt="image-20221125234343125" style="zoom:67%;" />
+> <img src="./pictures/19.png" alt="image-20221125234343125" style="zoom:67%;" />
 
 ## ---------关联容器--------
 
 ***小型关联数据库！！***
 
-<img src=".\pictures\11.png" alt="image-20221124213456776" style="zoom: 67%;" />
+<img src="./pictures/11.png" alt="image-20221124213456776" style="zoom: 67%;" />
 
 ***关系型容器：***对于大量的数据来说最有用的！
 
-<img src=".\pictures\13.png" alt="image-20221124220005615" style="zoom:50%;" />
+<img src="./pictures/13.png" alt="image-20221124220005615" style="zoom:50%;" />
 
 利用红黑树，一种特殊的二分树，高度平衡二分树，左边和右边的高度会动态平衡。
 
@@ -463,7 +463,7 @@ deque号称是连续的，但是其并不连续的，其实际是一段一段的
 
 ***key可以重复；***
 
-<img src=".\pictures\14.png" alt="image-20221124220055093" style="zoom:50%;" />
+<img src="./pictures/14.png" alt="image-20221124220055093" style="zoom:50%;" />
 
 ## 13. multiset 容器
 
@@ -947,7 +947,7 @@ namespace std {
 
 ***key可以重复；***
 
-![image-20221129230403802](.\pictures\20.png)
+![image-20221129230403802](./pictures/20.png)
 
 
 
@@ -955,7 +955,7 @@ namespace std {
 
 ## 16. unordered_multiset 容器
 
-![image-20221129230715109](.\pictures\21.png)
+![image-20221129230715109](./pictures/21.png)
 
 主要是利用哈希表实现的！
 
@@ -970,9 +970,9 @@ Internally, the elements are not sorted in any particular order, but organized i
 > 向哈希表中插入一个关键字：哈希函数决定该关键字的对应值应该存放到表中的哪个区块，并将对应值存放到该区块中
 > 在哈希表中搜索一个关键字：使用相同的哈希函数从哈希表中查找对应的区块，并在特定的区块搜索该关键字对应的值
 
-![image-20221129231253119](.\pictures\22.png)
+![image-20221129231253119](./pictures/22.png)
 
-<img src=".\pictures\23.png" alt="image-20221129231229304" style="zoom:67%;" />
+<img src="./pictures/23.png" alt="image-20221129231229304" style="zoom:67%;" />
 
 ”篮子“的个数会随着数据的数据的增加而增加 ，篮子的个数可以远远大于数据的值，因为有的篮子可能不会放东西，因为所有的元素的哈希值计算之后，并不能实现完全覆盖某一个范围。篮子里面不能放太多的元素。如果元素大于某一个值，容器会自动的将篮子的个数进行一个扩充。
 
@@ -1014,7 +1014,7 @@ Forward Iterators支持的指针运算是与Input Iterators 以及Output Iterato
 
 STL的最后一个iterator concept涵盖所有的指针运算：加法、减法、下标、两个Iterator相减，以及前后次序关系等等。就是我们最常使用的指针的概念，该种迭代器是与我们的指针相似度最高的时候。
 
-![image-20221203200452086](.\pictures\24.png)
+![image-20221203200452086](./pictures/24.png)
 
 ## ---------偏特化-----------
 
@@ -1236,7 +1236,7 @@ const T*, T1*
 
 在STL编程中，算法和容器是独立设计的，容器里面存放的是数据，而算法则是提供了对数据的操作，在算法操作数据的过程中，要使用到迭代器，迭代器可以看作是算法和容器的桥梁。
 
-<img src=".\pictures\25.png" alt="image-20221209091216643" style="zoom:50%;" />
+<img src="./pictures/25.png" alt="image-20221209091216643" style="zoom:50%;" />
 
 **智能指针：**
 
@@ -1300,7 +1300,7 @@ int main() {
 }
 ```
 
-<img src=".\pictures\26.png" alt="image-20221209093016898" style="zoom:50%;" />
+<img src="./pictures/26.png" alt="image-20221209093016898" style="zoom:50%;" />
 
 上⾯的做法呢，通过多层的迭代，很巧妙地导出了 T ，但是却很有局限性，⽐如，我希望 func() 返回迭代器的value type 类型返回值，*** 函数的 " template 参数推导机制" 推导的只是参数，⽆法推导函数的返回值类型。万⼀需要推导函数的返回值，好像就不⾏了，那么又该如何是好？***
 
@@ -1353,9 +1353,9 @@ int main(int argc,const char*argv []) {
 >
 > 第4行代码利用声明内嵌级别声明了我们传进去的参数类型，然后第14行代码利用这个类内声明来获取相应的变量返回类型
 
-<img src=".\pictures\27.png" alt="image-20221209094502491" style="zoom:67%;" />
+<img src="./pictures/27.png" alt="image-20221209094502491" style="zoom:67%;" />
 
-<img src=".\pictures\28.png" alt="image-20221209094314454" style="zoom: 67%;" />
+<img src="./pictures/28.png" alt="image-20221209094314454" style="zoom: 67%;" />
 
 上⾯的解决⽅案看着可⾏，但其实呢，实际上还是有问题，这⾥有⼀个隐晦的陷阱：**实际上并不是所有的迭代器都是 class type ，原⽣指针也是⼀种迭代器，由于原⽣指针不是 class type ，所以没法为它定义内嵌型别**。
 
@@ -1440,7 +1440,7 @@ struct iterator_traits<const T *>
 }
 ```
 
-<img src=".\pictures\29.png" alt="image-20221209101041671" style="zoom:67%;" />
+<img src="./pictures/29.png" alt="image-20221209101041671" style="zoom:67%;" />
 
 > **批注：**
 >
@@ -1493,9 +1493,9 @@ typename my_iterator_traits<I> :: value_type Func(I ite) {
 
 ```
 
-<img src=".\pictures\30.png" alt="image-20221209102457031" style="zoom:67%;" />
+<img src="./pictures/30.png" alt="image-20221209102457031" style="zoom:67%;" />
 
-<img src=".\pictures\31.png" alt="image-20221209102514746" style="zoom:80%;" />
+<img src="./pictures/31.png" alt="image-20221209102514746" style="zoom:80%;" />
 
 > **重点：**
 >
