@@ -521,7 +521,7 @@ alter table emp add constraint fk_emp_dept_id foreign key(dept_id) references de
 | RESTRICT  | 当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除/更新（与NO ACTION一致）  |
 | CASCADE  | 当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有则也删除/更新外键在子表中的记录  |
 | SET NULL  | 当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有则设置子表中该外键值为null（要求该外键允许为null）  |
-| SET DEFAULT  | 父表有变更时，子表将外键设为一个默认值（Innodb不支持）  |
+| SET DEFAULT  | 父表有变更时，子表将外键设为一个默认值（`Innodb`不支持） |
 
 更改删除/更新行为：
 `ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段) REFERENCES 主表名(主表字段名) ON UPDATE 行为 ON DELETE 行为;`
