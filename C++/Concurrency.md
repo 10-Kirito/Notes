@@ -360,7 +360,7 @@ int main()
 
 我们运行之后，结果如下图所示：
 
-<img src=".\pictures\34.png" alt="34" style="zoom:80%;" />
+<img src="./pictures/34.png" alt="34" style="zoom:80%;" />
 
 ***我们可以看到明显出现了竞争的现象，而且每一次竞争的结果还不一样。***
 
@@ -400,7 +400,7 @@ int main()
 
 执行结果如下图所示：
 
-<img src=".\pictures\35.png" alt="34" style="zoom:80%;" />
+<img src="./pictures/35.png" alt="34" style="zoom:80%;" />
 
 接下来我们使用标准库中封装好的模板类`std::lock_guard`.
 
@@ -438,7 +438,7 @@ int main()
 
 执行结果如下：
 
-<img src=".\pictures\36.png" alt="34" style="zoom:80%;" />
+<img src="./pictures/36.png" alt="34" style="zoom:80%;" />
 
 很明显，后者使用起来更加的方便，因为我们不需要考虑各种情况如何调用`unlock()`的情况，我们比较省心。
 
@@ -606,7 +606,7 @@ int main()
 
 其中再次使用锁`io_mutex`，这里是所有的输出都全部使用一个锁来进行管理，这样的话，下面的图是结构也理所应当，就是最开始的线程肯定是第一个获得该锁，然后迅速运行到这里又获得该锁，才回导致另一个线程迟迟不输出：
 
-![image-20221228223140096](.\pictures\38.png)
+![image-20221228223140096](./pictures/38.png)
 
 你也肯定可以注意到该代码块中是嵌套着一个代码块，做到了用完即让给别人的效果，绝不占着茅坑不拉屎。
 
