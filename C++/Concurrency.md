@@ -476,7 +476,7 @@ int main()
 
 ## 3.5 一个程序的感悟
 
-***先上程序：本段程序是来自https://en.cppreference.com/w/cpp/thread/lock的一段测试程序：***
+***先上程序：本段程序是来自https://en.cppreference.com/w/cpp/thread/lock 的一段测试程序：***
 
 ```c++
 #include <mutex>
