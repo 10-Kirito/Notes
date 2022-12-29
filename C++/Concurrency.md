@@ -288,7 +288,7 @@ std::thread t(&X::do_length_work, &my_x);
 
 ## 2.5 转移所有权
 
-***`std::uniqoe_ptr`和`std::thread`都是可移动，但是其不是可以赋值的。***
+***`std::unique_ptr`和`std::thread`都是可移动，但是其不是可以赋值的。***
 
 ```c++
 void some_function();
