@@ -632,4 +632,206 @@ int main()
 
 看到这里，我们可以来继续死锁的话题聊一聊，我们为了防止出现像上面的恶意竞争问题，我们使用多个锁，死锁是怎么产生的呢？就是因为对多个锁进行安排的时候没安排妥当，导致线程处于等待状态，所以说我们引进了***按照相同的顺序进行上锁***，或者***使用层次锁***, 还有就是按照上面***所讲述的使用`std::lock()`来将多个锁同时进行上锁操作***。
 
+## 3.6 允许额外上锁的RAII容器：`std::unique_lock`
+
+> 参阅博客：https://liam.page/2017/06/10/protecting-data-sharing-between-threads/
+
+在前面，我们提到了RAII容器`std::lock_guard`。其会在构造的时候对传入的互斥量进行上锁（如果我们没有`std::adopt_lock`标志的话），并在销毁的时候进行解锁操作。
+
+然而，`std::lock_guard`实例中并没有`lock()`、`unlock()`、`try_lock()`函数，所以说一旦上锁，就必须等待实例实际销毁的时候才可以解锁互斥量，若是在锁住互斥量的过程中，有一些不必上锁但是特别的耗时的外部I/O操作，那么`std::lock_guard`的这一个特性就会极大的降低并发效率。
+
+一样的是***`std::unique_lock`和`std::lock_guard`一样，都是对互斥量的RAII容器。***不同的是，`std::unique_lock`提供了`lock()`、`unlock()`、`try_lock()`函数，可以通过RAII容器锁住/解锁内部的互斥量。除此之外`std::unique_lock`还可以保证在销毁的时候正确的解锁内部的互斥量。
+
+以上部分就是智能锁`unique_lock`相对于其他普通的锁的优点。
+
+```c++
+template<typename DataType>
+void swap(DataType& lhs, DataType& rhs);
+
+template<typename DataType>
+class Container {
+ private:
+    typedef std::unique_lock<std::mutex> guarded_mutex;
+    std::mutex mtx_;
+    DataType data_;
+ public:
+    friend void swap(Container<DataType>& lhs, Container<DataType>& rhs) {
+        if (&lhs == &rhs) { return; }
+        guarded_mutex g_lhs(lhs.mtx_, std::defer_lock); // 1.
+        guarded_mutex g_rhs(rhs.mtx_, std::defer_lock); // 2.
+        std::lock(lhs.mtx_, rhs.mtx_);
+        swap(lhs.data_, rhs.data_);
+    }
+};
+```
+
+此处，我们在1和2中提供了对互斥量的封装，并且声明为`std::defer_lock`,以在后面使用`std::lock()`一次性锁住两个互斥量。当然了，在这个例子中，`std::unique_lock`和`std::lock_guard`的优势并没有体现出来，仅仅是一个实例。
+
+## 3.7 锁的粒度
+
+锁的粒度就是我们锁住的数据或者操作所占时间的衡量，如果说我们不细分，直接将那些有可能出现恶性竞争的代码块使用锁锁上，那样的话，其余的线程执行到此处的时候就会陷入等待状态，从而导致不必要的资源损失。
+
+当然了，为了线程的安全，我们使用锁是不可或缺的，但是过多的堵塞，必然会降低我们的并发效率，造成我们的性能损耗。
+
+一般来讲，锁的粒度可以定义为：被锁保护的数据的量在时间上的积累：
+
+> 所得粒度 = 被保护的数据量x因持有锁而阻塞其他的线程的时间。
+
+所以我们很容易就可以看见，如果说一个锁被保护的数据量很大的话，那么其他的线程获取相应的锁的请求就会很多；另一方面，如果某一个线程长时间持有锁，那么其他线程因此阻塞等待的时间就会很长。
+
+所以说，我们在保证线程安全的情况下，我们应该尽可能的降低锁的粒度。
+
+对于数据结构的操作，大体上可以分为以下三个步骤：
+
+- 读取数据（可能是其中一部分）；
+- 处理数据；
+- 回写处理结果；
+
+通常来讲，对数据进行处理，这件事情本身并不会破坏数据结构的不变量，因而不需要进行枷锁；但是读取和写入数据是需要使用锁来进行保护的，***但是，如果说我们粗狂的使用锁将上述整个过程保护起来，而处理数据的时间很长，那么这样无疑效率会十分的低下。所以说，我们可以考虑在处理数据的过程中，释放锁；而仅仅使用锁来保护对数据的读取和回写过程。***
+
+```c++
+void get_process_write() {
+    std::unique_lock<std::mutex> lk(a_mutex);   // 1.
+    Data chunk = get_data_chunk();
+    lk.unlock();                                // 2.
+    Result res = process_data_chunk(chunk);
+    lk.lock();                                  // 3.
+    write_back(chunk, res);
+}
+```
+
+## 3.8 读写锁与`std::shared_mutex`和`std::shared_lock`
+
+我们不难发现***对于读和写两个操作，我们需要对数据结构的保护程度是不一样的。***比如说我们上面这个示例程序，他其实是十分不安全的，因为完全有可能是，我们在读取数据的时候，有另外的线程在进行写的操作，这样就会导致线程极其的不安全。所以说：
+
+- 如果一个线程仅仅只是读取一个数据结构，那么只需要保证没有别的其他线程同时进行同时写入即可，但是其他的线程对于数据结构的读操作是安全的。
+- 如果一个线程尝试修改一个数据结构，那么其他线程对于该数据结构的读写操作都是不安全的，我们应该将其禁止。
+
+但是对一个频繁进行写操作的数据结构来说，按照读写操作，区分保护程度意义不大。这是因为，区分两种程度的保护，必然带来额外的开销。而若是某个数据结构的读操作的频率远远大于写操作，那么进行这样的区分，从而降低锁的粒度，收益就很客观了。
+
+为此，我们引入`std::shared_mutex`的概念，除了和`std::mutex`一样提供`lock`、`try_lock()`、`unlock()`之外，`std::shared_mutex`还提供了`lock_shared()`、`try_lock_shared()`和`unlock_shared()`三个操作。
+
+所以说，我们可以使用`std::shared_mutex`保护频繁读取而甚少写入的数据结构，并且在读取数据的时候使用`lock_shared()`锁住，这样的话，我们可以在读取的时候使用`lock_shared()`锁住互斥量，***意思就是别人也可以获得锁不过是以共享的方式获取的，因为是共享嘛；***而在写入的时候使用`lock()`锁出互斥量，意思就是别人不可以获得该锁，只有一个线程可以获得该锁，否则的话就会导致很严重的结果。
+
+```c++
+// 接下来以DNS缓存为例来进行说明
+#include <unordered_map>
+#include <string>
+#include <mutex>
+#include <shared_mutex>
+
+class DNSEntry;
+
+class DNSCache {
+ public:
+    typedef std::unordered_map<std::string, DNSEntry> RecMap;
+
+ private:
+    RecMap entries_;
+    mutable std::shared_mutex entry_mutex_;                     // 1.
+
+ public:
+    DNDEntry find_entry(const std::string& domain) const {
+        std::shared_lock<std::shared_mutex> slk(entry_mutex_);  // 2.
+        const RecMap::const_iterator target = entries_.find(domain);
+        const bool found = (target !+ entries_.end());
+        return found ? target->second : DNSEntry();
+    }
+    void update_one_entry(const std::string& domain, const DNSEntry& entry) {
+        std::unique_lock<std::shared_mutex> ulk(entry_mutex_);  // 3.
+        entries_[domain] = entry;
+        return;
+    }
+};
+```
+
+此处 (1) 为保护 `RecMap` 引入了一个共享互斥量，它是 `mutable` 的，因而允许在 `const` 成员函数中做修改。
+
+(2) 通过 `std::shared_lock` 容器，以共享的方式锁住互斥量，保证读操作的稳定；
+
+(3) 则通过 `std::unique_lock` 容器，以独占的方式锁住互斥量，保证写操作的安全。
+
+意思就是`shared_lock`容器不是密不透风的，我们有的线程是可以根据实际情况来进行判别的，如果说其他的线程是和获得锁的线程做同样的事情的话，那么其就可以进行共享，但是如果说你做的事情和我不一样的话，那么就不可以进行共享。
+
+***比如说3处，某一个线程想要以独占的方式锁住互斥量，但是却发现该互斥量已经被放进了一个共享的容器中，就会陷入阻塞状态。***
+
+而2处的线程想要以共享的方式来锁住互斥量，但是却发现对应的互斥量已经被别的线程以独占的方式锁住，就会陷入阻塞状态。
+
+> 《C++并发编程实战》这本书中是这样进行解释的：
+>
+> 我们可以使用`std::shared_lock<std::shared_mutex>`获取其访问权，这与使用`std::unique_lock`一样，除了多线程可以同时获得同一个`std::shared_mutex`的共享锁。唯一的限制是：当有其他的线程拥有共享锁的时候，尝试获取独占锁的线程会被阻塞，知道所有的线程放弃该锁。当其中任意一个线程拥有独占锁的时候，其他的线程就无法获得共享锁或者独占锁，知道第一个线程放弃其拥有的锁。
+
 # 第四章 同步操作
+
+> 本章的内容就类似于Linux系统编程里面多线程编程中的信号传递的功能，我们可以实现在不同线程之间进行传递信号的功能。
+
+## 4.1 等待条件达成
+
+在工作的过程中，我们存在某些线程为了防止占用过多的资源，会处于等待状态，知道另外的线程发送出一定的信号，就是***等待条件未达成的时候***，处于等待条件的线程就会被唤醒。
+
+C++标准库中对于条件变量有两套实现：`std::condition_variable`和`std::condition_variable_any`，这两个实现都包含在`condition_variable`头文件的声明之中。二者都需要和互斥量一起才可以进行工作。唯一的区别就是后者更加的通用，任何的互斥量都可以一起工作，前者仅仅和`std::mutex`一起工作。
+
+不过，更方便带来的后果就是性能和系统资源的使用方面会有更多的开销。所以我们还是一般首选`std::condition_variable`。
+
+```c++
+// 下面程序来自https://cppreference.com
+// 其中涉及到了C++20的一些标准，所以编译的时候请加上-std=c++2a的选项
+#include <iostream>
+#include <string>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+ 
+std::mutex m;
+// 声明条件变量，是全局变量
+std::condition_variable cv;
+std::string data;
+bool ready = false;
+bool processed = false;
+ 
+void worker_thread()
+{
+    // Wait until main() sends data
+    // 以下部分是C++20中的标准，可以在后面传入参数的时候不传进去第二个参数
+    std::unique_lock lk(m);
+  	// 这里是调用wait函数来进行等待信号的传递
+    cv.wait(lk, []{return ready;});
+ 
+    // after the wait, we own the lock.
+    std::cout << "Worker thread is processing data\n";
+    data += " after processing";
+ 
+    // Send data back to main()
+    processed = true;
+    std::cout << "Worker thread signals data processing completed\n";
+ 
+    // Manual unlocking is done before notifying, to avoid waking up
+    // the waiting thread only to block again (see notify_one for details)
+    lk.unlock();
+    cv.notify_one();
+}
+ 
+int main()
+{
+    std::thread worker(worker_thread);
+ 
+    data = "Example data";
+    // send data to the worker thread
+    {
+        std::lock_guard lk(m);
+        ready = true;
+        std::cout << "main() signals data ready for processing\n";
+    }
+    cv.notify_one();
+ 
+    // wait for the worker
+    {
+        std::unique_lock lk(m);
+        cv.wait(lk, []{return processed;});
+    }
+    std::cout << "Back in main(), data = " << data << '\n';
+ 
+    worker.join();
+}
+```
+
