@@ -18,15 +18,15 @@ int main()
 	//连接数据库
 	//这里需要输入自己的本机名和密码，若全为默认，只需更改*处为自己的密码以及”xsgl“处改成自己创建的数据库即可
 	if (mysql_real_connect(&mysql, "127.0.0.1", "root",
-		"123456", "study", 3306, NULL, 0) == NULL) {
+		"123456", "school", 3306, NULL, 0) == NULL) {
 		printf("错误原因: %s\n", mysql_error(&mysql));
 		printf("连接失败！\n");
 		exit(-1);
 	}
 
 	//查询数据
- //student为xsgl数据库中存在的表
-	int ret = mysql_query(&mysql, "select * from customers;");
+    //student为xsgl数据库中存在的表
+	int ret = mysql_query(&mysql, "select * from student;");
 	printf("ret: %d\n", ret);
 
 	//获取结果集
@@ -38,13 +38,11 @@ int main()
 		printf("%s ", row[0]);//学号
 		printf("%s ", row[1]);//姓名
 		printf("%s ", row[2]);//性别
-		printf("%s ", row[3]);//年龄
-		printf("%s ", row[4]);//学号
-		printf("%s ", row[5]);//姓名
-		printf("%s ", row[6]);//性别
-		printf("%s ", row[7]);//年龄
-		printf("%s ", row[8]);//年龄
-		printf("%s \n", row[9]);//籍贯
+		printf("%s ", row[3]);//出生年月
+		printf("%s ", row[4]);//籍贯
+		printf("%s ", row[5]);//电话号
+		printf("%s ", row[6]);//院系
+		printf("%s \n", row[7]);//状态
 	}
 	//释放结果集
 	mysql_free_result(res);
