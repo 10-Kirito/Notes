@@ -1653,3 +1653,1806 @@ LogConfig: Setting CVar [[r.setres:1280x720]]
 [2023.01.13-08.09.28:106][134]LogUObjectHash: Compacting FUObjectHashTables data took   2.38ms
 [2023.01.13-08.09.28:125][135]LogPlayLevel: Display: Destroying online subsystem :Context_22
 [2023.01.13-08.10.28:577][645]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Floor)
+[2023.01.13-08.10.29:764][714]LogTemp: Repeating last play command: 选中的视口
+[2023.01.13-08.10.29:771][714]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2023.01.13-08.10.29:771][714]PIE: New page: PIE会话：ThirdPersonExampleMap（2023年1月14日 上午12:10:29）
+[2023.01.13-08.10.29:771][714]LogPlayLevel: Creating play world package: /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap
+[2023.01.13-08.10.29:784][714]LogPlayLevel: PIE: StaticDuplicateObject took: (0.012240s)
+[2023.01.13-08.10.29:785][714]LogAIModule: Creating AISystem for world ThirdPersonExampleMap
+[2023.01.13-08.10.29:785][714]LogPlayLevel: PIE: World Init took: (0.001662s)
+[2023.01.13-08.10.29:785][714]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/ThirdPersonBP/Maps/ThirdPersonExampleMap.ThirdPersonExampleMap to /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap.ThirdPersonExampleMap (0.014052s)
+[2023.01.13-08.10.29:822][714]LogUObjectHash: Compacting FUObjectHashTables data took   2.46ms
+[2023.01.13-08.10.29:824][714]LogAudio: Display: Creating Audio Device:                 Id: 13, Scope: Unique, Realtime: True
+[2023.01.13-08.10.29:824][714]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2023.01.13-08.10.29:824][714]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2023.01.13-08.10.29:824][714]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2023.01.13-08.10.29:824][714]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2023.01.13-08.10.29:824][714]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2023.01.13-08.10.29:824][714]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2023.01.13-08.10.29:824][714]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2023.01.13-08.10.29:824][714]LogAudio: Display: AudioDevice MaxSources: 32
+[2023.01.13-08.10.29:824][714]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2023.01.13-08.10.29:824][714]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2023.01.13-08.10.29:824][714]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2023.01.13-08.10.29:824][714]LogAudioMixer: Display: Initializing audio mixer.
+[2023.01.13-08.10.29:827][714]LogAudioMixer: Display: 0: FrontLeft
+[2023.01.13-08.10.29:827][714]LogAudioMixer: Display: 1: FrontRight
+[2023.01.13-08.10.29:841][714]LogAudioMixer: Display: Using Audio Device 耳机 (Realtek(R) Audio)
+[2023.01.13-08.10.29:842][714]LogAudioMixer: Display: Initializing Sound Submixes...
+[2023.01.13-08.10.29:842][714]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2023.01.13-08.10.29:842][714]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2023.01.13-08.10.29:842][714]LogAudioMixer: Display: Creating Master Submix 'MasterEQSubmixDefault'
+[2023.01.13-08.10.29:842][714]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called
+[2023.01.13-08.10.29:842][714]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048
+[2023.01.13-08.10.29:843][714]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal()
+[2023.01.13-08.10.29:843][714]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time
+[2023.01.13-08.10.29:843][714]LogInit: FAudioDevice initialized.
+[2023.01.13-08.10.29:843][714]LogAudio: Display: Audio Device (ID: 13) registered with world 'ThirdPersonExampleMap'.
+[2023.01.13-08.10.29:852][714]LogLoad: Game class is 'Tps_Game_Mode_C'
+[2023.01.13-08.10.29:854][714]LogWorld: Bringing World /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap.ThirdPersonExampleMap up for play (max tick rate 60) at 2023.01.13-16.10.29
+[2023.01.13-08.10.29:855][714]LogWorld: Bringing up level for play took: 0.001667
+[2023.01.13-08.10.29:855][714]LogOnline: OSS: Creating online subsystem instance for: :Context_23
+[2023.01.13-08.10.29:858][714]PIE: 登陆的服务器
+[2023.01.13-08.10.29:859][714]PIE: PIE总开始时间：0.089秒。
+[2023.01.13-08.10.34:176][972]Cmd: LevelEditor.ToggleImmersive
+[2023.01.13-08.10.34:304][975]LogRenderer: Reallocating scene render targets to support 1912x1044 Format 9 NumSamples 1 (Frame:264).
+[2023.01.13-08.10.34:359][976]LogRenderer: Reallocating scene render targets to support 1920x1052 Format 9 NumSamples 1 (Frame:266).
+[2023.01.13-08.10.49:479][883]LogBlueprintUserMessages: [Tps_Charactor_BP_2] 没有弹药，更换弹夹
+[2023.01.13-08.10.49:645][893]LogBlueprintUserMessages: [Tps_Charactor_BP_2] 没有弹药，更换弹夹
+[2023.01.13-08.10.57:788][380]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2023.01.13-08.10.57:788][380]LogWorld: BeginTearingDown for /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap
+[2023.01.13-08.10.57:788][380]LogWorld: UWorld::CleanupWorld for ThirdPersonExampleMap, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.10.57:789][380]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.10.57:805][380]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2023.01.13-08.10.57:825][380]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.10.57:850][380]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2023.01.13-08.10.57:850][380]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-08.10.57:851][380]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-08.10.57:857][380]LogUObjectHash: Compacting FUObjectHashTables data took   2.27ms
+[2023.01.13-08.10.57:878][381]LogPlayLevel: Display: Destroying online subsystem :Context_23
+[2023.01.13-08.13.02:902][892]LogTemp: Repeating last play command: 选中的视口
+[2023.01.13-08.13.02:907][892]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2023.01.13-08.13.02:907][892]PIE: New page: PIE会话：ThirdPersonExampleMap（2023年1月14日 上午12:13:02）
+[2023.01.13-08.13.02:907][892]LogPlayLevel: Creating play world package: /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap
+[2023.01.13-08.13.02:916][892]LogPlayLevel: PIE: StaticDuplicateObject took: (0.008549s)
+[2023.01.13-08.13.02:917][892]LogAIModule: Creating AISystem for world ThirdPersonExampleMap
+[2023.01.13-08.13.02:918][892]LogPlayLevel: PIE: World Init took: (0.001544s)
+[2023.01.13-08.13.02:918][892]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/ThirdPersonBP/Maps/ThirdPersonExampleMap.ThirdPersonExampleMap to /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap.ThirdPersonExampleMap (0.010243s)
+[2023.01.13-08.13.02:954][892]LogUObjectHash: Compacting FUObjectHashTables data took   2.31ms
+[2023.01.13-08.13.02:956][892]LogAudio: Display: Creating Audio Device:                 Id: 14, Scope: Unique, Realtime: True
+[2023.01.13-08.13.02:956][892]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2023.01.13-08.13.02:956][892]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2023.01.13-08.13.02:956][892]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2023.01.13-08.13.02:956][892]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2023.01.13-08.13.02:956][892]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2023.01.13-08.13.02:956][892]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2023.01.13-08.13.02:956][892]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2023.01.13-08.13.02:956][892]LogAudio: Display: AudioDevice MaxSources: 32
+[2023.01.13-08.13.02:956][892]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2023.01.13-08.13.02:956][892]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2023.01.13-08.13.02:956][892]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2023.01.13-08.13.02:956][892]LogAudioMixer: Display: Initializing audio mixer.
+[2023.01.13-08.13.02:959][892]LogAudioMixer: Display: 0: FrontLeft
+[2023.01.13-08.13.02:959][892]LogAudioMixer: Display: 1: FrontRight
+[2023.01.13-08.13.02:972][892]LogAudioMixer: Display: Using Audio Device 耳机 (Realtek(R) Audio)
+[2023.01.13-08.13.02:972][892]LogAudioMixer: Display: Initializing Sound Submixes...
+[2023.01.13-08.13.02:972][892]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2023.01.13-08.13.02:972][892]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2023.01.13-08.13.02:972][892]LogAudioMixer: Display: Creating Master Submix 'MasterEQSubmixDefault'
+[2023.01.13-08.13.02:972][892]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called
+[2023.01.13-08.13.02:972][892]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048
+[2023.01.13-08.13.02:973][892]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal()
+[2023.01.13-08.13.02:973][892]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time
+[2023.01.13-08.13.02:973][892]LogInit: FAudioDevice initialized.
+[2023.01.13-08.13.02:973][892]LogAudio: Display: Audio Device (ID: 14) registered with world 'ThirdPersonExampleMap'.
+[2023.01.13-08.13.02:982][892]LogLoad: Game class is 'Tps_Game_Mode_C'
+[2023.01.13-08.13.02:984][892]LogWorld: Bringing World /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap.ThirdPersonExampleMap up for play (max tick rate 60) at 2023.01.13-16.13.02
+[2023.01.13-08.13.02:984][892]LogWorld: Bringing up level for play took: 0.001524
+[2023.01.13-08.13.02:985][892]LogOnline: OSS: Creating online subsystem instance for: :Context_24
+[2023.01.13-08.13.02:987][892]PIE: 登陆的服务器
+[2023.01.13-08.13.02:988][892]PIE: PIE总开始时间：0.081秒。
+[2023.01.13-08.13.24:798][197]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2023.01.13-08.13.24:798][197]LogWorld: BeginTearingDown for /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap
+[2023.01.13-08.13.24:798][197]LogWorld: UWorld::CleanupWorld for ThirdPersonExampleMap, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.13.24:799][197]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.13.24:810][197]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2023.01.13-08.13.24:829][197]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.13.24:854][197]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2023.01.13-08.13.24:854][197]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-08.13.24:855][197]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-08.13.24:870][197]LogUObjectHash: Compacting FUObjectHashTables data took   2.36ms
+[2023.01.13-08.13.24:893][198]LogPlayLevel: Display: Destroying online subsystem :Context_24
+[2023.01.13-08.13.28:443][273]LogEditorViewport: Clicking on Actor (LMB): TextRenderActor (TextRenderActor)
+[2023.01.13-08.34.55:969][744]LogContentBrowser: Deferred new asset folder creation: 新建文件夹
+[2023.01.13-08.34.55:983][744]LogContentBrowser: Creating deferred item: 新建文件夹
+[2023.01.13-08.34.56:388][769]LogContentBrowser: Attempting asset rename: 新建文件夹 -> 新建文件夹
+[2023.01.13-08.34.56:400][769]LogContentBrowser: End creating deferred item 新建文件夹
+[2023.01.13-08.35.08:744][982]LogContentBrowser: Attempting asset rename: 新建文件夹 -> 新建文件夹
+[2023.01.13-08.35.20:694][696]LogContentBrowser: Attempting asset rename: 新建文件夹 -> MaJLaygo
+[2023.01.13-08.35.30:497][128]LogContentBrowser: Attempting asset rename: MaJLaygo -> Boss
+[2023.01.13-08.35.57:893][407]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Maw J Laygo_Mesh.fbx)
+[2023.01.13-08.35.57:941][407]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Maw J Laygo_Mesh.fbx
+[2023.01.13-08.35.58:004][407]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.36.13:970][407]LogSlate: Window 'FBX导入选项' being destroyed
+[2023.01.13-08.36.14:029][407]LogFbx: Valid bind pose for Pose (skinCluster2) - MAW
+[2023.01.13-08.36.14:035][407]LogMaterial: Display: Material /Game/Game_Files/Monsters/Boss/MAW_MAT.MAW_MAT needed to have new flag set bUsedWithSkeletalMesh !
+[2023.01.13-08.36.14:039][407]LogMaterial: Display: Missing cached shadermap for MAW_MAT in PCD3D_SM5, Default, SM5 (DDC key hash: FE71DCD4D16F7A6660C3841212438AD9A428B44E), compiling. 
+[2023.01.13-08.36.14:086][407]LogShaderCompilers: Display: Submitted 32 shader compile jobs with 'Low' priority
+[2023.01.13-08.36.14:200][407]LogShaderCompilers: Display: Worker (1/5): shaders left to compile 32
+[2023.01.13-08.36.14:200][407]LogShaderCompilers: Display: Worker (2/5): shaders left to compile 23
+[2023.01.13-08.36.14:200][407]LogShaderCompilers: Display: Worker (3/5): shaders left to compile 14
+[2023.01.13-08.36.14:200][407]LogShaderCompilers: Display: Worker (4/5): shaders left to compile 5
+[2023.01.13-08.36.14:200][407]LogShaderCompilers: Display: Started 32 'Local' shader compile jobs with 'Low' priority
+[2023.01.13-08.36.14:200][407]LogTexture: Display: 正在编译纹理：MAW_diffuse（OODLE_AutoDXT、2048X2048）
+[2023.01.13-08.36.14:643][407]LogTextureFormatOodle: Display: non-RDO encode 2048 x 2048 x 1 to format OODLE_AutoDXT (Oodle OodleTex_BC1_WithTransparency) lambda=0 effort=20 
+[2023.01.13-08.36.14:644][407]LogTextureFormatOodle: Display: non-RDO encode 1024 x 1024 x 1 to format OODLE_AutoDXT (Oodle OodleTex_BC1_WithTransparency) lambda=0 effort=20 
+[2023.01.13-08.36.14:679][407]LogTexture: Display: 正在编译纹理：MAW_glow（OODLE_AutoDXT、512X512）
+[2023.01.13-08.36.14:811][407]LogTexture: Display: 正在编译纹理：maria_specular（OODLE_AutoDXT、2048X2048）
+[2023.01.13-08.36.15:404][407]LogTextureFormatOodle: Display: non-RDO encode 2048 x 2048 x 1 to format OODLE_AutoDXT (Oodle OodleTex_BC1_WithTransparency) lambda=0 effort=20 
+[2023.01.13-08.36.15:404][407]LogTextureFormatOodle: Display: non-RDO encode 1024 x 1024 x 1 to format OODLE_AutoDXT (Oodle OodleTex_BC1_WithTransparency) lambda=0 effort=20 
+[2023.01.13-08.36.15:457][407]LogTexture: Display: 正在编译纹理：MAW_normal（OODLE_BC5、1024X1024）
+[2023.01.13-08.36.15:519][407]LogTextureFormatOodle: Display: non-RDO encode 1024 x 1024 x 1 to format OODLE_BC5 (Oodle OodleTex_BC5U) lambda=0 effort=20 
+[2023.01.13-08.36.15:521][407]LogMaterial: Display: Missing cached shadermap for MAW_MAT in PCD3D_SM5, Default, SM5 (DDC key hash: D021BFF1DEE9FA94B2842EE445739F0E9F8A1C29), compiling. 
+[2023.01.13-08.36.15:525][407]LogFbx: Triangulating skeletal mesh MAW
+[2023.01.13-08.36.15:859][407]LogFbx: Warning: Bones digested - 64  Depth of hierarchy - 12
+[2023.01.13-08.36.16:295][407]LogSkeletalMesh: Section 0: Material=0, 13910 triangles
+[2023.01.13-08.36.16:327][407]LogSkeletalMesh: Building Skeletal Mesh Maw_J_Laygo_Mesh...
+[2023.01.13-08.36.16:684][407]LogSkeletalMesh: Section 0: Material=0, 13910 triangles
+[2023.01.13-08.36.16:715][407]LogSkeletalMesh: Built Skeletal Mesh [0.39s] /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh.Maw_J_Laygo_Mesh
+[2023.01.13-08.36.16:728][407]LogWorld: UWorld::CleanupWorld for World_11, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.36.16:729][407]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(0) Hips
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(1) Spine
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(2) Spine1
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(3) Spine2
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(4) Neck
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(5) Head
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(6) HeadTop_End
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(7) RightRope1
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(8) RightRope2
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(9) RightRope3
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(10) RightRope4
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(11) LeftShoulder
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(12) LeftArm
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(13) LeftForeArm
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(14) LeftHand
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(15) LeftHandThumb1
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(16) LeftHandThumb2
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(17) LeftHandThumb3
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(18) LeftHandThumb4
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(19) LeftHandIndex1
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(20) LeftHandIndex2
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(21) LeftHandIndex3
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(22) LeftHandIndex4
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(23) LeftHandMiddle1
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(24) LeftHandMiddle2
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(25) LeftHandMiddle3
+[2023.01.13-08.36.16:742][407]LogFbx: SortedLinks :(26) LeftHandMiddle4
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(27) LeftHandRing1
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(28) LeftHandRing2
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(29) LeftHandRing3
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(30) LeftHandRing4
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(31) RightShoulder
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(32) RightArm
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(33) RightForeArm
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(34) RightHand
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(35) RightHandThumb1
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(36) RightHandThumb2
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(37) RightHandThumb3
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(38) RightHandThumb4
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(39) RightHandIndex1
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(40) RightHandIndex2
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(41) RightHandIndex3
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(42) RightHandIndex4
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(43) RightHandMiddle1
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(44) RightHandMiddle2
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(45) RightHandMiddle3
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(46) RightHandMiddle4
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(47) RightHandRing1
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(48) RightHandRing2
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(49) RightHandRing3
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(50) RightHandRing4
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(51) LeftUpLeg
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(52) LeftLeg
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(53) LeftFoot
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(54) LeftToeBase
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(55) LeftToe_End
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(56) RightUpLeg
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(57) RightLeg
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(58) RightFoot
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(59) RightToeBase
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(60) RightToe_End
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(61) RightChain1
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(62) RightChain2
+[2023.01.13-08.36.16:743][407]LogFbx: SortedLinks :(63) RightChain3
+[2023.01.13-08.36.16:744][407]LogFbx: Parsing AnimStack mixamo.com
+[2023.01.13-08.36.16:778][407]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_Anim.Maw_J_Laygo_Mesh_Anim
+[2023.01.13-08.36.16:799][407]FBXImport: Warning: 此FBX场景中未发现平滑组信息。导出文件前必须在FBX导出器插件中启用“导出平滑组（Export Smoothing Groups）”选项。对不支持平滑组的工具而言，导出时FBX导出器仍将生成正确的平滑数据，从而在导入时推断出正确的顶点法线。 
+[2023.01.13-08.36.17:002][410]LogShaderCompilers: Display: Submitted 2 shader compile jobs with 'ForceLocal' priority
+[2023.01.13-08.36.17:030][411]LogShaderCompilers: Display: Submitted 30 shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.17:127][412]LogShaderCompilers: Display: Worker (4/5): shaders left to compile 4
+[2023.01.13-08.36.17:127][412]LogShaderCompilers: Display: Started 2 'Local' shader compile jobs with 'ForceLocal' priority
+[2023.01.13-08.36.17:138][412]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2023.01.13-08.36.17:138][412]LogShaderCompilers: Display: Total job queries 64, among them cache hits 0 (0.00%)
+[2023.01.13-08.36.17:139][412]LogShaderCompilers: Display: Tracking 5 distinct input hashes that result in 5 distinct outputs (100.00%)
+[2023.01.13-08.36.17:139][412]LogShaderCompilers: Display: RAM used: 0.03 MB (0.00 GB) of 1228.80 MB (1.20 GB) budget. Usage: 0.00%
+[2023.01.13-08.36.17:139][412]LogShaderCompilers: Display: ================================================
+[2023.01.13-08.36.17:868][454]LogShaderCompilers: Display: Worker (4/5): shaders left to compile 2
+[2023.01.13-08.36.17:868][454]LogShaderCompilers: Display: Started 1 'Local' shader compile jobs with 'ForceLocal' priority
+[2023.01.13-08.36.18:404][484]LogShaderCompilers: Display: Worker (3/5): shaders left to compile 1
+[2023.01.13-08.36.18:404][484]LogShaderCompilers: Display: Started 1 'Local' shader compile jobs with 'ForceLocal' priority
+[2023.01.13-08.36.18:423][485]LogShaderCompilers: Display: Worker (4/5): shaders left to compile 28
+[2023.01.13-08.36.18:423][485]LogShaderCompilers: Display: Started 8 'Local' shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.18:802][507]LogShaderCompilers: Display: Worker (3/5): shaders left to compile 20
+[2023.01.13-08.36.18:802][507]LogShaderCompilers: Display: Started 6 'Local' shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.18:954][516]LogShaderCompilers: Display: Worker (1/5): shaders left to compile 14
+[2023.01.13-08.36.18:954][516]LogShaderCompilers: Display: Started 4 'Local' shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.18:988][518]LogShaderCompilers: Display: Worker (2/5): shaders left to compile 10
+[2023.01.13-08.36.18:989][518]LogShaderCompilers: Display: Started 3 'Local' shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.20:147][583]LogShaderCompilers: Display: Worker (1/5): shaders left to compile 7
+[2023.01.13-08.36.20:147][583]LogShaderCompilers: Display: Started 2 'Local' shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.20:166][584]LogShaderCompilers: Display: Worker (2/5): shaders left to compile 5
+[2023.01.13-08.36.20:166][584]LogShaderCompilers: Display: Started 2 'Local' shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.20:951][627]LogShaderCompilers: Display: Worker (1/5): shaders left to compile 3
+[2023.01.13-08.36.20:951][627]LogShaderCompilers: Display: Started 1 'Local' shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.21:181][640]LogShaderCompilers: Display: Worker (2/5): shaders left to compile 2
+[2023.01.13-08.36.21:181][640]LogShaderCompilers: Display: Started 1 'Local' shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.21:249][644]LogShaderCompilers: Display: Worker (1/5): shaders left to compile 1
+[2023.01.13-08.36.21:249][644]LogShaderCompilers: Display: Started 1 'Local' shader compile jobs with 'Normal' priority
+[2023.01.13-08.36.23:197][680]LogUObjectHash: Compacting FUObjectHashTables data took   2.57ms
+[2023.01.13-08.36.23:202][680]LogFileHelpers: Editor autosave (incl. external actors) for '/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap' took 0.040
+[2023.01.13-08.36.23:203][680]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh] ([1] browsable assets)...
+[2023.01.13-08.36.23:218][680]OBJ SavePackage:     Rendered thumbnail for [SkeletalMesh /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh.Maw_J_Laygo_Mesh]
+[2023.01.13-08.36.23:218][680]OBJ SavePackage: Finished generating thumbnails for package [/Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh]
+[2023.01.13-08.36.23:254][680]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Maw_J_Laygo_Mesh_Auto2B8BF0E524224FECF69C49B9F0C50A90C.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_Auto2.uasset'
+[2023.01.13-08.36.23:255][680]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_Skeleton] ([1] browsable assets)...
+[2023.01.13-08.36.23:255][680]OBJ SavePackage: Finished generating thumbnails for package [/Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_Skeleton]
+[2023.01.13-08.36.23:256][680]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Maw_J_Laygo_Mesh_Skeleton_Auto202FFB4AF47E2978A770A2BA1D4AC1305.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_Skeleton_Auto2.uasset'
+[2023.01.13-08.36.23:257][680]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_PhysicsAsset] ([1] browsable assets)...
+[2023.01.13-08.36.23:266][680]OBJ SavePackage:     Rendered thumbnail for [PhysicsAsset /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_PhysicsAsset.Maw_J_Laygo_Mesh_PhysicsAsset]
+[2023.01.13-08.36.23:266][680]OBJ SavePackage: Finished generating thumbnails for package [/Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_PhysicsAsset]
+[2023.01.13-08.36.23:278][680]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Maw_J_Laygo_Mesh_PhysicsAsset_Au76C4B261441E84ABFB98CCB09E3B9B30.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_PhysicsAsset_Auto2.uasset'
+[2023.01.13-08.36.23:279][680]LogFileHelpers: Auto-saving content packages took 0.077
+[2023.01.13-08.36.54:825][987]LogSlate: Window '消息日志' being destroyed
+[2023.01.13-08.36.54:830][987]LogSlate: Window '消息日志' being destroyed
+[2023.01.13-08.36.56:196][ 62]LogAssetEditorSubsystem: Opening Asset editor for Skeleton /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_Skeleton.Maw_J_Laygo_Mesh_Skeleton
+[2023.01.13-08.36.56:200][ 62]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_13:PersistentLevel.AnimationEditorPreviewActor_0.DebugSkelMeshComponent_0) Already registered. Aborting.
+[2023.01.13-08.36.58:644][188]LogSlate: Window 'Maw_J_Laygo_Mesh_Skeleton' being destroyed
+[2023.01.13-08.45.32:218][400]LogWorld: UWorld::CleanupWorld for World_13, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.45.32:218][400]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.45.36:422][627]LogUObjectHash: Compacting FUObjectHashTables data took   2.61ms
+[2023.01.13-08.45.38:015][627]LogSlate: Window 'Delete Assets' being destroyed
+[2023.01.13-08.45.38:101][627]LogUObjectGlobals: Force Deleting 4 Package(s):
+	Asset Name: /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh.Maw_J_Laygo_Mesh
+	Asset Name: /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_Anim.Maw_J_Laygo_Mesh_Anim
+	Asset Name: /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_PhysicsAsset.Maw_J_Laygo_Mesh_PhysicsAsset
+	Asset Name: /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_Skeleton.Maw_J_Laygo_Mesh_Skeleton
+[2023.01.13-08.45.39:202][627]LogUObjectHash: Compacting FUObjectHashTables data took   2.42ms
+[2023.01.13-08.47.09:055][149]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Maw J Laygo_Mesh.fbx)
+[2023.01.13-08.47.09:066][149]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Maw J Laygo_Mesh.fbx
+[2023.01.13-08.47.09:111][149]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.47.12:586][149]LogSlate: Window 'FBX导入选项' being destroyed
+[2023.01.13-08.47.12:609][149]LogFbx: Warning: Not valid bind pose for Pose (MAW) - Node MAW : The relative matrices do not match
+[2023.01.13-08.47.12:609][149]LogFbx: Warning: Getting valid bind pose failed. Try to recreate bind pose
+[2023.01.13-08.47.12:610][149]LogFbx: Valid bind pose for Pose (FbxSDKBindPose) - MAW
+[2023.01.13-08.47.12:610][149]LogFbx: Warning: Recreating bind pose succeeded.
+[2023.01.13-08.47.12:612][149]LogFbx: Triangulating skeletal mesh MAW
+[2023.01.13-08.47.12:844][149]LogFbx: Warning: Bones digested - 65  Depth of hierarchy - 13
+[2023.01.13-08.47.13:146][149]LogSkeletalMesh: Section 0: Material=0, 13910 triangles
+[2023.01.13-08.47.13:148][149]LogSkeletalMesh: Building Skeletal Mesh Maw_J_Laygo_Mesh...
+[2023.01.13-08.47.13:404][149]LogSkeletalMesh: Section 0: Material=0, 13910 triangles
+[2023.01.13-08.47.13:425][149]LogSkeletalMesh: Built Skeletal Mesh [0.28s] /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh.Maw_J_Laygo_Mesh
+[2023.01.13-08.47.13:433][149]LogWorld: UWorld::CleanupWorld for World_14, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.47.13:433][149]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.47.16:819][258]LogAssetEditorSubsystem: Opening Asset editor for Skeleton /Game/Game_Files/Monsters/Boss/Maw_J_Laygo_Mesh_Skeleton.Maw_J_Laygo_Mesh_Skeleton
+[2023.01.13-08.47.16:823][258]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_15:PersistentLevel.AnimationEditorPreviewActor_0.DebugSkelMeshComponent_0) Already registered. Aborting.
+[2023.01.13-08.47.20:813][483]LogWorld: UWorld::CleanupWorld for World_15, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.47.20:813][483]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.47.21:066][496]LogD3D11RHI: Display: Temp texture streaming buffer not large enough, needed 16777216 bytes
+[2023.01.13-08.47.32:047][613]LogWorld: UWorld::CleanupWorld for World_5, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.47.32:047][613]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.47.34:969][764]LogContentBrowser: Deferred new asset folder creation: 新建文件夹
+[2023.01.13-08.47.35:000][764]LogContentBrowser: Creating deferred item: 新建文件夹
+[2023.01.13-08.47.37:181][894]LogContentBrowser: Attempting asset rename: 新建文件夹 -> Mesh
+[2023.01.13-08.47.37:181][894]LogContentBrowser: End creating deferred item 新建文件夹
+[2023.01.13-08.47.44:300][249]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/maria_specular7B521C3E4DCB8240CF747D9738384E8F.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Mesh/maria_specular.uasset'
+[2023.01.13-08.47.44:614][249]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/MAW_diffuse693F4E9C43CA3AFF33F785A6323908A6.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Mesh/MAW_diffuse.uasset'
+[2023.01.13-08.47.44:623][249]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/MAW_glow4D715D5F45388CAF807F368EC56459AB.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Mesh/MAW_glow.uasset'
+[2023.01.13-08.47.44:669][249]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Maw_J_Laygo_MeshB6134175485BE78FDA148D9EC73B946F.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Mesh/Maw_J_Laygo_Mesh.uasset'
+[2023.01.13-08.47.44:683][249]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Maw_J_Laygo_Mesh_SkeletonC6BBB26B46D3678F179A9698D957BB45.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Mesh/Maw_J_Laygo_Mesh_Skeleton.uasset'
+[2023.01.13-08.47.44:707][249]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Maw_J_Laygo_Mesh_PhysicsAssetD92DDF454F782B9FBBA095AF37A20FE2.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Mesh/Maw_J_Laygo_Mesh_PhysicsAsset.uasset'
+[2023.01.13-08.47.44:729][249]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/MAW_MATE69048F64C52A4490701FF957E4448CC.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Mesh/MAW_MAT.uasset'
+[2023.01.13-08.47.44:815][249]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/MAW_normalA7B3B56C4F84C3E8D15101BCFC3CFCFE.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Mesh/MAW_normal.uasset'
+[2023.01.13-08.47.44:986][249]LogUObjectHash: Compacting FUObjectHashTables data took   2.57ms
+[2023.01.13-08.47.45:019][249]LogUObjectHash: Compacting FUObjectHashTables data took   2.28ms
+[2023.01.13-08.47.45:042][249]LogUObjectHash: Compacting FUObjectHashTables data took   0.65ms
+[2023.01.13-08.47.45:065][249]LogUObjectHash: Compacting FUObjectHashTables data took   0.65ms
+[2023.01.13-08.47.45:091][249]LogUObjectHash: Compacting FUObjectHashTables data took   0.68ms
+[2023.01.13-08.47.45:115][249]LogUObjectHash: Compacting FUObjectHashTables data took   0.77ms
+[2023.01.13-08.47.45:139][249]LogUObjectHash: Compacting FUObjectHashTables data took   0.62ms
+[2023.01.13-08.47.45:164][249]LogUObjectHash: Compacting FUObjectHashTables data took   0.74ms
+[2023.01.13-08.47.45:202][249]LogUObjectHash: Compacting FUObjectHashTables data took   1.87ms
+[2023.01.13-08.47.45:225][249]LogUObjectHash: Compacting FUObjectHashTables data took   0.83ms
+[2023.01.13-08.47.45:273][249]AssetCheck: New page: 资产保存：多个资产
+[2023.01.13-08.47.45:273][249]LogContentValidation: Display: 正在验证PhysicsAsset /Game/Game_Files/Monsters/Boss/Mesh/Maw_J_Laygo_Mesh_PhysicsAsset.Maw_J_Laygo_Mesh_PhysicsAsset
+[2023.01.13-08.47.45:273][249]LogContentValidation: Display: 正在验证Skeleton /Game/Game_Files/Monsters/Boss/Mesh/Maw_J_Laygo_Mesh_Skeleton.Maw_J_Laygo_Mesh_Skeleton
+[2023.01.13-08.47.45:273][249]LogContentValidation: Display: 正在验证SkeletalMesh /Game/Game_Files/Monsters/Boss/Mesh/Maw_J_Laygo_Mesh.Maw_J_Laygo_Mesh
+[2023.01.13-08.47.45:273][249]LogContentValidation: Display: 正在验证Texture2D /Game/Game_Files/Monsters/Boss/Mesh/MAW_normal.MAW_normal
+[2023.01.13-08.47.45:273][249]LogContentValidation: Display: 正在验证Texture2D /Game/Game_Files/Monsters/Boss/Mesh/maria_specular.maria_specular
+[2023.01.13-08.47.45:273][249]LogContentValidation: Display: 正在验证Texture2D /Game/Game_Files/Monsters/Boss/Mesh/MAW_glow.MAW_glow
+[2023.01.13-08.47.45:273][249]LogContentValidation: Display: 正在验证Texture2D /Game/Game_Files/Monsters/Boss/Mesh/MAW_diffuse.MAW_diffuse
+[2023.01.13-08.47.45:273][249]LogContentValidation: Display: 正在验证Material /Game/Game_Files/Monsters/Boss/Mesh/MAW_MAT.MAW_MAT
+[2023.01.13-08.47.51:086][308]LogD3D11RHI: Display: Temp texture streaming buffer not large enough, needed 16777216 bytes
+[2023.01.13-08.47.53:052][409]LogContentBrowser: Deferred new asset folder creation: 新建文件夹
+[2023.01.13-08.47.53:099][409]LogContentBrowser: Creating deferred item: 新建文件夹
+[2023.01.13-08.47.56:770][630]LogContentBrowser: Attempting asset rename: 新建文件夹 -> Animation
+[2023.01.13-08.47.56:770][630]LogContentBrowser: End creating deferred item 新建文件夹
+[2023.01.13-08.48.03:245][859]LogContentBrowser: Attempting asset rename: Animation -> Animation
+[2023.01.13-08.48.07:048][ 86]LogContentBrowser: Attempting asset rename: Animation -> Animation
+[2023.01.13-08.48.15:803][608]LogContentBrowser: Attempting asset rename: Animation -> Animitions
+[2023.01.13-08.49.04:286][ 42]LogFactory: FactoryCreateFile: StaticMesh with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Attack.fbx)
+[2023.01.13-08.49.04:296][ 42]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Attack.fbx
+[2023.01.13-08.49.04:333][ 42]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.49.41:043][ 42]LogSlate: Window 'FBX导入选项' being destroyed
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(0) root
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(1) Pelvis
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(2) spine_01
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(3) spine_02
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(4) spine_03
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(5) neck_01
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(6) head
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(7) End
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(8) RightRope1
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(9) RightRope2
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(10) RightRope3
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(11) RightRope4
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(12) clavicle_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(13) upperarm_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(14) lowerarm_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(15) hand_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(16) thumb_01_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(17) thumb_02_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(18) thumb_03_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(19) LeftHandThumb4
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(20) index_01_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(21) index_02_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(22) index_03_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(23) LeftHandIndex4
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(24) middle_01_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(25) middle_02_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(26) middle_03_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(27) LeftHandMiddle4
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(28) ring_01_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(29) ring_02_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(30) ring_03_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(31) LeftHandRing4
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(32) clavicle_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(33) upperarm_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(34) lowerarm_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(35) hand_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(36) thumb_01_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(37) thumb_02_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(38) thumb_03_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(39) RightHandThumb4
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(40) index_01_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(41) index_02_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(42) index_03_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(43) RightHandIndex4
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(44) middle_01_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(45) middle_02_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(46) middle_03_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(47) RightHandMiddle4
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(48) ring_01_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(49) ring_02_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(50) ring_03_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(51) RightHandRing4
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(52) thigh_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(53) calf_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(54) foot_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(55) ball_l
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(56) End_001
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(57) thigh_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(58) calf_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(59) foot_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(60) ball_r
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(61) End_002
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(62) RightChain1
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(63) RightChain2
+[2023.01.13-08.49.41:067][ 42]LogFbx: SortedLinks :(64) RightChain3
+[2023.01.13-08.49.41:069][ 42]LogFbx: Parsing AnimStack root|Armature|mixamo.com|Layer0
+[2023.01.13-08.49.41:497][ 42]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Attack.Attack
+[2023.01.13-08.49.41:497][ 42]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Attack.Attack
+[2023.01.13-08.49.41:497][ 42]LogFactory: FactoryCreateFile: AnimSequence with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Catwalk Walk.fbx)
+[2023.01.13-08.49.41:530][ 42]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Catwalk Walk.fbx
+[2023.01.13-08.49.41:589][ 42]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(0) root
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(1) Pelvis
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(2) spine_01
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(3) spine_02
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(4) spine_03
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(5) neck_01
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(6) head
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(7) End
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(8) RightRope1
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(9) RightRope2
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(10) RightRope3
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(11) RightRope4
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(12) clavicle_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(13) upperarm_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(14) lowerarm_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(15) hand_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(16) thumb_01_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(17) thumb_02_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(18) thumb_03_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(19) LeftHandThumb4
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(20) index_01_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(21) index_02_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(22) index_03_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(23) LeftHandIndex4
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(24) middle_01_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(25) middle_02_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(26) middle_03_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(27) LeftHandMiddle4
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(28) ring_01_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(29) ring_02_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(30) ring_03_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(31) LeftHandRing4
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(32) clavicle_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(33) upperarm_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(34) lowerarm_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(35) hand_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(36) thumb_01_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(37) thumb_02_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(38) thumb_03_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(39) RightHandThumb4
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(40) index_01_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(41) index_02_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(42) index_03_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(43) RightHandIndex4
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(44) middle_01_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(45) middle_02_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(46) middle_03_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(47) RightHandMiddle4
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(48) ring_01_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(49) ring_02_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(50) ring_03_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(51) RightHandRing4
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(52) thigh_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(53) calf_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(54) foot_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(55) ball_l
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(56) End_001
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(57) thigh_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(58) calf_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(59) foot_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(60) ball_r
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(61) End_002
+[2023.01.13-08.49.41:593][ 42]LogFbx: SortedLinks :(62) RightChain1
+[2023.01.13-08.49.41:594][ 42]LogFbx: SortedLinks :(63) RightChain2
+[2023.01.13-08.49.41:594][ 42]LogFbx: SortedLinks :(64) RightChain3
+[2023.01.13-08.49.41:598][ 42]LogFbx: Parsing AnimStack root|Armature|mixamo.com|Layer0
+[2023.01.13-08.49.43:340][ 42]LogFactory: FactoryCreateFile: AnimSequence with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Death Forward 02.fbx)
+[2023.01.13-08.49.43:364][ 42]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Death Forward 02.fbx
+[2023.01.13-08.49.43:400][ 42]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(0) root
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(1) Pelvis
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(2) spine_01
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(3) spine_02
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(4) spine_03
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(5) neck_01
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(6) head
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(7) End
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(8) RightRope1
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(9) RightRope2
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(10) RightRope3
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(11) RightRope4
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(12) clavicle_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(13) upperarm_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(14) lowerarm_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(15) hand_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(16) thumb_01_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(17) thumb_02_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(18) thumb_03_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(19) LeftHandThumb4
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(20) index_01_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(21) index_02_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(22) index_03_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(23) LeftHandIndex4
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(24) middle_01_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(25) middle_02_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(26) middle_03_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(27) LeftHandMiddle4
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(28) ring_01_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(29) ring_02_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(30) ring_03_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(31) LeftHandRing4
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(32) clavicle_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(33) upperarm_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(34) lowerarm_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(35) hand_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(36) thumb_01_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(37) thumb_02_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(38) thumb_03_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(39) RightHandThumb4
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(40) index_01_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(41) index_02_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(42) index_03_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(43) RightHandIndex4
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(44) middle_01_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(45) middle_02_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(46) middle_03_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(47) RightHandMiddle4
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(48) ring_01_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(49) ring_02_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(50) ring_03_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(51) RightHandRing4
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(52) thigh_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(53) calf_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(54) foot_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(55) ball_l
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(56) End_001
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(57) thigh_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(58) calf_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(59) foot_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(60) ball_r
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(61) End_002
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(62) RightChain1
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(63) RightChain2
+[2023.01.13-08.49.43:404][ 42]LogFbx: SortedLinks :(64) RightChain3
+[2023.01.13-08.49.43:406][ 42]LogFbx: Parsing AnimStack root|Armature|mixamo.com|Layer0
+[2023.01.13-08.49.43:693][ 42]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Catwalk_Walk.Catwalk_Walk
+[2023.01.13-08.49.43:693][ 42]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Death_Forward_02.Death_Forward_02
+[2023.01.13-08.49.43:693][ 42]LogFactory: FactoryCreateFile: AnimSequence with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Death Right 01.fbx)
+[2023.01.13-08.49.43:707][ 42]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Death Right 01.fbx
+[2023.01.13-08.49.43:758][ 42]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(0) root
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(1) Pelvis
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(2) spine_01
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(3) spine_02
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(4) spine_03
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(5) neck_01
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(6) head
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(7) End
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(8) RightRope1
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(9) RightRope2
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(10) RightRope3
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(11) RightRope4
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(12) clavicle_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(13) upperarm_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(14) lowerarm_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(15) hand_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(16) thumb_01_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(17) thumb_02_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(18) thumb_03_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(19) LeftHandThumb4
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(20) index_01_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(21) index_02_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(22) index_03_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(23) LeftHandIndex4
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(24) middle_01_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(25) middle_02_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(26) middle_03_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(27) LeftHandMiddle4
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(28) ring_01_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(29) ring_02_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(30) ring_03_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(31) LeftHandRing4
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(32) clavicle_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(33) upperarm_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(34) lowerarm_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(35) hand_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(36) thumb_01_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(37) thumb_02_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(38) thumb_03_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(39) RightHandThumb4
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(40) index_01_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(41) index_02_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(42) index_03_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(43) RightHandIndex4
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(44) middle_01_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(45) middle_02_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(46) middle_03_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(47) RightHandMiddle4
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(48) ring_01_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(49) ring_02_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(50) ring_03_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(51) RightHandRing4
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(52) thigh_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(53) calf_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(54) foot_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(55) ball_l
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(56) End_001
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(57) thigh_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(58) calf_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(59) foot_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(60) ball_r
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(61) End_002
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(62) RightChain1
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(63) RightChain2
+[2023.01.13-08.49.43:764][ 42]LogFbx: SortedLinks :(64) RightChain3
+[2023.01.13-08.49.43:766][ 42]LogFbx: Parsing AnimStack root|Armature|mixamo.com|Layer0
+[2023.01.13-08.49.44:118][ 42]LogFactory: FactoryCreateFile: AnimSequence with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Idle.fbx)
+[2023.01.13-08.49.44:143][ 42]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Idle.fbx
+[2023.01.13-08.49.44:180][ 42]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(0) root
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(1) Pelvis
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(2) spine_01
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(3) spine_02
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(4) spine_03
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(5) neck_01
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(6) head
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(7) End
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(8) RightRope1
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(9) RightRope2
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(10) RightRope3
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(11) RightRope4
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(12) clavicle_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(13) upperarm_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(14) lowerarm_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(15) hand_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(16) thumb_01_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(17) thumb_02_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(18) thumb_03_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(19) LeftHandThumb4
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(20) index_01_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(21) index_02_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(22) index_03_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(23) LeftHandIndex4
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(24) middle_01_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(25) middle_02_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(26) middle_03_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(27) LeftHandMiddle4
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(28) ring_01_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(29) ring_02_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(30) ring_03_l
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(31) LeftHandRing4
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(32) clavicle_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(33) upperarm_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(34) lowerarm_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(35) hand_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(36) thumb_01_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(37) thumb_02_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(38) thumb_03_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(39) RightHandThumb4
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(40) index_01_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(41) index_02_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(42) index_03_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(43) RightHandIndex4
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(44) middle_01_r
+[2023.01.13-08.49.44:183][ 42]LogFbx: SortedLinks :(45) middle_02_r
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(46) middle_03_r
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(47) RightHandMiddle4
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(48) ring_01_r
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(49) ring_02_r
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(50) ring_03_r
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(51) RightHandRing4
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(52) thigh_l
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(53) calf_l
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(54) foot_l
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(55) ball_l
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(56) End_001
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(57) thigh_r
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(58) calf_r
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(59) foot_r
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(60) ball_r
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(61) End_002
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(62) RightChain1
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(63) RightChain2
+[2023.01.13-08.49.44:184][ 42]LogFbx: SortedLinks :(64) RightChain3
+[2023.01.13-08.49.44:185][ 42]LogFbx: Parsing AnimStack root|Armature|mixamo.com|Layer0
+[2023.01.13-08.49.44:432][ 42]LogFactory: FactoryCreateFile: AnimSequence with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Run Back.fbx)
+[2023.01.13-08.49.44:441][ 42]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Run Back.fbx
+[2023.01.13-08.49.44:476][ 42]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(0) root
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(1) Pelvis
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(2) spine_01
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(3) spine_02
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(4) spine_03
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(5) neck_01
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(6) head
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(7) End
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(8) RightRope1
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(9) RightRope2
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(10) RightRope3
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(11) RightRope4
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(12) clavicle_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(13) upperarm_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(14) lowerarm_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(15) hand_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(16) thumb_01_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(17) thumb_02_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(18) thumb_03_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(19) LeftHandThumb4
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(20) index_01_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(21) index_02_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(22) index_03_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(23) LeftHandIndex4
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(24) middle_01_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(25) middle_02_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(26) middle_03_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(27) LeftHandMiddle4
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(28) ring_01_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(29) ring_02_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(30) ring_03_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(31) LeftHandRing4
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(32) clavicle_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(33) upperarm_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(34) lowerarm_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(35) hand_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(36) thumb_01_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(37) thumb_02_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(38) thumb_03_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(39) RightHandThumb4
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(40) index_01_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(41) index_02_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(42) index_03_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(43) RightHandIndex4
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(44) middle_01_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(45) middle_02_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(46) middle_03_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(47) RightHandMiddle4
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(48) ring_01_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(49) ring_02_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(50) ring_03_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(51) RightHandRing4
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(52) thigh_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(53) calf_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(54) foot_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(55) ball_l
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(56) End_001
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(57) thigh_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(58) calf_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(59) foot_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(60) ball_r
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(61) End_002
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(62) RightChain1
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(63) RightChain2
+[2023.01.13-08.49.44:480][ 42]LogFbx: SortedLinks :(64) RightChain3
+[2023.01.13-08.49.44:482][ 42]LogFbx: Parsing AnimStack root|Armature|mixamo.com|Layer0
+[2023.01.13-08.49.44:592][ 42]LogFactory: FactoryCreateFile: AnimSequence with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Run Forward.fbx)
+[2023.01.13-08.49.44:601][ 42]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Run Forward.fbx
+[2023.01.13-08.49.44:635][ 42]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(0) root
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(1) Pelvis
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(2) spine_01
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(3) spine_02
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(4) spine_03
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(5) neck_01
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(6) head
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(7) End
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(8) RightRope1
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(9) RightRope2
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(10) RightRope3
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(11) RightRope4
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(12) clavicle_l
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(13) upperarm_l
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(14) lowerarm_l
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(15) hand_l
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(16) thumb_01_l
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(17) thumb_02_l
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(18) thumb_03_l
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(19) LeftHandThumb4
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(20) index_01_l
+[2023.01.13-08.49.44:639][ 42]LogFbx: SortedLinks :(21) index_02_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(22) index_03_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(23) LeftHandIndex4
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(24) middle_01_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(25) middle_02_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(26) middle_03_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(27) LeftHandMiddle4
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(28) ring_01_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(29) ring_02_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(30) ring_03_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(31) LeftHandRing4
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(32) clavicle_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(33) upperarm_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(34) lowerarm_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(35) hand_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(36) thumb_01_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(37) thumb_02_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(38) thumb_03_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(39) RightHandThumb4
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(40) index_01_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(41) index_02_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(42) index_03_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(43) RightHandIndex4
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(44) middle_01_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(45) middle_02_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(46) middle_03_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(47) RightHandMiddle4
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(48) ring_01_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(49) ring_02_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(50) ring_03_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(51) RightHandRing4
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(52) thigh_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(53) calf_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(54) foot_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(55) ball_l
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(56) End_001
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(57) thigh_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(58) calf_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(59) foot_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(60) ball_r
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(61) End_002
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(62) RightChain1
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(63) RightChain2
+[2023.01.13-08.49.44:640][ 42]LogFbx: SortedLinks :(64) RightChain3
+[2023.01.13-08.49.44:641][ 42]LogFbx: Parsing AnimStack root|Armature|mixamo.com|Layer0
+[2023.01.13-08.49.44:759][ 42]LogFactory: FactoryCreateFile: AnimSequence with FbxFactory (0 0 ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Walking.fbx)
+[2023.01.13-08.49.44:768][ 42]LogFbx: Loading FBX Scene from ../../../../../../Z_Disktop/Notes/Unreal Engine 4/Mixmao/怪物/Out/Walking.fbx
+[2023.01.13-08.49.44:803][ 42]LogFbx: FBX Scene Loaded Succesfully
+[2023.01.13-08.49.44:808][ 42]LogFbx: SortedLinks :(0) root
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(1) Pelvis
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(2) spine_01
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(3) spine_02
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(4) spine_03
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(5) neck_01
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(6) head
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(7) End
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(8) RightRope1
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(9) RightRope2
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(10) RightRope3
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(11) RightRope4
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(12) clavicle_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(13) upperarm_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(14) lowerarm_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(15) hand_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(16) thumb_01_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(17) thumb_02_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(18) thumb_03_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(19) LeftHandThumb4
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(20) index_01_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(21) index_02_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(22) index_03_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(23) LeftHandIndex4
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(24) middle_01_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(25) middle_02_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(26) middle_03_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(27) LeftHandMiddle4
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(28) ring_01_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(29) ring_02_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(30) ring_03_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(31) LeftHandRing4
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(32) clavicle_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(33) upperarm_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(34) lowerarm_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(35) hand_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(36) thumb_01_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(37) thumb_02_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(38) thumb_03_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(39) RightHandThumb4
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(40) index_01_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(41) index_02_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(42) index_03_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(43) RightHandIndex4
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(44) middle_01_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(45) middle_02_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(46) middle_03_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(47) RightHandMiddle4
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(48) ring_01_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(49) ring_02_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(50) ring_03_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(51) RightHandRing4
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(52) thigh_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(53) calf_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(54) foot_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(55) ball_l
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(56) End_001
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(57) thigh_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(58) calf_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(59) foot_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(60) ball_r
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(61) End_002
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(62) RightChain1
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(63) RightChain2
+[2023.01.13-08.49.44:809][ 42]LogFbx: SortedLinks :(64) RightChain3
+[2023.01.13-08.49.44:812][ 42]LogFbx: Parsing AnimStack root|Armature|mixamo.com|Layer0
+[2023.01.13-08.49.45:010][ 43]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Run_Forward.Run_Forward
+[2023.01.13-08.49.45:010][ 43]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Walking.Walking
+[2023.01.13-08.49.45:055][ 46]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Run_Back.Run_Back
+[2023.01.13-08.49.45:155][ 47]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Idle.Idle
+[2023.01.13-08.49.45:155][ 47]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Death_Right_01.Death_Right_01
+[2023.01.13-08.49.45:271][ 49]LogAnimationCompression: Building Anim DDC data for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Death_Forward_02.Death_Forward_02
+[2023.01.13-08.49.50:088][169]LogAssetEditorSubsystem: Opening Asset editor for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Attack.Attack
+[2023.01.13-08.49.50:091][169]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_17:PersistentLevel.AnimationEditorPreviewActor_0.DebugSkelMeshComponent_0) Already registered. Aborting.
+[2023.01.13-08.49.52:786][302]LogSlate: Window 'Attack' being destroyed
+[2023.01.13-08.50.00:009][735]LogWorld: UWorld::CleanupWorld for World_17, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.50.00:009][735]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.50.00:046][735]LogWorld: UWorld::CleanupWorld for World_19, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.50.00:046][735]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.50.00:088][735]LogWorld: UWorld::CleanupWorld for World_18, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.50.00:088][735]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.52.50:925][399]LogAssetEditorSubsystem: Opening Asset editor for AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Death_Right_01.Death_Right_01
+[2023.01.13-08.52.50:929][399]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_20:PersistentLevel.AnimationEditorPreviewActor_0.DebugSkelMeshComponent_0) Already registered. Aborting.
+[2023.01.13-08.52.53:238][510]LogSlate: Window 'Death_Right_01' being destroyed
+[2023.01.13-08.53.08:115][286]LogWorld: UWorld::CleanupWorld for World_22, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.08:115][286]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.09:114][338]LogWorld: UWorld::CleanupWorld for World_23, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.09:114][338]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.11:015][423]LogWorld: UWorld::CleanupWorld for World_24, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.11:016][423]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.11:884][469]LogWorld: UWorld::CleanupWorld for World_25, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.11:884][469]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.14:647][614]LogWorld: UWorld::CleanupWorld for World_26, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.14:647][614]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.17:142][752]LogWorld: UWorld::CleanupWorld for World_27, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.17:142][752]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.18:830][838]LogWorld: UWorld::CleanupWorld for World_28, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.18:830][838]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.23:348][103]LogWorld: UWorld::CleanupWorld for World_29, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.23:348][103]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.25:505][204]LogWorld: UWorld::CleanupWorld for World_30, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.25:505][204]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.26:993][280]LogWorld: UWorld::CleanupWorld for World_31, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.26:993][280]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.29:046][397]LogWorld: UWorld::CleanupWorld for World_32, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.29:046][397]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.31:559][535]LogWorld: UWorld::CleanupWorld for World_33, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.31:559][535]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.34:526][701]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Attack674DC84742B0CE6E394DCCB92652C082.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Animitions/Attack.uasset'
+[2023.01.13-08.53.34:546][701]AssetCheck: New page: 资产保存：Attack
+[2023.01.13-08.53.34:546][701]LogContentValidation: Display: 正在验证AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Attack.Attack
+[2023.01.13-08.53.44:277][894]LogActorComponent: UnregisterComponent: (/Engine/Transient.EditorFloorComp) Not registered. Aborting.
+[2023.01.13-08.53.44:277][894]LogWorld: UWorld::CleanupWorld for World_1, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.44:277][894]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.44:957][916]LogActorComponent: UnregisterComponent: (/Engine/Transient.EditorFloorComp) Not registered. Aborting.
+[2023.01.13-08.53.44:957][916]LogWorld: UWorld::CleanupWorld for World_4, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.44:957][916]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.45:410][939]LogWorld: UWorld::CleanupWorld for World_20, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.45:410][939]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.45:424][939]LogWorld: UWorld::CleanupWorld for World_34, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.45:424][939]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.45:466][939]LogWorld: UWorld::CleanupWorld for World_21, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-08.53.45:466][939]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-08.53.49:304][158]LogContentBrowser: Deferred new asset folder creation: 新建文件夹
+[2023.01.13-08.53.49:317][158]LogContentBrowser: Creating deferred item: 新建文件夹
+[2023.01.13-08.53.54:580][473]LogContentBrowser: Attempting asset rename: 新建文件夹 -> BluePrint
+[2023.01.13-08.53.54:580][473]LogContentBrowser: End creating deferred item 新建文件夹
+[2023.01.13-08.53.59:563][645]LogContentBrowser: Attempting asset rename: BluePrint -> BluePrint
+[2023.01.13-08.54.01:969][786]LogContentBrowser: Attempting asset rename: BluePrint -> BluePrint
+[2023.01.13-08.54.08:699][188]LogContentBrowser: Attempting asset rename: BluePrint -> BluePrints
+[2023.01.13-08.54.16:513][349]LogEditorClassViewer: Warning: Class /Engine/Tutorial/InWorldBlueprintEditing/TutorialAssets/IWBE_Blutility.IWBE_Blutility_C has parent /Script/Blutility.PlacedEditorUtilityBase, but this parent is not found. The Class will not be shown in ClassViewer.
+[2023.01.13-08.54.17:950][349]LogSlate: Window '选取父类' being destroyed
+[2023.01.13-08.54.17:960][349]LogContentBrowser: Deferred new asset file creation: NewBlueprint
+[2023.01.13-08.54.17:970][349]LogContentBrowser: Creating deferred item: NewBlueprint
+[2023.01.13-08.54.19:017][411]LogContentBrowser: Attempting asset rename: NewBlueprint -> NewBlueprint
+[2023.01.13-08.54.19:022][411]LogContentBrowser: End creating deferred item NewBlueprint
+[2023.01.13-08.54.34:529][814]LogContentBrowser: Attempting asset rename: NewBlueprint -> Kirito
+[2023.01.13-08.54.34:547][814]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.Kirito:UserConstructionScript.K2Node_FunctionEntry_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewBlueprint.PackageMetaData'
+[2023.01.13-08.54.34:548][814]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.SKEL_Kirito_C:UserConstructionScript' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewBlueprint.PackageMetaData'
+[2023.01.13-08.54.34:548][814]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.SKEL_Kirito_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewBlueprint.PackageMetaData'
+[2023.01.13-08.54.34:548][814]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.Kirito_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewBlueprint.PackageMetaData'
+[2023.01.13-08.54.34:548][814]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.Kirito:EventGraph.K2Node_Event_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewBlueprint.PackageMetaData'
+[2023.01.13-08.54.34:548][814]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.Kirito:EventGraph.K2Node_Event_1' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewBlueprint.PackageMetaData'
+[2023.01.13-08.54.34:548][814]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.Kirito:EventGraph.K2Node_Event_2' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewBlueprint.PackageMetaData'
+[2023.01.13-08.54.34:569][814]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Kirito92E55E344EEE607A7A563A90C2983ADC.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Kirito.uasset'
+[2023.01.13-08.54.34:719][814]LogUObjectHash: Compacting FUObjectHashTables data took   3.13ms
+[2023.01.13-08.54.34:779][814]LogUObjectHash: Compacting FUObjectHashTables data took   3.13ms
+[2023.01.13-08.54.34:793][814]LogUObjectHash: Compacting FUObjectHashTables data took   0.45ms
+[2023.01.13-08.54.34:829][814]AssetCheck: New page: 资产保存：Kirito
+[2023.01.13-08.54.34:829][814]LogContentValidation: Display: 正在验证Blueprint /Game/Game_Files/Monsters/Boss/BluePrints/Kirito.Kirito
+[2023.01.13-08.55.00:294][676]LogContentBrowser: Attempting asset rename: Kirito -> Boss_Charactor
+[2023.01.13-08.55.00:312][676]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.Boss_Charactor_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.PackageMetaData'
+[2023.01.13-08.55.00:313][676]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.SKEL_Boss_Charactor_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.PackageMetaData'
+[2023.01.13-08.55.00:313][676]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.SKEL_Boss_Charactor_C:UserConstructionScript' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.PackageMetaData'
+[2023.01.13-08.55.00:313][676]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.Boss_Charactor:UserConstructionScript.K2Node_FunctionEntry_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.PackageMetaData'
+[2023.01.13-08.55.00:313][676]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.Boss_Charactor:EventGraph.K2Node_Event_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.PackageMetaData'
+[2023.01.13-08.55.00:313][676]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.Boss_Charactor:EventGraph.K2Node_Event_1' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.PackageMetaData'
+[2023.01.13-08.55.00:313][676]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.Boss_Charactor:EventGraph.K2Node_Event_2' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Kirito.PackageMetaData'
+[2023.01.13-08.55.00:333][676]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Charactor4491C5F44C41E94C93CAC0A8EAD5F7AB.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.uasset'
+[2023.01.13-08.55.00:410][676]LogUObjectHash: Compacting FUObjectHashTables data took   1.83ms
+[2023.01.13-08.55.00:435][676]LogUObjectHash: Compacting FUObjectHashTables data took   1.57ms
+[2023.01.13-08.55.00:450][676]LogUObjectHash: Compacting FUObjectHashTables data took   0.67ms
+[2023.01.13-08.55.00:485][676]AssetCheck: New page: 资产保存：Boss_Charactor
+[2023.01.13-08.55.00:486][676]LogContentValidation: Display: 正在验证Blueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.Boss_Charactor
+[2023.01.13-08.55.11:062][212]LogContentBrowser: Attempting asset rename: Boss_Charactor -> Boss_Charactor_BP
+[2023.01.13-08.55.11:079][212]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.PackageMetaData'
+[2023.01.13-08.55.11:079][212]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.SKEL_Boss_Charactor_BP_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.PackageMetaData'
+[2023.01.13-08.55.11:079][212]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.SKEL_Boss_Charactor_BP_C:UserConstructionScript' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.PackageMetaData'
+[2023.01.13-08.55.11:079][212]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP:UserConstructionScript.K2Node_FunctionEntry_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.PackageMetaData'
+[2023.01.13-08.55.11:079][212]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP:EventGraph.K2Node_Event_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.PackageMetaData'
+[2023.01.13-08.55.11:079][212]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP:EventGraph.K2Node_Event_1' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.PackageMetaData'
+[2023.01.13-08.55.11:079][212]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP:EventGraph.K2Node_Event_2' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor.PackageMetaData'
+[2023.01.13-08.55.11:099][212]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Charactor_BPF263940F4EF7DE77729D8A8FB9D8C6F1.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.uasset'
+[2023.01.13-08.55.11:177][212]LogUObjectHash: Compacting FUObjectHashTables data took   1.94ms
+[2023.01.13-08.55.11:200][212]LogUObjectHash: Compacting FUObjectHashTables data took   1.43ms
+[2023.01.13-08.55.11:215][212]LogUObjectHash: Compacting FUObjectHashTables data took   0.44ms
+[2023.01.13-08.55.11:251][212]AssetCheck: New page: 资产保存：Boss_Charactor_BP
+[2023.01.13-08.55.11:251][212]LogContentValidation: Display: 正在验证Blueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP
+[2023.01.13-08.55.14:773][285]LogAssetEditorSubsystem: Opening Asset editor for Blueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP
+[2023.01.13-08.55.17:194][397]LogSlate: Window 'Boss_Charactor_BP' being destroyed
+[2023.01.13-08.56.26:225][ 24]BlueprintLog: New page: 编译Boss_Charactor_BP
+[2023.01.13-08.56.26:273][ 24]LogUObjectHash: Compacting FUObjectHashTables data took   2.27ms
+[2023.01.13-08.57.00:829][108]LogEditorClassViewer: Warning: Class /Engine/Tutorial/InWorldBlueprintEditing/TutorialAssets/IWBE_Blutility.IWBE_Blutility_C has parent /Script/Blutility.PlacedEditorUtilityBase, but this parent is not found. The Class will not be shown in ClassViewer.
+[2023.01.13-08.57.00:831][108]LogSlate: Warning: Slate: Had to block on waiting for a draw buffer
+[2023.01.13-08.57.00:858][108]LogContentBrowser: Verbose: The majority of assets in the view are of type: Skeleton
+[2023.01.13-08.57.19:019][108]LogContentBrowser: Verbose: The majority of assets in the view are of type: Skeleton
+[2023.01.13-08.57.45:282][108]LogSlate: Window '创建动画蓝图' being destroyed
+[2023.01.13-08.57.45:290][108]LogContentBrowser: Deferred new asset file creation: NewAnimBlueprint
+[2023.01.13-08.57.45:301][108]LogContentBrowser: Creating deferred item: NewAnimBlueprint
+[2023.01.13-08.57.46:821][189]LogContentBrowser: Attempting asset rename: NewAnimBlueprint -> NewAnimBlueprint
+[2023.01.13-08.57.46:825][189]LogContentBrowser: End creating deferred item NewAnimBlueprint
+[2023.01.13-08.57.48:593][216]LogUObjectHash: Compacting FUObjectHashTables data took   1.97ms
+[2023.01.13-08.57.48:596][216]LogFileHelpers: Editor autosave (incl. external actors) for '/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap' took 0.024
+[2023.01.13-08.57.48:597][216]OBJ SavePackage: Generating thumbnails for [2] asset(s) in package [/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP] ([2] browsable assets)...
+[2023.01.13-08.57.48:609][216]OBJ SavePackage:     Rendered thumbnail for [BlueprintGeneratedClass /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP_C]
+[2023.01.13-08.57.48:616][216]OBJ SavePackage:     Rendered thumbnail for [Blueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP]
+[2023.01.13-08.57.48:616][216]OBJ SavePackage: Finished generating thumbnails for package [/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP]
+[2023.01.13-08.57.48:627][216]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Charactor_BP_Auto3B6419F1F4772ECA6F5F064A2449AC906.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP_Auto3.uasset'
+[2023.01.13-08.57.48:628][216]LogFileHelpers: Auto-saving content packages took 0.032
+[2023.01.13-08.58.05:505][109]LogContentBrowser: Attempting asset rename: NewAnimBlueprint -> Boss_AnimBlueprint
+[2023.01.13-08.58.05:521][109]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.Boss_AnimBlueprint:AnimGraph.AnimGraphNode_Root_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewAnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.05:521][109]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.SKEL_Boss_AnimBlueprint_C:AnimGraph' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewAnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.05:521][109]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.SKEL_Boss_AnimBlueprint_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewAnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.05:521][109]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.Boss_AnimBlueprint_C:AnimGraph' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewAnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.05:521][109]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.Boss_AnimBlueprint_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewAnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.05:522][109]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.Boss_AnimBlueprint:EventGraph.K2Node_Event_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewAnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.05:522][109]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.Boss_AnimBlueprint:EventGraph.K2Node_CallFunction_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/NewAnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.05:557][109]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_AnimBlueprint3CBFF87A4D84EBDFB657A08EEAE72C22.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.uasset'
+[2023.01.13-08.58.05:638][109]LogUObjectHash: Compacting FUObjectHashTables data took   1.75ms
+[2023.01.13-08.58.05:668][109]LogUObjectHash: Compacting FUObjectHashTables data took   2.40ms
+[2023.01.13-08.58.05:687][109]LogUObjectHash: Compacting FUObjectHashTables data took   0.53ms
+[2023.01.13-08.58.05:727][109]AssetCheck: New page: 资产保存：Boss_AnimBlueprint
+[2023.01.13-08.58.05:727][109]LogContentValidation: Display: 正在验证AnimBlueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.Boss_AnimBlueprint
+[2023.01.13-08.58.29:602][985]LogContentBrowser: Attempting asset rename: Boss_AnimBlueprint -> Boss_Anim_BP
+[2023.01.13-08.58.29:620][985]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.Boss_Anim_BP_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.29:620][985]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.Boss_Anim_BP_C:AnimGraph' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.29:620][985]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.SKEL_Boss_Anim_BP_C' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.29:620][985]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.SKEL_Boss_Anim_BP_C:AnimGraph' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.29:620][985]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.Boss_Anim_BP:EventGraph.K2Node_Event_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.29:620][985]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.Boss_Anim_BP:EventGraph.K2Node_CallFunction_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.29:620][985]LogMetaData: Removing '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.Boss_Anim_BP:AnimGraph.AnimGraphNode_Root_0' ref from Metadata '/Game/Game_Files/Monsters/Boss/BluePrints/Boss_AnimBlueprint.PackageMetaData'
+[2023.01.13-08.58.29:671][985]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Anim_BPEB31C8024B9A88B4BF1FB9B141CB992E.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.uasset'
+[2023.01.13-08.58.29:754][985]LogUObjectHash: Compacting FUObjectHashTables data took   2.07ms
+[2023.01.13-08.58.29:784][985]LogUObjectHash: Compacting FUObjectHashTables data took   1.49ms
+[2023.01.13-08.58.29:803][985]LogUObjectHash: Compacting FUObjectHashTables data took   0.48ms
+[2023.01.13-08.58.29:841][985]AssetCheck: New page: 资产保存：Boss_Anim_BP
+[2023.01.13-08.58.29:841][985]LogContentValidation: Display: 正在验证AnimBlueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.Boss_Anim_BP
+[2023.01.13-08.58.39:731][168]LogAssetEditorSubsystem: Opening Asset editor for AnimBlueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.Boss_Anim_BP
+[2023.01.13-08.58.39:738][168]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_42:PersistentLevel.AnimationEditorPreviewActor_0.DebugSkelMeshComponent_0) Already registered. Aborting.
+[2023.01.13-08.59.22:233][794]LogSlate: Window '选取骨骼' being destroyed
+[2023.01.13-08.59.22:242][794]LogContentBrowser: Deferred new asset file creation: NewBlendSpace1D
+[2023.01.13-08.59.22:253][794]LogContentBrowser: Creating deferred item: NewBlendSpace1D
+[2023.01.13-08.59.22:353][798]LogContentBrowser: Attempting asset rename: NewBlendSpace1D -> NewBlendSpace1D
+[2023.01.13-08.59.22:355][798]LogContentBrowser: End creating deferred item NewBlendSpace1D
+[2023.01.13-08.59.31:421][ 13]LogContentBrowser: Attempting asset rename: NewBlendSpace1D -> NewBlendSpace1D
+[2023.01.13-08.59.41:226][156]LogUObjectHash: Compacting FUObjectHashTables data took   2.24ms
+[2023.01.13-08.59.42:290][156]LogSlate: Window 'Delete Assets' being destroyed
+[2023.01.13-08.59.42:364][156]LogUObjectGlobals: Force Deleting 1 Package(s):
+	Asset Name: /Game/Game_Files/Monsters/Boss/BluePrints/NewBlendSpace1D.NewBlendSpace1D
+[2023.01.13-08.59.42:614][156]LogUObjectHash: Compacting FUObjectHashTables data took   1.62ms
+[2023.01.13-08.59.48:704][428]LogSlate: Window '选取骨骼' being destroyed
+[2023.01.13-08.59.48:720][428]LogContentBrowser: Deferred new asset file creation: NewBlendSpace1D
+[2023.01.13-08.59.48:730][428]LogContentBrowser: Creating deferred item: NewBlendSpace1D
+[2023.01.13-08.59.51:548][596]LogContentBrowser: Attempting asset rename: NewBlendSpace1D -> NewBlendSpace1D
+[2023.01.13-08.59.51:549][596]LogContentBrowser: End creating deferred item NewBlendSpace1D
+[2023.01.13-09.00.12:868][504]LogContentBrowser: Attempting asset rename: NewBlendSpace1D -> Boss_Basemovement
+[2023.01.13-09.00.12:910][504]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Basemovement0839888D49ACEDDFBF5FBEB0E58855D2.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Basemovement.uasset'
+[2023.01.13-09.00.12:986][504]LogUObjectHash: Compacting FUObjectHashTables data took   1.75ms
+[2023.01.13-09.00.13:015][504]LogUObjectHash: Compacting FUObjectHashTables data took   1.49ms
+[2023.01.13-09.00.13:038][504]LogUObjectHash: Compacting FUObjectHashTables data took   0.60ms
+[2023.01.13-09.00.13:101][504]AssetCheck: New page: 资产保存：Boss_Basemovement
+[2023.01.13-09.00.13:101][504]LogContentValidation: Display: 正在验证BlendSpace1D /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Basemovement.Boss_Basemovement
+[2023.01.13-09.00.32:052][174]LogContentBrowser: Attempting asset rename: Boss_Basemovement -> Boss_Basemovement_BS1D
+[2023.01.13-09.00.32:110][174]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Basemovement_BS1DBBED916C4C9ECC91C9BDBABEC8F30F50.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Basemovement_BS1D.uasset'
+[2023.01.13-09.00.32:183][174]LogUObjectHash: Compacting FUObjectHashTables data took   1.75ms
+[2023.01.13-09.00.32:213][174]LogUObjectHash: Compacting FUObjectHashTables data took   2.02ms
+[2023.01.13-09.00.32:232][174]LogUObjectHash: Compacting FUObjectHashTables data took   0.50ms
+[2023.01.13-09.00.32:295][174]AssetCheck: New page: 资产保存：Boss_Basemovement_BS1D
+[2023.01.13-09.00.32:295][174]LogContentValidation: Display: 正在验证BlendSpace1D /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Basemovement_BS1D.Boss_Basemovement_BS1D
+[2023.01.13-09.00.38:593][312]LogAssetEditorSubsystem: Opening Asset editor for BlendSpace1D /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Basemovement_BS1D.Boss_Basemovement_BS1D
+[2023.01.13-09.00.38:596][312]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_44:PersistentLevel.AnimationEditorPreviewActor_0.DebugSkelMeshComponent_0) Already registered. Aborting.
+[2023.01.13-09.03.43:120][729]Cmd: TRANSACTION UNDO
+[2023.01.13-09.03.43:120][729]LogEditorTransaction: Undo 变更动画序列
+[2023.01.13-09.03.43:254][729]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_42:PersistentLevel.AnimationEditorPreviewActor_0.DebugSkelMeshComponent_0) Already registered. Aborting.
+[2023.01.13-09.03.43:255][729]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_44:PersistentLevel.AnimationEditorPreviewActor_0.DebugSkelMeshComponent_0) Already registered. Aborting.
+[2023.01.13-09.04.22:535][831]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Basemovement_BS1DE7D2CAC24A435AD1F0C370947F5F9BB8.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Basemovement_BS1D.uasset'
+[2023.01.13-09.04.22:547][831]AssetCheck: New page: 资产保存：Boss_Basemovement_BS1D
+[2023.01.13-09.04.22:547][831]LogContentValidation: Display: 正在验证BlendSpace1D /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Basemovement_BS1D.Boss_Basemovement_BS1D
+[2023.01.13-09.04.41:385][914]BlueprintLog: New page: 编译Boss_Charactor_BP
+[2023.01.13-09.04.41:429][914]LogUObjectHash: Compacting FUObjectHashTables data took   2.22ms
+[2023.01.13-09.04.42:287][959]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Charactor_BP3E43AA4240F997C738538B8832CDA9B6.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.uasset'
+[2023.01.13-09.04.42:298][959]AssetCheck: New page: 资产保存：Boss_Charactor_BP
+[2023.01.13-09.04.42:298][959]LogContentValidation: Display: 正在验证Blueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP
+[2023.01.13-09.05.18:550][332]BlueprintLog: New page: 编译Boss_Charactor_BP
+[2023.01.13-09.05.18:593][332]LogUObjectHash: Compacting FUObjectHashTables data took   2.22ms
+[2023.01.13-09.05.19:068][357]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Charactor_BP8885087E4D9976B21E708BB0675F41E9.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.uasset'
+[2023.01.13-09.05.19:079][357]AssetCheck: New page: 资产保存：Boss_Charactor_BP
+[2023.01.13-09.05.19:079][357]LogContentValidation: Display: 正在验证Blueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP
+[2023.01.13-09.06.47:829][445]BlueprintLog: New page: 编译Boss_Anim_BP
+[2023.01.13-09.06.47:866][445]LogUObjectHash: Compacting FUObjectHashTables data took   2.34ms
+[2023.01.13-09.06.48:764][492]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Anim_BPD07D51044042417D4BF3D5A8E928E98B.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.uasset'
+[2023.01.13-09.06.48:777][492]AssetCheck: New page: 资产保存：Boss_Anim_BP
+[2023.01.13-09.06.48:777][492]LogContentValidation: Display: 正在验证AnimBlueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.Boss_Anim_BP
+[2023.01.13-09.09.25:788][750]BlueprintLog: New page: 编译Boss_Anim_BP
+[2023.01.13-09.09.25:828][750]LogUObjectHash: Compacting FUObjectHashTables data took   2.51ms
+[2023.01.13-09.09.26:542][786]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Anim_BPB9F952AD4D5FDE021F74BA91FEDEDB9A.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.uasset'
+[2023.01.13-09.09.26:556][786]AssetCheck: New page: 资产保存：Boss_Anim_BP
+[2023.01.13-09.09.26:556][786]LogContentValidation: Display: 正在验证AnimBlueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Anim_BP.Boss_Anim_BP
+[2023.01.13-09.10.44:762][ 97]LogSlate: Prevented a slow task dialog from being summoned while a context menu was open
+[2023.01.13-09.10.44:783][ 97]LogEditorClassViewer: Warning: Class /Engine/Tutorial/InWorldBlueprintEditing/TutorialAssets/IWBE_Blutility.IWBE_Blutility_C has parent /Script/Blutility.PlacedEditorUtilityBase, but this parent is not found. The Class will not be shown in ClassViewer.
+[2023.01.13-09.10.55:051][458]BlueprintLog: New page: 编译Boss_Charactor_BP
+[2023.01.13-09.10.55:107][458]LogUObjectHash: Compacting FUObjectHashTables data took   2.29ms
+[2023.01.13-09.10.55:938][498]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Charactor_BPBD60626D403C33A1B1F67A95CE06D3FC.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.uasset'
+[2023.01.13-09.10.55:953][498]AssetCheck: New page: 资产保存：Boss_Charactor_BP
+[2023.01.13-09.10.55:953][498]LogContentValidation: Display: 正在验证Blueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP
+[2023.01.13-09.11.13:613][233]LogTemp: Repeating last play command: 选中的视口
+[2023.01.13-09.11.13:620][233]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2023.01.13-09.11.13:620][233]PIE: New page: PIE会话：ThirdPersonExampleMap（2023年1月14日 上午1:11:13）
+[2023.01.13-09.11.13:620][233]LogPlayLevel: Creating play world package: /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap
+[2023.01.13-09.11.13:637][233]LogPlayLevel: PIE: StaticDuplicateObject took: (0.016395s)
+[2023.01.13-09.11.13:638][233]LogAIModule: Creating AISystem for world ThirdPersonExampleMap
+[2023.01.13-09.11.13:639][233]LogPlayLevel: PIE: World Init took: (0.001838s)
+[2023.01.13-09.11.13:639][233]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/ThirdPersonBP/Maps/ThirdPersonExampleMap.ThirdPersonExampleMap to /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap.ThirdPersonExampleMap (0.018406s)
+[2023.01.13-09.11.13:666][233]LogUObjectHash: Compacting FUObjectHashTables data took   2.11ms
+[2023.01.13-09.11.13:667][233]LogAudio: Display: Creating Audio Device:                 Id: 15, Scope: Unique, Realtime: True
+[2023.01.13-09.11.13:667][233]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2023.01.13-09.11.13:667][233]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2023.01.13-09.11.13:667][233]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2023.01.13-09.11.13:667][233]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2023.01.13-09.11.13:667][233]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2023.01.13-09.11.13:667][233]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2023.01.13-09.11.13:667][233]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2023.01.13-09.11.13:667][233]LogAudio: Display: AudioDevice MaxSources: 32
+[2023.01.13-09.11.13:667][233]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2023.01.13-09.11.13:667][233]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2023.01.13-09.11.13:667][233]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2023.01.13-09.11.13:667][233]LogAudioMixer: Display: Initializing audio mixer.
+[2023.01.13-09.11.13:671][233]LogAudioMixer: Display: 0: FrontLeft
+[2023.01.13-09.11.13:671][233]LogAudioMixer: Display: 1: FrontRight
+[2023.01.13-09.11.13:684][233]LogAudioMixer: Display: Using Audio Device 耳机 (Realtek(R) Audio)
+[2023.01.13-09.11.13:685][233]LogAudioMixer: Display: Initializing Sound Submixes...
+[2023.01.13-09.11.13:685][233]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2023.01.13-09.11.13:685][233]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2023.01.13-09.11.13:685][233]LogAudioMixer: Display: Creating Master Submix 'MasterEQSubmixDefault'
+[2023.01.13-09.11.13:685][233]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called
+[2023.01.13-09.11.13:685][233]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048
+[2023.01.13-09.11.13:686][233]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal()
+[2023.01.13-09.11.13:686][233]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time
+[2023.01.13-09.11.13:686][233]LogInit: FAudioDevice initialized.
+[2023.01.13-09.11.13:686][233]LogAudio: Display: Audio Device (ID: 15) registered with world 'ThirdPersonExampleMap'.
+[2023.01.13-09.11.13:702][233]LogLoad: Game class is 'Tps_Game_Mode_C'
+[2023.01.13-09.11.13:704][233]LogWorld: Bringing World /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap.ThirdPersonExampleMap up for play (max tick rate 60) at 2023.01.13-17.11.13
+[2023.01.13-09.11.13:705][233]LogWorld: Bringing up level for play took: 0.002431
+[2023.01.13-09.11.13:705][233]LogOnline: OSS: Creating online subsystem instance for: :Context_60
+[2023.01.13-09.11.13:708][233]PIE: 登陆的服务器
+[2023.01.13-09.11.13:709][233]PIE: PIE总开始时间：0.091秒。
+[2023.01.13-09.11.43:370][ 10]LogBlueprintUserMessages: [Tps_Charactor_BP_2] 当前弹夹已经满了
+[2023.01.13-09.11.54:368][668]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2023.01.13-09.11.54:368][668]LogWorld: BeginTearingDown for /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap
+[2023.01.13-09.11.54:369][668]LogWorld: UWorld::CleanupWorld for ThirdPersonExampleMap, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.11.54:369][668]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.11.54:378][668]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2023.01.13-09.11.54:413][668]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.11.54:433][668]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2023.01.13-09.11.54:433][668]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-09.11.54:434][668]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-09.11.54:437][668]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2023.01.13-09.11.54:440][668]LogUObjectHash: Compacting FUObjectHashTables data took   1.77ms
+[2023.01.13-09.11.54:462][669]LogPlayLevel: Display: Destroying online subsystem :Context_60
+[2023.01.13-09.12.21:381][844]LogTemp: Repeating last play command: 选中的视口
+[2023.01.13-09.12.21:386][844]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2023.01.13-09.12.21:386][844]PIE: New page: PIE会话：ThirdPersonExampleMap（2023年1月14日 上午1:12:21）
+[2023.01.13-09.12.21:386][844]LogPlayLevel: Creating play world package: /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap
+[2023.01.13-09.12.21:396][844]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009795s)
+[2023.01.13-09.12.21:397][844]LogAIModule: Creating AISystem for world ThirdPersonExampleMap
+[2023.01.13-09.12.21:397][844]LogPlayLevel: PIE: World Init took: (0.001038s)
+[2023.01.13-09.12.21:397][844]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/ThirdPersonBP/Maps/ThirdPersonExampleMap.ThirdPersonExampleMap to /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap.ThirdPersonExampleMap (0.010947s)
+[2023.01.13-09.12.21:421][844]LogUObjectHash: Compacting FUObjectHashTables data took   1.85ms
+[2023.01.13-09.12.21:422][844]LogAudio: Display: Creating Audio Device:                 Id: 16, Scope: Unique, Realtime: True
+[2023.01.13-09.12.21:422][844]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2023.01.13-09.12.21:422][844]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2023.01.13-09.12.21:422][844]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2023.01.13-09.12.21:422][844]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2023.01.13-09.12.21:422][844]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2023.01.13-09.12.21:422][844]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2023.01.13-09.12.21:422][844]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2023.01.13-09.12.21:422][844]LogAudio: Display: AudioDevice MaxSources: 32
+[2023.01.13-09.12.21:423][844]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2023.01.13-09.12.21:423][844]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2023.01.13-09.12.21:423][844]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2023.01.13-09.12.21:423][844]LogAudioMixer: Display: Initializing audio mixer.
+[2023.01.13-09.12.21:425][844]LogAudioMixer: Display: 0: FrontLeft
+[2023.01.13-09.12.21:425][844]LogAudioMixer: Display: 1: FrontRight
+[2023.01.13-09.12.21:439][844]LogAudioMixer: Display: Using Audio Device 耳机 (Realtek(R) Audio)
+[2023.01.13-09.12.21:439][844]LogAudioMixer: Display: Initializing Sound Submixes...
+[2023.01.13-09.12.21:439][844]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2023.01.13-09.12.21:439][844]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2023.01.13-09.12.21:439][844]LogAudioMixer: Display: Creating Master Submix 'MasterEQSubmixDefault'
+[2023.01.13-09.12.21:439][844]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called
+[2023.01.13-09.12.21:439][844]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048
+[2023.01.13-09.12.21:440][844]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal()
+[2023.01.13-09.12.21:440][844]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time
+[2023.01.13-09.12.21:441][844]LogInit: FAudioDevice initialized.
+[2023.01.13-09.12.21:441][844]LogAudio: Display: Audio Device (ID: 16) registered with world 'ThirdPersonExampleMap'.
+[2023.01.13-09.12.21:450][844]LogLoad: Game class is 'Tps_Game_Mode_C'
+[2023.01.13-09.12.21:454][844]LogWorld: Bringing World /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap.ThirdPersonExampleMap up for play (max tick rate 60) at 2023.01.13-17.12.21
+[2023.01.13-09.12.21:455][844]LogWorld: Bringing up level for play took: 0.005039
+[2023.01.13-09.12.21:456][844]LogOnline: OSS: Creating online subsystem instance for: :Context_61
+[2023.01.13-09.12.21:458][844]PIE: 登陆的服务器
+[2023.01.13-09.12.21:459][844]PIE: PIE总开始时间：0.074秒。
+[2023.01.13-09.12.42:080][ 80]LogBlueprintUserMessages: [Tps_Charactor_BP_2] 没有弹药，更换弹夹
+[2023.01.13-09.12.42:330][ 95]LogBlueprintUserMessages: [Tps_Charactor_BP_2] 没有弹药，更换弹夹
+[2023.01.13-09.12.42:796][123]LogBlueprintUserMessages: [Tps_Charactor_BP_2] 没有弹药，更换弹夹
+[2023.01.13-09.12.59:443][120]LogBlueprintUserMessages: [Tps_Charactor_BP_2] 没有弹药，更换弹夹
+[2023.01.13-09.12.59:644][132]LogBlueprintUserMessages: [Tps_Charactor_BP_2] 没有弹药，更换弹夹
+[2023.01.13-09.13.10:319][770]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2023.01.13-09.13.10:319][770]LogWorld: BeginTearingDown for /Game/ThirdPersonBP/Maps/UEDPIE_0_ThirdPersonExampleMap
+[2023.01.13-09.13.10:319][770]LogWorld: UWorld::CleanupWorld for ThirdPersonExampleMap, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.13.10:320][770]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.13.10:329][770]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2023.01.13-09.13.10:363][770]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.13.10:383][770]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2023.01.13-09.13.10:383][770]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-09.13.10:384][770]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-09.13.10:387][770]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2023.01.13-09.13.10:390][770]LogUObjectHash: Compacting FUObjectHashTables data took   1.78ms
+[2023.01.13-09.13.10:415][771]LogPlayLevel: Display: Destroying online subsystem :Context_61
+[2023.01.13-09.13.42:405][168]LogUObjectHash: Compacting FUObjectHashTables data took   1.75ms
+[2023.01.13-09.13.42:425][168]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/ThirdPersonExampleMap_Auto4F133662649E00483596D19AA15580BFD.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto4.umap'
+[2023.01.13-09.13.42:427][168]LogFileHelpers: Editor autosave (incl. external actors) for '/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap' took 0.043
+[2023.01.13-09.13.42:427][168]LogFileHelpers: Editor autosave (incl. sublevels & external actors) for all levels took 0.043
+[2023.01.13-09.14.39:739][933]LogWorld: UWorld::CleanupWorld for World_42, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.14.39:739][933]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.14.39:745][933]LogWorld: UWorld::CleanupWorld for World_41, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.14.39:745][933]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.14.39:807][933]LogWorld: UWorld::CleanupWorld for World_43, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.14.39:807][933]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.14.40:176][951]LogWorld: UWorld::CleanupWorld for World_44, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.14.40:177][951]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.14.40:222][951]LogWorld: UWorld::CleanupWorld for World_45, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.14.40:222][951]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.17.44:341][390]LogUObjectHash: Compacting FUObjectHashTables data took   2.32ms
+[2023.01.13-09.17.44:389][390]LogUObjectHash: Compacting FUObjectHashTables data took   1.68ms
+[2023.01.13-09.17.44:408][390]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/ThirdPersonExampleMap12BB63944F74B4E51C32C8984623A1A8.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/ThirdPersonBP/Maps/ThirdPersonExampleMap.umap'
+[2023.01.13-09.17.44:419][390]LogFileHelpers: Saving map 'ThirdPersonExampleMap' took 0.048
+[2023.01.13-09.17.44:450][390]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Catwalk_Walk66AA2EE644F64F15CF75BFBB96BD1FFB.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Animitions/Catwalk_Walk.uasset'
+[2023.01.13-09.17.44:479][390]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Death_Forward_0287CFCDE141E85F77C2E6CCAE5F312EB7.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Animitions/Death_Forward_02.uasset'
+[2023.01.13-09.17.44:506][390]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Death_Right_01B583C4744A5FF46DA096FA86CF62AFCB.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Animitions/Death_Right_01.uasset'
+[2023.01.13-09.17.44:537][390]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Idle399186B841C0D4D5813738B608B62485.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Animitions/Idle.uasset'
+[2023.01.13-09.17.44:565][390]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Run_Back5287B039430A46797B207B9EA326B6E9.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Animitions/Run_Back.uasset'
+[2023.01.13-09.17.44:604][390]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Run_ForwardF647FCC848EB96B37BF00189FCE8AA7C.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Animitions/Run_Forward.uasset'
+[2023.01.13-09.17.44:638][390]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Walking725916644CE3A70A2631749AD995F808.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/Animitions/Walking.uasset'
+[2023.01.13-09.17.44:672][390]LogSavePackage: Moving '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Boss_Charactor_BPFE4015384BC912124E3FBF8A2E10CC6A.tmp' to '../../../../../../Z_Disktop/Notes/Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.uasset'
+[2023.01.13-09.17.44:689][390]AssetCheck: New page: 资产保存：多个资产
+[2023.01.13-09.17.44:689][390]LogContentValidation: Display: 正在验证World /Game/ThirdPersonBP/Maps/ThirdPersonExampleMap.ThirdPersonExampleMap
+[2023.01.13-09.17.44:689][390]LogContentValidation: Display: 正在验证Blueprint /Game/Game_Files/Monsters/Boss/BluePrints/Boss_Charactor_BP.Boss_Charactor_BP
+[2023.01.13-09.17.44:689][390]LogContentValidation: Display: 正在验证AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Walking.Walking
+[2023.01.13-09.17.44:689][390]LogContentValidation: Display: 正在验证AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Run_Forward.Run_Forward
+[2023.01.13-09.17.44:689][390]LogContentValidation: Display: 正在验证AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Run_Back.Run_Back
+[2023.01.13-09.17.44:689][390]LogContentValidation: Display: 正在验证AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Idle.Idle
+[2023.01.13-09.17.44:689][390]LogContentValidation: Display: 正在验证AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Death_Right_01.Death_Right_01
+[2023.01.13-09.17.44:689][390]LogContentValidation: Display: 正在验证AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Death_Forward_02.Death_Forward_02
+[2023.01.13-09.17.44:689][390]LogContentValidation: Display: 正在验证AnimSequence /Game/Game_Files/Monsters/Boss/Animitions/Catwalk_Walk.Catwalk_Walk
+[2023.01.13-09.17.45:584][441]LogUObjectHash: Compacting FUObjectHashTables data took   1.99ms
+[2023.01.13-09.17.45:596][441]LogWorld: UWorld::CleanupWorld for World_35, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.45:596][441]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.01.13-09.17.45:661][441]LogSlate: Window 'MyTpsGame - 虚幻编辑器' being destroyed
+[2023.01.13-09.17.45:877][442]Cmd: QUIT_EDITOR
+[2023.01.13-09.17.45:877][442]LogCore: Engine exit requested (reason: UUnrealEdEngine::CloseEditor())
+[2023.01.13-09.17.45:884][442]LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)
+[2023.01.13-09.17.46:447][442]LogAudio: Display: Beginning Audio Device Manager Shutdown (Module: AudioMixerXAudio2)...
+[2023.01.13-09.17.46:447][442]LogAudio: Display: Destroying 1 Remaining Audio Device(s)...
+[2023.01.13-09.17.46:447][442]LogAudio: Display: Audio Device unregistered from world 'ThirdPersonExampleMap'.
+[2023.01.13-09.17.46:447][442]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-09.17.46:448][442]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called
+[2023.01.13-09.17.46:458][442]LogAudio: Display: Audio Device Manager Shutdown
+[2023.01.13-09.17.46:461][442]LogWindowsTextInputMethodSystem: Display: IME system activated using TSF (搜狗拼音输入法).
+[2023.01.13-09.17.46:466][442]LogExit: Preparing to exit.
+[2023.01.13-09.17.46:762][442]LogUObjectHash: Compacting FUObjectHashTables data took   1.93ms
+[2023.01.13-09.17.46:961][442]LogWorld: UWorld::CleanupWorld for World_9, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:962][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:962][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:962][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:962][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:962][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:962][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:962][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:962][442]LogWorld: UWorld::CleanupWorld for World_38, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:963][442]LogWorld: UWorld::CleanupWorld for World_10, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:964][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:964][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:965][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:965][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:965][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:965][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:965][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:965][442]LogWorld: UWorld::CleanupWorld for None, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:967][442]LogWorld: UWorld::CleanupWorld for World_12, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:968][442]LogWorld: UWorld::CleanupWorld for World_6, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:969][442]LogWorld: UWorld::CleanupWorld for World_0, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:971][442]LogWorld: UWorld::CleanupWorld for World_16, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:973][442]LogWorld: UWorld::CleanupWorld for World_8, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:975][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:975][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:975][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:975][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:975][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:975][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:975][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:975][442]LogWorld: UWorld::CleanupWorld for None, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:976][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:976][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:976][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:976][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:976][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:976][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:976][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:976][442]LogWorld: UWorld::CleanupWorld for None, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:978][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:978][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:978][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:978][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:978][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:978][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:978][442]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2023.01.13-09.17.46:978][442]LogWorld: UWorld::CleanupWorld for None, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.46:979][442]LogWorld: UWorld::CleanupWorld for World_7, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.47:024][442]LogDemo: Cleaned up 0 splitscreen connections with owner deletion
+[2023.01.13-09.17.47:046][442]LogWorld: UWorld::CleanupWorld for None, bSessionEnded=true, bCleanupResources=true
+[2023.01.13-09.17.47:046][442]LogExit: Editor shut down
+[2023.01.13-09.17.47:048][442]LogExit: Transaction tracking system shut down
+[2023.01.13-09.17.47:357][442]LogExit: Object subsystem successfully closed.
+[2023.01.13-09.17.47:375][442]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2023.01.13-09.17.47:375][442]LogShaderCompilers: Display: Total job queries 64, among them cache hits 0 (0.00%)
+[2023.01.13-09.17.47:375][442]LogShaderCompilers: Display: Tracking 64 distinct input hashes that result in 46 distinct outputs (71.88%)
+[2023.01.13-09.17.47:375][442]LogShaderCompilers: Display: RAM used: 0.27 MB (0.00 GB) of 1228.80 MB (1.20 GB) budget. Usage: 0.02%
+[2023.01.13-09.17.47:375][442]LogShaderCompilers: Display: ================================================
+[2023.01.13-09.17.47:388][442]LogShaderCompilers: Display: Shaders left to compile 0
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module MovieSceneCapture (894)
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module Voice (892)
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module SequencerWidgets (890)
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module PinnedCommandList (888)
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module SkeletonEditor (886)
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module AnimationEditor (884)
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module BlueprintGraph (882)
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module HierarchicalLODOutliner (880)
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module SceneOutliner (878)
+[2023.01.13-09.17.47:404][442]LogModuleManager: Shutting down and abandoning module AddContentDialog (876)
+[2023.01.13-09.17.47:406][442]LogModuleManager: Shutting down and abandoning module WidgetCarousel (875)
+[2023.01.13-09.17.47:406][442]LogModuleManager: Shutting down and abandoning module EditorWidgets (872)
+[2023.01.13-09.17.47:406][442]LogModuleManager: Shutting down and abandoning module StatsViewer (870)
+[2023.01.13-09.17.47:406][442]LogModuleManager: Shutting down and abandoning module PIEPreviewDeviceProfileSelector (868)
+[2023.01.13-09.17.47:406][442]LogModuleManager: Shutting down and abandoning module SequenceRecorderSections (866)
+[2023.01.13-09.17.47:406][442]LogModuleManager: Shutting down and abandoning module AutomationWorker (864)
+[2023.01.13-09.17.47:406][442]LogModuleManager: Shutting down and abandoning module SteamVREditor (862)
+[2023.01.13-09.17.47:406][442]LogModuleManager: Shutting down and abandoning module OculusMR (860)
+[2023.01.13-09.17.47:406][442]LogModuleManager: Shutting down and abandoning module TakeRecorderSources (858)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module TakeRecorder (857)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module TakeTrackRecorders (854)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module TakesCore (852)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module OpenXRInput (850)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module GooglePADEditor (848)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module AudioCaptureEditor (846)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module TemplateSequenceEditor (844)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module LevelSequenceEditor (842)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module MatineeToLevelSequence (840)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module ActorSequenceEditor (838)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module WmfMediaFactory (836)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module WmfMediaEditor (834)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module WebMMediaFactory (832)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module WebMMediaEditor (830)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module WebMMedia (828)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module MediaPlayerEditor (826)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module MediaCompositingEditor (824)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module SequenceRecorder (823)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module OpenExrWrapper (820)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module ImgMediaFactory (818)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module ImgMediaEditor (816)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module AvfMediaFactory (814)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module AvfMediaEditor (812)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module AndroidMediaFactory (810)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module AndroidMediaEditor (808)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module MagicLeapMediaCodecFactory (806)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module MagicLeapMediaFactory (804)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module MagicLeapMediaEditor (802)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module PlanarCut (800)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module CharacterAI (798)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module TextureAlignMode (796)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module BspMode (794)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module GeometryMode (792)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module CameraShakePreviewer (790)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module SmartSnapping (788)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module SessionServices (786)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module MeshPaint (784)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module VirtualTexturingEditor (782)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module FoliageEdit (780)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module LandscapeEditor (778)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module MeshPaintMode (776)
+[2023.01.13-09.17.47:407][442]LogModuleManager: Shutting down and abandoning module SceneDepthPickerMode (774)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module ActorPickerMode (772)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module PlacementMode (770)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module ViewportSnapping (768)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module ViewportInteraction (766)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module ClothPainter (764)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module SkeletalMeshEditor (763)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module LogVisualizer (760)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module IntroTutorials (758)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module GameProjectGeneration (757)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module LuminPlatformEditor (754)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module IOSPlatformEditor (752)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module AndroidPlatformEditor (750)
+[2023.01.13-09.17.47:408][442]LogModuleManager: Shutting down and abandoning module AndroidDeviceDetection (749)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module WindowsPlatformEditor (746)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module LuminRuntimeSettings (744)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module IOSRuntimeSettings (742)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module AndroidRuntimeSettings (740)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module TraceInsights (738)
+[2023.01.13-09.17.49:172][442]MemoryProfiler: Shutdown
+[2023.01.13-09.17.49:172][442]NetworkingProfiler: Shutdown
+[2023.01.13-09.17.49:172][442]LoadingProfiler: Shutdown
+[2023.01.13-09.17.49:172][442]TimingProfiler: Shutdown
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module TraceServices (737)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module EditorInteractiveToolsFramework (734)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module TimeManagementEditor (732)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module InputBindingEditor (730)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module MergeActors (728)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module LocalizationDashboard (726)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module LocalizationService (725)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module HardwareTargeting (722)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module DeviceProfileEditor (720)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module UndoHistory (718)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module XmlParser (716)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module Blutility (714)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module ProjectSettingsViewer (712)
+[2023.01.13-09.17.49:172][442]LogModuleManager: Shutting down and abandoning module ProjectTargetPlatformEditor (711)
+[2023.01.13-09.17.49:173][442]LogModuleManager: Shutting down and abandoning module EditorSettingsViewer (708)
+[2023.01.13-09.17.49:173][442]LogModuleManager: Shutting down and abandoning module InternationalizationSettings (707)
+[2023.01.13-09.17.49:173][442]LogModuleManager: Shutting down and abandoning module SettingsEditor (704)
+[2023.01.13-09.17.49:173][442]LogModuleManager: Shutting down and abandoning module ProjectLauncher (702)
+[2023.01.13-09.17.49:173][442]LogModuleManager: Shutting down and abandoning module SessionFrontend (700)
+[2023.01.13-09.17.49:173][442]LogModuleManager: Shutting down and abandoning module ProfilerClient (698)
+[2023.01.13-09.17.49:173][442]LogModuleManager: Shutting down and abandoning module DeviceManager (696)
+[2023.01.13-09.17.49:173][442]LogModuleManager: Shutting down and abandoning module TargetDeviceServices (695)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module AutomationController (692)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module AutomationWindow (690)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module Layers (688)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module ComponentVisualizers (686)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module DetailCustomizations (684)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module PackagesDialog (682)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module AnimationBlueprintEditor (680)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module Persona (678)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module AdvancedPreviewScene (677)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module AnimGraph (675)
+[2023.01.13-09.17.49:206][442]LogModuleManager: Shutting down and abandoning module Kismet (672)
+[2023.01.13-09.17.49:215][442]LogModuleManager: Shutting down and abandoning module KismetWidgets (671)
+[2023.01.13-09.17.49:215][442]LogModuleManager: Shutting down and abandoning module GraphEditor (668)
+[2023.01.13-09.17.49:215][442]LogModuleManager: Shutting down and abandoning module StructViewer (666)
+[2023.01.13-09.17.49:215][442]LogModuleManager: Shutting down and abandoning module ClassViewer (664)
+[2023.01.13-09.17.49:217][442]LogModuleManager: Shutting down and abandoning module Toolbox (662)
+[2023.01.13-09.17.49:217][442]LogModuleManager: Shutting down and abandoning module ModuleUI (660)
+[2023.01.13-09.17.49:217][442]LogModuleManager: Shutting down and abandoning module OutputLog (658)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module GammaUI (656)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module Documentation (654)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module LiveCoding (652)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module LevelSequence (650)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module MovieSceneTracks (648)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module MovieScene (646)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module StreamingPauseRendering (644)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module LauncherPlatform (642)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module AnalyticsET (640)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module PortalServices (638)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module PortalRpc (636)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module MessagingRpc (634)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module AudioMixerXAudio2 (632)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module AudioMixerCore (631)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module AIModule (628)
+[2023.01.13-09.17.49:218][442]LogModuleManager: Shutting down and abandoning module GameplayDebugger (627)
+[2023.01.13-09.17.49:219][442]LogModuleManager: Shutting down and abandoning module AITestSuite (625)
+[2023.01.13-09.17.49:219][442]LogModuleManager: Shutting down and abandoning module NavigationSystem (623)
+[2023.01.13-09.17.49:219][442]LogModuleManager: Shutting down and abandoning module ImageWriteQueue (620)
+[2023.01.13-09.17.49:219][442]LogModuleManager: Shutting down and abandoning module ProfilerService (618)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module TaskGraph (616)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module AudioSynesthesiaEditor (614)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module MegascansPlugin (612)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module OculusEditor (610)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module OculusInput (608)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module SQLiteSupport (606)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module DatabaseSupport (604)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module ContentBrowserFileDataSource (602)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module ContentBrowserClassDataSource (600)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module ContentBrowserAssetDataSource (598)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module CollectionManager (597)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module TakeSequencer (594)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module TakeMovieScene (592)
+[2023.01.13-09.17.49:332][442]LogModuleManager: Shutting down and abandoning module ScreenshotTools (590)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module SynthesisEditor (588)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module Synthesis (586)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module ProceduralMeshComponentEditor (584)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module ProceduralMeshComponent (582)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module OpenXREditor (580)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MobilePatchingUtils (578)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GooglePAD (576)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module EditableMesh (574)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module CustomMeshComponent (572)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module CableComponent (570)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AudioCapture (568)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AudioCaptureRtAudio (567)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AssetTags (564)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module ArchVisCharacter (562)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AppleImageUtilsBlueprintSupport (560)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AppleImageUtils (558)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AndroidPermission (556)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module ActorLayerUtilitiesEditor (554)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module ActorLayerUtilities (552)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module TemplateSequence (550)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MediaCompositing (548)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module ImgMedia (546)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MagicLeapSharedWorld (544)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MagicLeapLightEstimation (542)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MagicLeapHelperVulkan (540)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MagicLeapHelperOpenGL (538)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MagicLeapAudio (536)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module NiagaraEditorWidgets (534)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module OpenImageDenoise (532)
+[2023.01.13-09.17.49:333][442]LogOpenImageDenoise: OIDN shutting down
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MotoSynthEditor (530)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MotoSynth (528)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module MeshConversion (526)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module DynamicMesh (524)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometryAlgorithms (522)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometricObjects (520)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometryCollectionTracks (518)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometryCollectionSequencer (517)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometryCollectionEditor (514)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometryCacheTracks (512)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometryCacheStreamer (510)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometryCacheSequencer (508)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module ChaosSolverEditor (506)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module ChaosNiagara (504)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module FractureEditor (502)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module FieldSystemEngine (501)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module ChaosClothEditor (498)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module BackChannel (496)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AutomationUtilsEditor (494)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AutomationUtils (492)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AlembicImporter (490)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module AlembicLibrary (489)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometryCache (488)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module GeometryCacheEd (487)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module VariantManagerContentEditor (482)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module DatasmithContentEditor (480)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module SpeedTreeImporter (478)
+[2023.01.13-09.17.49:333][442]LogModuleManager: Shutting down and abandoning module PluginBrowser (476)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module MobileLauncherProfileWizard (474)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module MaterialAnalyzer (472)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module EditorScriptingUtilities (470)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module CurveEditorTools (468)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module CryptoKeysOpenSSL (466)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module CryptoKeys (464)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module VisualStudioSourceCodeAccess (462)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module VisualStudioCodeSourceCodeAccess (460)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module UObjectPlugin (458)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module SubversionSourceControl (456)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module RiderSourceCodeAccess (454)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module PlasticSourceControl (452)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module PluginUtils (450)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module PerforceSourceControl (448)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module GitSourceControl (446)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module SourceControl (445)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module CLionSourceCodeAccess (442)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module AnimationSharingEd (440)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module OodleNetworkHandlerComponent (438)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module LightPropagationVolumeEditor (436)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module LiveLinkSequencer (434)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module LiveLinkMovieScene (432)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module LiveLinkGraphNode (430)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module LiveLinkEditor (428)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module LiveLinkComponents (426)
+[2023.01.13-09.17.49:334][442]LogModuleManager: Shutting down and abandoning module LiveLink (424)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module PaperTiledImporter (422)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module PaperSpriteSheetImporter (420)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module Paper2DEditor (418)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module MeshPaintingToolset (416)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module MeshPaintEditorMode (414)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module SQLiteCore (412)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module SoundFields (410)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module SignificanceManager (408)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module RuntimePhysXCooking (406)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module PropertyAccessEditor (404)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module PhysXVehiclesEditor (402)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module LocationServicesBPLibrary (398)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module AudioSynesthesia (396)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module AudioSynesthesiaCore (394)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module ActorSequence (392)
+[2023.01.13-09.17.50:179][442]LogModuleManager: Shutting down and abandoning module UdpMessaging (390)
+[2023.01.13-09.17.50:279][442]LogModuleManager: Shutting down and abandoning module TcpMessaging (388)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module ImgMediaEngine (386)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapARPin (384)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapHandMeshing (382)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapSecureStorage (380)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapPrivileges (378)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapPlanes (376)
+[2023.01.13-09.17.50:380][442]LogMagicLeapPlanes: Planes tracker already destroyed.
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapImageTracker (374)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapIdentity (372)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapHandTracking (370)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapEyeTracker (368)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapController (366)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapARPinImpl (364)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module MagicLeapAR (362)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module NiagaraAnimNotifies (360)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module Niagara (358)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module SignalProcessing (357)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module NiagaraEditor (355)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module NiagaraCore (352)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module PythonScriptPlugin (350)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module GameplayTagsEditor (348)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module FacialAnimationEditor (346)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module FacialAnimation (344)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module DataValidation (342)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module AssetManagerEditor (340)
+[2023.01.13-09.17.50:380][442]LogModuleManager: Shutting down and abandoning module LevelEditor (339)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module PixelInspectorModule (338)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module CommonMenuExtensions (336)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module MainFrame (334)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module HotReload (333)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module ToolMenus (329)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module ContentBrowser (327)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module ContentBrowserData (326)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module TreeMap (323)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module PropertyAccessNode (320)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module AnimationSharing (318)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module GameplayCameras (316)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module LightPropagationVolumeRuntime (314)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module EnvironmentQueryEditor (312)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module Paper2D (310)
+[2023.01.13-09.17.50:382][442]LogModuleManager: Shutting down and abandoning module WindowsMoviePlayer (308)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module WebMMoviePlayer (306)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module NetworkReplayStreaming (304)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module PacketHandler (302)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module ClothingSystemEditor (300)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module ClothingSystemRuntimeNv (298)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module MediaAssets (296)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module Overlay (294)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module OverlayEditor (293)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module VREditor (290)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module StringTableEditor (288)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module GameplayTasksEditor (286)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module BehaviorTreeEditor (284)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module FunctionalTesting (282)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module CollisionAnalyzer (280)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module WorkspaceMenuStructure (279)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module UMG (276)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module UMGEditor (275)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module MessageLog (273)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module SlateReflector (268)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module Slate (266)
+[2023.01.13-09.17.50:389][442]LogModuleManager: Shutting down and abandoning module SlateCore (264)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module LandscapeEditorUtilities (262)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module UnrealEd (260)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module MRMesh (258)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module SourceCodeAccess (256)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module HeadMountedDisplay (254)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module XAudio2 (252)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module Networking (250)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module Core (248)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module MaterialEditor (246)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module MovieSceneTools (244)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module CurveEditor (243)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module Sequencer (241)
+[2023.01.13-09.17.50:390][442]LogModuleManager: Shutting down and abandoning module EditorStyle (240)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module KismetCompiler (236)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module MeshBuilder (234)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module MeshUtilities (232)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module MeshMergeUtilities (231)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module MeshReductionInterface (230)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module MeshBoneReduction (229)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module SkeletalMeshReduction (227)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module ProxyLODMeshReduction (225)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module QuadricMeshReduction (223)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module MaterialBaking (219)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module NullInstallBundleManager (214)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module DerivedDataCache (212)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module TargetPlatform (210)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module VulkanShaderFormat (209)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module ShaderFormatVectorVM (207)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module ShaderFormatOpenGL (205)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module ShaderFormatD3D (203)
+[2023.01.13-09.17.50:392][442]LogModuleManager: Shutting down and abandoning module MetalShaderFormat (201)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module TextureFormatOodle (199)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module TextureFormatUncompressed (197)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module TextureFormatPVR (195)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module TextureFormatETC2 (193)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module TextureFormatDXT (191)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module TextureFormatIntelISPCTexComp (189)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module TextureFormatASTC (187)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module ImageWrapper (186)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module AudioFormatOpus (183)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module AudioFormatOgg (181)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module AudioFormatADPCM (179)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module WindowsServerTargetPlatform (177)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module WindowsClientTargetPlatform (175)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module WindowsTargetPlatform (173)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module WindowsNoEditorTargetPlatform (171)
+[2023.01.13-09.17.50:393][442]LogModuleManager: Shutting down and abandoning module TVOSTargetPlatform (169)
+[2023.01.13-09.17.50:399][442]LogModuleManager: Shutting down and abandoning module MacServerTargetPlatform (167)
+[2023.01.13-09.17.50:399][442]LogModuleManager: Shutting down and abandoning module MacClientTargetPlatform (165)
+[2023.01.13-09.17.50:399][442]LogModuleManager: Shutting down and abandoning module MacTargetPlatform (163)
+[2023.01.13-09.17.50:399][442]LogModuleManager: Shutting down and abandoning module MacNoEditorTargetPlatform (161)
+[2023.01.13-09.17.50:399][442]LogModuleManager: Shutting down and abandoning module LuminTargetPlatform (159)
+[2023.01.13-09.17.50:406][442]LogModuleManager: Shutting down and abandoning module LinuxAArch64ServerTargetPlatform (157)
+[2023.01.13-09.17.50:406][442]LogModuleManager: Shutting down and abandoning module LinuxAArch64ClientTargetPlatform (155)
+[2023.01.13-09.17.50:406][442]LogModuleManager: Shutting down and abandoning module LinuxAArch64NoEditorTargetPlatform (153)
+[2023.01.13-09.17.50:406][442]LogModuleManager: Shutting down and abandoning module LinuxServerTargetPlatform (151)
+[2023.01.13-09.17.50:406][442]LogModuleManager: Shutting down and abandoning module LinuxClientTargetPlatform (149)
+[2023.01.13-09.17.50:406][442]LogModuleManager: Shutting down and abandoning module LinuxNoEditorTargetPlatform (147)
+[2023.01.13-09.17.50:407][442]LogModuleManager: Shutting down and abandoning module LinuxTargetPlatform (145)
+[2023.01.13-09.17.50:407][442]LogModuleManager: Shutting down and abandoning module Messaging (143)
+[2023.01.13-09.17.50:407][442]LogModuleManager: Shutting down and abandoning module IOSTargetPlatform (141)
+[2023.01.13-09.17.50:410][442]LogModuleManager: Shutting down and abandoning module AndroidTargetPlatform (139)
+[2023.01.13-09.17.50:426][442]LogModuleManager: Shutting down and abandoning module AllDesktopTargetPlatform (137)
+[2023.01.13-09.17.50:426][442]LogModuleManager: Shutting down and abandoning module D3D11RHI (134)
+[2023.01.13-09.17.50:426][442]LogModuleManager: Shutting down and abandoning module InputCore (132)
+[2023.01.13-09.17.50:426][442]LogModuleManager: Shutting down and abandoning module Settings (130)
+[2023.01.13-09.17.50:426][442]LogModuleManager: Shutting down and abandoning module DirectoryWatcher (128)
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module PhysXCooking (126)
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module Chaos (124)
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module WindowsPlatformFeatures (122)
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module GameplayMediaEncoder (121)
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module AVEncoder (120)
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module SteamVRInputDevice (116)
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module SteamVRInput (114)
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module SteamVR (112)
+[2023.01.13-09.17.50:427][442]LogHMD: Freeing OpenVRDLLHandle.
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module OculusHMD (110)
+[2023.01.13-09.17.50:427][442]LogModuleManager: Shutting down and abandoning module OpenXRHandTracking (108)
+[2023.01.13-09.17.50:428][442]LogSlate: Slate User Destroyed.  User Index 0, Is Virtual User: 0
+[2023.01.13-09.17.50:428][442]LogModuleManager: Shutting down and abandoning module OpenXREyeTracker (106)
+[2023.01.13-09.17.50:428][442]LogModuleManager: Shutting down and abandoning module OpenXRAR (104)
+[2023.01.13-09.17.50:428][442]LogModuleManager: Shutting down and abandoning module AugmentedReality (103)
+[2023.01.13-09.17.50:428][442]LogModuleManager: Shutting down and abandoning module OpenXRHMD (100)
+[2023.01.13-09.17.50:428][442]LogModuleManager: Shutting down and abandoning module ExampleDeviceProfileSelector (98)
+[2023.01.13-09.17.50:428][442]LogModuleManager: Shutting down and abandoning module ChunkDownloader (96)
+[2023.01.13-09.17.50:428][442]LogModuleManager: Shutting down and abandoning module OnlineBlueprintSupport (94)
+[2023.01.13-09.17.50:428][442]LogModuleManager: Shutting down and abandoning module LauncherChunkInstaller (90)
+[2023.01.13-09.17.50:428][442]LogModuleManager: Shutting down and abandoning module OnlineSubsystem (88)
+[2023.01.13-09.17.50:429][442]LogModuleManager: Shutting down and abandoning module XMPP (83)
+[2023.01.13-09.17.50:430][442]LogModuleManager: Shutting down and abandoning module WebSockets (82)
+[2023.01.13-09.17.50:449][442]LogModuleManager: Shutting down and abandoning module HTTP (79)
+[2023.01.13-09.17.50:449][442]LogHttp: Display: Http module shutting down, but needs to wait on 1 outstanding Http requests:
+[2023.01.13-09.17.50:449][442]LogHttp: Display: 	verb=[POST] url=[https://datarouter.ol.epicgames.com/datarouter/api/v1/public/data?SessionID=%7BA9C687FC-4548-FCCB-4AA6-47A7D59F8C17%7D&AppID=UEEditor.Rocket.Release&AppVersion=4.27.2-18319896%2B%2B%2BUE4%2BRelease-4.27&UserID=f9dbf1e0436e4a0a6be5db82c9a1e075%7C727b5d3d8daf43f0ba85653f4308c3f9%7C9934d7b9-ba71-4591-a204-f875e9b26f14&AppEnvironment=datacollector-binary&UploadType=eteventstream] refs=[1] status=Processing
+[2023.01.13-09.17.50:449][442]LogHttp: Display: cleaning up 1 outstanding Http requests.
+[2023.01.13-09.17.50:481][442]LogModuleManager: Shutting down and abandoning module SSL (78)
+[2023.01.13-09.17.50:482][442]LogModuleManager: Shutting down and abandoning module WmfMedia (74)
+[2023.01.13-09.17.50:484][442]LogModuleManager: Shutting down and abandoning module Media (73)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module MediaInfo (72)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module ExrReaderGpu (68)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module MLSDK (66)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module MagicLeap (64)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module NiagaraVertexFactories (62)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module NiagaraShader (60)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module ChaosCloth (58)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module VariantManagerContent (56)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module DatasmithContent (54)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module PixWinPlugin (52)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module AISupportModule (50)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module DesktopPlatform (48)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module PythonScriptPluginPreload (46)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module PlatformCryptoOpenSSL (44)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module PlatformCryptoTypes (42)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module PlatformCrypto (40)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module OodleDataCompressionFormat (38)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module XGEController (36)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module AnimationModifiers (34)
+[2023.01.13-09.17.50:485][442]LogModuleManager: Shutting down and abandoning module AudioEditor (32)
+[2023.01.13-09.17.50:486][442]LogModuleManager: Shutting down and abandoning module PropertyEditor (31)
+[2023.01.13-09.17.50:486][442]LogModuleManager: Shutting down and abandoning module TextureCompressor (28)
+[2023.01.13-09.17.50:486][442]LogModuleManager: Shutting down and abandoning module RenderCore (26)
+[2023.01.13-09.17.50:486][442]LogModuleManager: Shutting down and abandoning module Landscape (24)
+[2023.01.13-09.17.50:486][442]LogModuleManager: Shutting down and abandoning module SlateRHIRenderer (22)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module AnimGraphRuntime (20)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module Renderer (18)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module Engine (16)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module CoreUObject (14)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module NetworkFile (12)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module CookedIterativeFile (10)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module StreamingFile (8)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module SandboxFile (6)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module PakFile (4)
+[2023.01.13-09.17.50:489][442]LogModuleManager: Shutting down and abandoning module RSA (3)
+[2023.01.13-09.17.50:489][442]LogContentStreaming: Display: There are 1 unreleased StreamingManagers
+[2023.01.13-09.17.50:514][442]LogD3D11RHI: Shutdown
+[2023.01.13-09.17.50:514][442]LogD3D11RHI: CleanupD3DDevice
+[2023.01.13-09.17.50:519][442]LogExit: Exiting.
+[2023.01.13-09.17.50:537][442]Log file closed, 01/13/23 17:17:50
