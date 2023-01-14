@@ -176,7 +176,7 @@
 #   ifdef __MT__
 #     define __STL_WIN32THREADS
 #   endif
-# endif
+# endif 
 
 
 # if defined(__STL_NEED_BOOL)
