@@ -11,7 +11,7 @@
 >
 > 该文件中的19条说明，本书中将其翻译为组态？？
 >
->    [stl_config.h](stl_source_code\sgi-stl-master\g++\stl_config.h)  
+>    [stl_config.h](.\stl_source_code\sgi-stl-master\g++\stl_config.h)  
 >
 > 该文件做了什么？
 >
@@ -308,7 +308,7 @@ class stack {}
 
 这一段代码是定义stack类的模板声明的时候，如果编译器不支持这样的写法会怎么办？这一点可以感受到STL的移植性。
 
- [stl_stack.h](stl_source_code\sgi-stl-master\g++\stl_stack.h) 
+ [stl_stack.h](.\stl_source_code\sgi-stl-master\g++\stl_stack.h) 
 
 我又去找了我使用的c++中的STL中的源码，发现是这样写的：
 
@@ -319,7 +319,7 @@ class stack{}
 
 我们可以看到不同版本的定义是不一样的，应该是后面的代码更新吧。
 
- [stl_stack.h](stl_source_code\Source0\stl_stack.h) 
+ [stl_stack.h](.\stl_source_code\Source0\stl_stack.h) 
 
 ## 1.5  ***_STL_NULL_TMPL_ARGS***
 
@@ -442,7 +442,7 @@ template<> struct hash<char> { ...};
 template<> struct hash<unsigned char> { ...};
 ```
 
-这里就是我们在另外的一篇笔记中所讲述的特化。 [STL_Containers.md](STL_Containers.md) 
+这里就是我们在另外的一篇笔记中所讲述的特化。 [STL_Containers.md](.\STL_Containers.md) 
 
 ## 1.7 临时对象的产生运用
 
