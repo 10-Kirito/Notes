@@ -1534,3 +1534,353 @@ constexpr double square(double x) { return x*x; }
 - 函数必须使用`constexpr`进行声明；
 
 `constexpr`的作用是指示或者确保在编译的时候求值，而`const`的主要任务是规定接口的不可修改性。
+
+# 16. noexcept的使用方法
+
+> 搬运博客： https://blog.csdn.net/null_10086/article/details/119517852
+
+## 16.1 C++98中的异常规范：
+
+throw 关键字除了可以用在函数体中抛出异常，还可以用在函数头和函数体之间，指明当前函数能够抛出的异常类型，这称为异常规范，有些教程也称为异常指示符或异常列表。请看下面的例子：
+
+```C++
+double func1 (char param) throw(int);
+```
+
+函数 func1 只能抛出 int 类型的异常。如果抛出其他类型的异常，try 将无法捕获，并直接调用 std::unexpected。
+
+如果函数会抛出多种类型的异常，那么可以用逗号隔开，
+
+```c++
+double func2 (char param) throw(int, char, exception);
+```
+
+如果函数不会抛出任何异常，那么只需写一个空括号即可，
+
+```c++
+double func3 (char param) throw();
+```
+
+同样的，如果函数 func3 还是抛出异常了，try 也会检测不到，并且也会直接调用` std::unexpected`。
+
+***虚函数中的异常规范:***
+
+C++ 规定，派生类虚函数的异常规范必须与基类虚函数的异常规范一样严格，或者更严格。只有这样，当通过基类指针（或者引用）调用派生类虚函数时，才能保证不违背基类成员函数的异常规范。请看下面的例子：
+
+```c++
+class Base {
+  public:
+    virtual int fun1(int) throw();
+    virtual int fun2(int) throw(int);
+    virtual string fun3() throw(int, string);
+};
+
+class Derived: public Base {
+  public:
+    int fun1(int) throw(int);    //错！异常规范不如 throw() 严格
+    int fun2(int) throw(int);    //对！有相同的异常规范
+    string fun3() throw(string); //对！异常规范比 throw(int, string) 更严格
+}
+```
+
+***异常规范与函数定义和函数声明***
+
+C++ 规定，异常规范在函数声明和函数定义中必须同时指明，并且要严格保持一致，不能更加严格或者更加宽松。请看下面的几组函数：
+
+```c++
+// 错！定义中有异常规范，声明中没有
+void func1();
+void func1() throw(int) { }
+// 错！定义和声明中的异常规范不一致
+
+void func2() throw(int);
+void func2() throw(int, bool) { }
+
+// 对！定义和声明中的异常规范严格一致
+void func3() throw(float, char *);
+void func3() throw(float, char *) { }
+```
+
+***异常规范在 C++11 中被摒弃***
+
+异常规范的初衷是好的，它希望让程序员看到函数的定义或声明后，立马就知道该函数会抛出什么类型的异常，这样程序员就可以使用 `try-catch `来捕获了。如果没有异常规范，程序员必须阅读函数源码才能知道函数会抛出什么异常。
+
+不过这有时候也不容易做到。例如，`func_outer()` 函数可能不会引发异常，但它调用了另外一个函数` func_inner()`，这个函数可能会引发异常。再如，编写的一个函数调用了老式的一个库函数，此时不会引发异常，但是老式库更新以后这个函数却引发了异常。
+
+其实，不仅仅如此，
+
+1. 异常规范的检查是在运行期而不是编译期，因此程序员不能保证所有异常都得到了 catch 处理。
+
+2. 由于第一点的存在，编译器需要生成额外的代码，在一定程度上妨碍了优化。
+
+3. 模板函数中无法使用。比如下面的代码，
+
+   ```c++
+   template<class T>
+   void func(T k) {
+       T x(k);
+     	x.do_something();
+   }
+   ```
+
+   赋值函数、拷贝构造函数和 do_something() 都有可能抛出异常，这取决于类型 T 的实现，所以无法给函数 `func `指定异常类型。
+
+4. 实际使用中，***我们只需要两种异常说明：抛异常和不抛异常，也就是 throw(...) 和 throw()。***
+
+所以 C++11 摒弃了 throw 异常规范，而引入了新的异常说明符` noexcept`。
+
+> 动态异常规定：就是列出函数中可能直接或者间接排除的异常
+
+## 16.2 C++ 11中的异常规范
+
+`noexcept`紧跟在函数的参数列表后面，他只用来表明两种状态：***“抛出异常和不抛出异常”***。
+
+```C++
+void func_not_throw() noexcept;// 保证不抛出异常
+void func_not_throw() noexcept(true);// 和上面的式子是一样的
+
+void func_not_throw() noexcept(false); // 可能会抛出异常
+void func_not_throw();
+```
+
+对于一个函数，使用`noexcept`时候的规范：
+
+- `noexcept` 说明符号要么出现在该函数的所有声明语句和定义语句中，要么一次也不出现；
+- 函数指针以及函数指针指向的函数必须具有一致的异常说明；
+
+***对于函数指针中的`noexcept`说明符号，请看下面的示例：***
+
+```C++
+void (* func_not_throw)() noexcept(false); 
+
+// 此处的函数声明就是声明了一个指向可能抛出异常的函数
+
+// 但是需要注意一点的是，我们不能在typedef或者类型别名的时候出现noexcept说明符号
+// 比如说:
+// typedef int (*pf)() noexcept;
+// 上面的写法是错误的
+```
+
+- 在成员函数中，noexcept 说明符需要跟在 const 及引用限定符之后，而在 final、override 或虚函数的 =0 之前。
+- 如果一个虚函数承诺了它不会抛出异常，则后续派生的虚函数也必须做出同样的承诺；与之相反，如果基类的虚函数允许抛出异常，则派生类的虚函数既可以抛出异常，也可以不允许抛出异常。
+
+还有一点就是如果我们在声明了`noexcept`的函数中抛出异常的话，程序会直接调用`std::terminate`，并不能捕获到指定的异常。
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+void func_not_throw() noexcept {
+    throw 1;
+}
+ 
+int main() {
+    try {
+        func_not_throw(); // 直接 terminate，不会被 catch
+    } catch (int) {
+        cout << "catch int" << endl;
+    }
+    return 0;
+}
+
+// 上面的程序中我们是不可以捕获到int的，因为我们声明的函数为不会产生异常，一旦产生异常就会直接调用std::terminate
+// 所以说我们在使用noexcept说明符的时候需要格外的注意
+```
+
+
+
+***`noexcept`说明符还有另外的一种使用方法：***
+
+*`noexcept运算符进行编译时候检查，如果说表达式声明为不抛出任何异常就返回true`*，简单地说就是为了判断某一个函数是否声明`noexcept`.
+
+比如说下面的示例：
+
+```C++
+void f() noexcept {
+}
+ 
+void g() noexcept(noexcept(f)) { // g()是否是 noexcept 取决于 f()
+    f();
+}
+// 由于f函数是noexcept类型的，所以说该运算符会返回true，那么g函数也就会被声明为 noexcept(true)
+// 即不会抛出异常
+```
+
+还有很重要的是***对于析构函数，我们都是默认为`noexcept`类型的。C++ 11 标准规定，类的析构函数都是 `noexcept` 的，除非显示指定为 `noexcept(false)`。***
+
+```C++
+class A {
+  public:
+    A() {}
+    ~A() {} // 默认不抛出异常
+};
+ 
+class B {
+  public:
+    B() {}
+    ~B() noexcept(false) {} // 可能会抛出异常
+};
+```
+
+***在为某个异常进行栈展开的时候，会依次调用当前作用域下每个局部对象的析构函数，如果这个时候析构函数又抛出自己的未经处理的另一个异常，将会导致 `std::terminate`。所以析构函数应该从不抛出异常。***
+
+## 16.3` noexcept`的使用建议
+
+我们所编写的函数**默认都不使用**，只有遇到以下的情况你再思考是否需要使用，
+
+1. **析构函数**
+
+   这不用多说，必须也应该为 `noexcept`。
+
+2. **构造函数（普通、复制、移动），赋值运算符重载函数**
+
+   尽量让上面的函数都是 `noexcept`，这可能会给你的代码带来一定的运行期执行效率。
+
+3. **还有那些你可以 100% 保证不会 throw 的函数**
+
+   比如像是` int`，`pointer` 这类的 `getter`，`setter` 都可以用 `noexcept`。因为不可能出错。但请一定要注意，不能保证的地方请不要用，否则会害人害己！切记！如果你还是不知道该在哪里用，可以看下准标准库 Boost 的源码，全局搜索 `BOOST_NOEXCEPT`，你就大概明白了。
+
+## 16.4 使用`noexcept`说明符的好处
+
+1. **语义**
+
+   从语义上，`noexcept `对于程序员之间的交流是有利的，就像 `const `限定符一样。
+
+2. **显示指定 `noexcept `的函数，编译器会进行优化**
+
+   因为在调用 noexcept 函数时不需要记录 exception handler，所以编译器可以生成更高效的二进制码（编译器是否优化不一定，但理论上 noexcept 给了编译器更多优化的机会）。另外编译器在编译一个 `noexcept(false)` 的函数时可能会生成很多冗余的代码，这些代码虽然只在出错的时候执行，但还是会对 Instruction Cache 造成影响，进而影响程序整体的性能。
+
+3. **容器操作针对 `std::move` 的优化**
+
+   举个例子，一个 `std::vector<T>`，若要进行 `reserve` 操作，一个可能的情况是，需要重新分配内存，并把之前原有的数据拷贝（copy）过去，但如果 T 的移动构造函数是 noexcept 的，则可以移动（move）过去，大大地提高了效率。
+
+   ```c++
+   #include <iostream>
+   #include <vector>
+   using namespace std;
+   class A {
+     public:
+       A(int value) {
+       }
+       A(const A &other) {
+           std::cout << "copy constructor";
+       }
+       A(A &&other) noexcept {
+           std::cout << "move constructor";
+       }
+   };
+   
+   int main() {
+       std::vector<A> a;
+       a.emplace_back(1);
+       a.emplace_back(2);
+       return 0;
+   }
+   ```
+
+   上述代码可能输出：
+
+   ```plaintext
+   move constructor
+   ```
+
+   但如果把移动构造函数的 noexcept 说明符去掉，则会输出：
+
+   ```plaintext
+   copy constructor
+   ```
+
+   你可能会问，为什么在移动构造函数是 `noexcept `时才能使用？这是因为它执行的是 Strong Exception Guarantee，发生异常时需要还原，也就是说，你调用它之前是什么样，抛出异常后，你就得恢复成啥样。但对于移动构造函数发生异常，是很难恢复回去的，如果在恢复移动（move）的时候发生异常了呢？但复制构造函数就不同了，它发生异常直接调用它的析构函数就行了。
+
+## 示例程序：
+
+```C++
+// 本程序是cppference.com网站上的示例代码
+
+#include <iostream>
+#include <utility>
+#include <vector>
+ 
+void may_throw();
+void no_throw() noexcept;
+auto lmay_throw = []{};
+auto lno_throw = []() noexcept {};
+ 
+class T
+{
+public:
+    ~T(){} // dtor prevents move ctor
+           // copy ctor is noexcept
+};
+ 
+class U
+{
+public:
+    ~U(){} // dtor prevents move ctor
+           // copy ctor is noexcept(false)
+    std::vector<int> v;
+};
+ 
+class V
+{
+public:
+    std::vector<int> v;
+}
+ 
+int main()
+{
+    T t;
+    U u;
+    V v;
+ 
+    std::cout << std::boolalpha
+        << "Is may_throw() noexcept? " << noexcept(may_throw()) << '\n'
+      // 由于may_throw函数默认都是抛出异常的，所以说会输出false
+        << "Is no_throw() noexcept? " << noexcept(no_throw()) << '\n'
+      // 由于我们声明了该函数不抛出异常，所以说会输出true
+        << "Is lmay_throw() noexcept? " << noexcept(lmay_throw()) << '\n'
+      // 我们书写的lambda表达式没有声明，说明是默认的抛出异常,输出false
+        << "Is lno_throw() noexcept? " << noexcept(lno_throw()) << '\n'
+      // lambda表达式具有声明，所以说不抛出异常，输出true
+        << "Is ~T() noexcept? " << noexcept(std::declval<T>().~T()) << '\n'
+      // 这里的declval函数是可以获得指定类型的右值引用,所以说std::declval<T>()函数会获得一个T类型的右值引用
+      // 然后利用该右值引用来获得T的析构函数，最后在进行判断析构函数的类型，输出结过为true，符合我们的预期
+        // note: the following tests also require that ~T() is noexcept because
+        // the expression within noexcept constructs and destroys a temporary
+        << "Is T(rvalue T) noexcept? " << noexcept(T(std::declval<T>())) << '\n'
+      // 这里的话是先获得一个右值引用，然后调用T类的默认移动构造函数，默认的移动构造函数是noexcept类型的
+      // 这里我们可以在T类中添加会抛出异常的构造函数和拷贝构造函数或者移动构造函数，下面的结果会发生变化
+        << "Is T(lvalue T) noexcept? " << noexcept(T(t)) << '\n'
+        << "Is U(rvalue U) noexcept? " << noexcept(U(std::declval<U>())) << '\n'
+        << "Is U(lvalue U) noexcept? " << noexcept(U(u)) << '\n'  
+        << "Is V(rvalue V) noexcept? " << noexcept(V(std::declval<V>())) << '\n'
+        << "Is V(lvalue V) noexcept? " << noexcept(V(v)) << '\n';  
+}
+
+```
+
+其执行结果为：
+
+```output
+Is may_throw() noexcept? false
+Is no_throw() noexcept? true
+Is lmay_throw() noexcept? false
+Is lno_throw() noexcept? true
+Is ~T() noexcept? true
+Is T(rvalue T) noexcept? true
+Is T(lvalue T) noexcept? true
+Is U(rvalue U) noexcept? false
+Is U(lvalue U) noexcept? false
+Is V(rvalue V) noexcept? true
+Is V(lvalue V) noexcept? false
+```
+
+# 17. `decval`和`decltype`
+
+> 参看文章：https://stdrc.cc/post/2020/09/12/std-declval/
+>
+> 参看文章：https://www.jianshu.com/p/6606796de366
+>
+> https://blog.csdn.net/u014609638/article/details/106987131
+
+暂时先记着，二者搭配可以获得指定的类中的函数的返回值。
