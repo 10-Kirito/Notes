@@ -1,3 +1,4 @@
 {
-    "commentTranslate.source": "Google"
+    "commentTranslate.source": "Google",
+    "commentTranslate.multiLineMerge": true
 }
