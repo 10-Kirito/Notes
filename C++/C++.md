@@ -755,6 +755,9 @@ int main()
     }
     
     using retType_5_11 = auto (*)() -> int;
+    // 就相当于 typedef int (* retType_5_11)()
+    // 编译器看到的都是using retType_5_11 = auto (*)() -> int
+    // 这里的auto声明是函数的返回值类型后置写法，auto仅仅是一个占位符，后面的int才是函数的返回类型
     // 我们可以从这里看到，编译器自动识别其返回类型，并且将retType_5_11定义为函数指针，该函数的返回类型是int类型
     inline operator retType_5_11 () const noexcept
     {
@@ -1547,7 +1550,7 @@ throw 关键字除了可以用在函数体中抛出异常，还可以用在函�
 double func1 (char param) throw(int);
 ```
 
-函数 func1 只能抛出 int 类型的异常。如果抛出其他类型的异常，try 将无法捕获，并直接调用 std::unexpected。
+函数 func1 只能抛出` int `类型的异常。如果抛出其他类型的异常，try 将无法捕获，并直接调用 `std::unexpected`。
 
 如果函数会抛出多种类型的异常，那么可以用逗号隔开，
 
@@ -1591,8 +1594,8 @@ C++ 规定，异常规范在函数声明和函数定义中必须同时指明，�
 // 错！定义中有异常规范，声明中没有
 void func1();
 void func1() throw(int) { }
-// 错！定义和声明中的异常规范不一致
 
+// 错！定义和声明中的异常规范不一致
 void func2() throw(int);
 void func2() throw(int, bool) { }
 
@@ -1639,6 +1642,7 @@ void func3() throw(float, char *) { }
 void func_not_throw() noexcept;// 保证不抛出异常
 void func_not_throw() noexcept(true);// 和上面的式子是一样的
 
+// 默认情况下都是要抛出异常的
 void func_not_throw() noexcept(false); // 可能会抛出异常
 void func_not_throw();
 ```
@@ -1661,7 +1665,7 @@ void (* func_not_throw)() noexcept(false);
 // 上面的写法是错误的
 ```
 
-- 在成员函数中，noexcept 说明符需要跟在 const 及引用限定符之后，而在 final、override 或虚函数的 =0 之前。
+- 在成员函数中，`noexcept` 说明符需要跟在 `const` 及引用限定符之后，而在 final、override 或虚函数的 =0 之前。
 - 如果一个虚函数承诺了它不会抛出异常，则后续派生的虚函数也必须做出同样的承诺；与之相反，如果基类的虚函数允许抛出异常，则派生类的虚函数既可以抛出异常，也可以不允许抛出异常。
 
 还有一点就是如果我们在声明了`noexcept`的函数中抛出异常的话，程序会直接调用`std::terminate`，并不能捕获到指定的异常。
@@ -1686,8 +1690,6 @@ int main() {
 // 上面的程序中我们是不可以捕获到int的，因为我们声明的函数为不会产生异常，一旦产生异常就会直接调用std::terminate
 // 所以说我们在使用noexcept说明符的时候需要格外的注意
 ```
-
-
 
 ***`noexcept`说明符还有另外的一种使用方法：***
 
@@ -1748,11 +1750,11 @@ class B {
 
 2. **显示指定 `noexcept `的函数，编译器会进行优化**
 
-   因为在调用 noexcept 函数时不需要记录 exception handler，所以编译器可以生成更高效的二进制码（编译器是否优化不一定，但理论上 noexcept 给了编译器更多优化的机会）。另外编译器在编译一个 `noexcept(false)` 的函数时可能会生成很多冗余的代码，这些代码虽然只在出错的时候执行，但还是会对 Instruction Cache 造成影响，进而影响程序整体的性能。
+   因为在调用 `noexcept` 函数时不需要记录 exception handler，所以编译器可以生成更高效的二进制码（编译器是否优化不一定，但理论上` noexcept` 给了编译器更多优化的机会）。另外编译器在编译一个 `noexcept(false)` 的函数时可能会生成很多冗余的代码，这些代码虽然只在出错的时候执行，但还是会对 Instruction Cache 造成影响，进而影响程序整体的性能。
 
 3. **容器操作针对 `std::move` 的优化**
 
-   举个例子，一个 `std::vector<T>`，若要进行 `reserve` 操作，一个可能的情况是，需要重新分配内存，并把之前原有的数据拷贝（copy）过去，但如果 T 的移动构造函数是 noexcept 的，则可以移动（move）过去，大大地提高了效率。
+   举个例子，一个 `std::vector<T>`，若要进行 `reserve` 操作，一个可能的情况是，需要重新分配内存，并把之前原有的数据拷贝（copy）过去，但如果 T 的移动构造函数是 `noexcept` 的，则可以移动（move）过去，大大地提高了效率。
 
    ```c++
    #include <iostream>
@@ -1791,6 +1793,10 @@ class B {
    ```
 
    你可能会问，为什么在移动构造函数是 `noexcept `时才能使用？这是因为它执行的是 Strong Exception Guarantee，发生异常时需要还原，也就是说，你调用它之前是什么样，抛出异常后，你就得恢复成啥样。但对于移动构造函数发生异常，是很难恢复回去的，如果在恢复移动（move）的时候发生异常了呢？但复制构造函数就不同了，它发生异常直接调用它的析构函数就行了。
+   
+   > 可以查看 https://www.yhspy.com/2019/11/22/C-%E4%B8%AD%E7%9A%84%E7%A7%BB%E5%8A%A8%E6%9E%84%E9%80%A0%E4%B8%8E-noexcept/ 这一片文章有讲解移动构造函数和`noexcept`之间的关系的。
+   
+   ***STL 为了保证容器类型的内存安全，在大多数情况下，只会调用被标记为不会抛出异常，即被标记为 `noexcept`或 `noexcept(true)` 的移动构造函数，否则，便会调用其拷贝构造函数来作为代替。***
 
 ## 示例程序：
 
@@ -1884,3 +1890,423 @@ Is V(lvalue V) noexcept? false
 > https://blog.csdn.net/u014609638/article/details/106987131
 
 暂时先记着，二者搭配可以获得指定的类中的函数的返回值。
+
+# 18. 函数指针的声明
+
+```c++
+// 本代码的目的是测试函数指针的一些写法
+
+#include <iostream>
+using namespace std;
+
+typedef int(FUNC)(int, int);
+typedef int(*FUNC_P)(int, int);
+
+int fun(int a, int b)
+{
+        cout << "Hello, world!" << endl;
+        return 0;
+}
+
+int main()
+{
+        // 上面的typedef只是声明了一个函数类型和一个函数指针类型
+        // 第一种方式：
+        FUNC *fp = nullptr;
+        fp = fun;
+        fp(1,2);
+        // 第二种方式：
+        FUNC_P fp1 = nullptr;
+        fp1 = fun;
+        fp1(3,4);
+        // 第三种方式：直接通过指针类型创建，不使用typedef预定义
+        int(*fp2)(int, int) = nullptr;
+        fp2 = fun;
+        fp2(1,2);
+}
+```
+
+# 19. 各种初始化
+
+## 19.1 `explicit` 禁用构造函数定义的类型转换
+
+我们常见的一些类的隐式初始化变量：
+
+- ***通过一个实参调用的构造函数定义了从构造函数参数类型向类类型隐式转换的规则；***
+
+- ***拷贝构造函数定义了用一个对象初始化另一个对象的隐式转换***
+
+```C++
+#include <iostream>
+
+// Cat提供两个构造函数
+class Cat {
+ public:
+    int age;
+    // 接收一个参数的构造函数定义了从int型向类类型隐式转换的规则, explicit关键字可以组织这种转换
+    Cat(int i) : age(i) {}
+    // 拷贝构造函数定义了从一个对象初始化另一个对象的隐式转换
+    Cat(const Cat &orig) : age(orig.age) {}
+};
+
+int main() {
+    Cat cat1 = 10;    // 调用接收int参数的拷贝构造函数
+    Cat cat2 = cat1;  // 调用拷贝构造函数
+
+    std::cout << cat1.age << std::endl;
+    std::cout << cat2.age << std::endl;
+    return 0;
+}
+
+// 输出:
+10
+10
+```
+
+> ***explicit***做的是什么事情呢？就是禁止使用上面所述的两种隐式转换。
+
+智能指针将构造函数声明为`explicit`, 所以说智能指针只能直接初始化：
+
+```C++
+#include<memory>
+
+class Cat{
+public: 
+	int age;
+  Cat() = default;
+  // 必须显式调用拷贝构造函数
+  explicit Cat(const Cat& cat) : age(cat.age) {};
+}
+
+int main()
+{
+  Cat cat1;
+  Cat cat2(cat1);
+  // Cat cat3 = cat1; // 因为我们使用explicit关键字限制了拷贝构造函数的隐式调用
+  // 这里我们实际上是隐式调用了拷贝构造函数
+  
+  // std::shared_ptr<int> sp = new int(8);
+  // 这里也是错误的，因为我们该行代码实际上是调用隐式构造函数来进行初始化，由于智能指针也是将构造函数声明为`explicit`
+  std::shared_ptr<int> sp(new int(8)); // 这样书写就是显示调用拷贝构造函数
+}
+```
+
+## 19.2 只允许一步隐式类型转换
+
+表面意思就是你可以进行隐式转换，但是你只能转换一次：
+
+```C++
+class Cat {
+ public:
+    std::string name;
+    Cat(std::string s) : name(s) {}  // 1. 允许string到Cat的隐式类型转换
+};
+
+int main() {
+    // 2. 错误: 不存在从const char[8]到Cat的类型转换, 编译器不会自动把const char[8]转成string, 再把string转成Cat
+    // Cat cat1 = "tomocat";
+
+    // 3. 正确: 显式转换成string, 再隐式转换成Cat
+    Cat cat2(std::string("tomocat"));
+
+    // 4. 正确: 隐式转换成string, 再显式转换成Cat
+    Cat cat3 = Cat("tomocat");
+}
+```
+
+## 19.3 列表初始化
+
+> 搬运文章： https://segmentfault.com/a/1190000039844285
+
+<h3>1. C++ 98/ 03与C++11的列表初始化</h3>
+
+在C++98/03中，普通数组和POD（Plain Old Data，即没有构造、析构和虚函数的类或结构体）类型可以使用花括号`{}`进行初始化，即列表初始化。但是这种初始化方式仅限于上述提到的两种数据类型：
+
+```C++
+int main() {
+    // 普通数组的列表初始化
+    int arr1[3] = { 1, 2, 3 };
+    int arr2[] = { 1, 3, 2, 4 };  // arr2被编译器自动推断为int[4]类型
+    
+    // POD类型的列表初始化
+    struct data {
+        int x;
+        int y;
+    } my_data = { 1, 2 };
+}
+```
+
+C++11新标准中列表初始化得到了全面应用，不仅兼容了传统C++中普通数组和POD类型的列表初始化，还可以用于任何其他类型对象的初始化：
+
+```c++
+#include <iostream>
+#include <string>
+
+class Cat {
+ public:
+    std::string name;
+    // 默认构造函数
+    Cat() {
+        std::cout << "default constructor of Cat" << std::endl;
+    }
+    // 接受一个参数的构造函数
+    Cat(const std::string &s) : name(s) {
+        std::cout << "normal constructor of Cat" << std::endl;
+    }
+    // 拷贝构造函数
+    Cat(const Cat &orig) : name(orig.name) {
+        std::cout << "copy constructor of Cat" << std::endl;
+    }
+};
+
+int main() {
+    /*
+     * 内置类型的列表初始化
+     */
+    int a{ 10 };       // 内置类型通过初始化列表的直接初始化
+    int b = { 10 };    // 内置类型通过初始化列表的拷贝初始化
+    std::cout << "a:" << a << std::endl;
+    std::cout << "b:" << b << std::endl;
+		
+ 		// 1.C++ 11 新特性
+    /*
+     * 类类型的列表初始化
+     */
+    Cat cat1{};                 // 类类型调用默认构造函数的列表初始化
+    std::cout << "cat1.name:" << cat1.name << std::endl;
+    Cat cat2{ "tomocat" };        // 类类型调用普通构造函数的列表初始化
+    std::cout << "cat2.name:" << cat2.name << std::endl;
+
+    // 注意列表初始化前面的等于号并不会影响初始化行为, 这里并不会调用拷贝构造函数
+    Cat cat3 = { "tomocat" };     // 类类型调用普通构造函数的列表初始化
+    std::cout << "cat3.name:" << cat3.name << std::endl;
+    // 先通过列表初始化构造右侧Cat临时对象, 再调用拷贝构造函数(从输出上看好像编译器优化了, 直接调用普通构造函数而不会调用拷贝构造函数)
+    Cat cat4 = Cat{ "tomocat" };
+    std::cout << "cat4.name:" << cat4.name << std::endl;
+
+    /*
+     * new申请堆内存的列表初始化
+     */
+    int *pi = new int{ 100 };
+    std::cout << "*pi:" << *pi << std::endl;
+    delete pi;
+    int *arr = new int[4] { 10, 20, 30, 40 };
+    std::cout << "arr[2]:" << arr[2] << std::endl;
+    delete[] arr;
+}
+
+// 输出:
+a:10
+b:10
+default constructor of Cat
+cat1.name:
+normal constructor of Cat
+cat2.name:tomocat
+normal constructor of Cat
+cat3.name:tomocat
+normal constructor of Cat
+cat4.name:tomocat
+*pi:100
+arr[2]:30
+```
+
+<h3>2. vector中圆括号和花括号的初始化</h3>
+
+总的来说，***圆括号是通过调用vector的构造函数进行初始化的***，如果***使用了花括号那么初始化过程会尽可能会把花括号内的值当做元素初始值的列表来处理***。如果初始化时使用了花括号但是提供的值又无法用来列表初始化，那么就考虑用这些值来调用vector的构造函数了。
+
+```	C++
+#include <string>
+#include <vector>
+
+int main() {
+    std::vector<std::string> v1{"tomo", "cat", "tomocat"};  // 列表初始化: 包含3个string元素的vector
+    // std::vector<std::string> v2("a", "b", "c");          // 错误: 找不到合适的构造函数
+
+    std::vector<std::string> v3(10, "tomocat");             // 10个string元素的vector, 每个string初始化为"tomocat"
+    std::vector<std::string> v4{10, "tomocat"};             // 10个string元素的vector, 每个string初始化为"tomocat"
+
+    std::vector<int> v5(10);     // 10个int元素, 每个都初始化为0
+    std::vector<int> v6{10};     // 1个int元素, 该元素的值时10
+    std::vector<int> v7(10, 1);  // 10个int元素, 每个都初始化为1
+    std::vector<int> v8{10, 1};  // 2个int元素, 值分别是10和1
+}
+```
+
+<h3>3. 初始化习惯</h3>
+
+尽管C++11将列表初始化应用于所有对象的初始化，但是***内置类型习惯于用等号初始化***，***类类型习惯用构造函数圆括号显式初始化***，***vector、map和set等容器类习惯用列表初始化***。
+
+```C++
+#include <string>
+#include <vector>
+#include <set>
+#include <map>
+
+class Cat {
+ public:
+    std::string name;
+    Cat() = default;
+    explicit Cat(const std::string &s) : name(s) {}
+};
+
+int main() {
+    // 内置类型初始化(包括string等标准库简单类类型)
+    int i = 10;
+    long double ld = 3.1415926;
+    std::string str = "tomocat";
+
+    // 类类型初始化
+    Cat cat1();
+    Cat cat2("tomocat");
+
+    // 容器类型初始化(当然也可以用圆括号初始化, 列表初始化用于显式指明容器内元素)
+    std::vector<std::string> v{"tomo", "cat", "tomocat"};
+    int arr[] = {1, 2, 3, 4, 5};
+    std::set<std::string> s = {"tomo", "cat"};
+    std::map<std::string, std::string> m = {{"k1", "v1"}, {"k2", "v2"}, {"k3", "v3"}};
+    std::pair<std::string, std::string> p = {"tomo", "cat"};
+
+    // 动态分配对象的列表初始化
+    int *pi = new int {10};
+    std::vector<int> *pv = new std::vector<int>{0, 1, 2, 3, 4};
+
+    // 动态分配数组的列表初始化
+    int *parr = new int[10]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+}
+```
+
+## 19.4 initializer_list形参
+
+前面提到C++11支持所有类型的初始化，对于类类型而言，虽然我们使用列表初始化它会自动调用匹配的构造函数，但是我们也能显式指定接受初始化列表的构造函数。C++11引入了`std::initializer_list`，允许构造函数或其他函数像参数一样使用初始化列表，这才真正意义上为类对象的初始化与普通数组和 POD 的初 始化方法提供了统一的桥梁。
+
+> Tips：
+>
+> - 类对象在被列表初始化时会优先调用列表初始化构造函数，如果没有列表初始化构造函数则会根据提供的花括号值调用匹配的构造函数
+> - C++11新标准提供了两种方法用于处理可变数量形参， 第一种是我们这里提到的`initializer_list`形参（所有的形参类型必须相同），另一种是可变参数模板（可以处理不同类型的形参）
+
+```c++
+#include <initializer_list>
+#include <vector>
+
+class Cat {
+ public:
+    std::vector<int> data;
+    Cat() = default;
+    // 接受初始化列表的构造函数
+    Cat(std::initializer_list<int> list) {
+        for (auto it = list.begin(); it != list.end(); ++it) {
+            data.push_back(*it);
+        }
+    }
+};
+
+int main() {
+    Cat cat1 = {1, 2, 3, 4, 5};
+    Cat cat2{1, 2, 3};
+}
+```
+
+初始化列表除了用于对象构造函数上，还可以作为普通参数形参：
+
+```C++
+#include <initializer_list>
+#include <string>
+#include <iostream>
+
+void print(std::initializer_list<std::string> list) {
+    for (auto it = list.begin(); it != list.end(); ++it) {
+        std::cout << *it << std::endl;
+    }
+}
+
+int main() {
+    print({"tomo", "cat", "tomocat"});
+}
+
+```
+
+# 20. Pair
+
+`Class Pair`可以将两个`value`视为一个单元。C++标准库中多处使用到了该`Class`，尤其是容器`map`、`multimap`、`unordered_map`、`unordered_multimap`就是使用`pair`来管理其中的键值对元素。还有如果有函数需要返回两个`value`的话，也是需要使用到`pair`，例如说`minmax()`。
+
+`Pair`对应的代码如下：
+
+```C++
+namespace std{
+  template <typename T1, typename T2>
+  struct pair{
+    // member
+    T1 first;
+    T2 second;
+  };
+}
+```
+
+我们可以看到`Pair`实际上是一个`struct`而不是说一个类，所以说程序是可以访问并且处理其两个值的。
+
+其含有的一些成员函数如下面所示：
+
+![Pair0](.\pictures\Pair0.png)
+
+![Pair1](.\pictures\Pair1.png)
+
+***测试代码0：***
+
+```C++
+#include <iostream>
+#include <utility>
+
+// 如果我们想要将pair按照执行格式输出，并且实现泛型的话，我们就需要类似于下面的书写方式
+template<typename T1, typename T2>
+std::ostream& operator << (std::ostream & strm, const std::pair<T1, T2> &p)
+{
+        return strm << "[" << p.first << ", " << p.second << "]";
+}
+
+int main()
+{
+        std::pair<int, double> p(1,1.0);
+
+        std:: cout << p << std::endl;
+}
+```
+
+***C++11 新标准：***
+
+从C++11开始，我们可以对`pair`使用一种`tuple-like`接口。所以说我们可以获得`pair`的元素个数（`pair`就是2）以及指定元素的类型,还可以使用`get()`获得`first`或者`second`。
+
+***测试代码1：***
+
+```C++
+#include <iostream>
+#include <utility>
+
+int main()
+{
+        typedef std::pair<int, double> IntDoublePair;
+
+        IntDoublePair p(1,2.0);
+
+        int a = std::get<0>(p);
+        double b = std::get<1>(p);
+
+        int size = std::tuple_size<IntDoublePair>::value;
+
+        std::tuple_element<0, IntDoublePair>::type c = 0;
+
+        std::cout << "pair的第一个元素的值为：" << a << "pair的第二个元素的值为：" << b << std::endl;
+
+        std::cout << "pair的size为：" << size << std::endl;
+        std::cout << "测试获得pair的元素类型：" << c << std::endl;
+}
+```
+
+
+
+
+
+
+
+# 21. Tuple
+
+`Pair`是将两个`value`视为一个单元，而`Tuple`则是将任意个不同类型的`value`视为一个单元。

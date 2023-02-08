@@ -11,7 +11,7 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" negative="1" />
+          <node kind="schema" name="StudentManager" negative="1" />
         </introspection-scope>
       </schema-mapping>
     </data-source>

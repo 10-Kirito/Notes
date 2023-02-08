@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5417b29b-e087-41a5-bbdd-53797e515758" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Test/IJ/Test/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Bookxnote/notebooks/C++ Primer 中文版（第 5 版）/markups.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Bookxnote/notebooks/C++ Primer 中文版（第 5 版）/markups.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Bookxnote/notebooks/C++ Primer 中文版（第 5 版）/recentfile.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Bookxnote/notebooks/C++ Primer 中文版（第 5 版）/recentfile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Bookxnote/notebooks/Java核心技术·卷 I（原书第11版）/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Bookxnote/notebooks/Java核心技术·卷 I（原书第11版）/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Bookxnote/notebooks/Java核心技术·卷 I（原书第11版）/recentfile.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Bookxnote/notebooks/Java核心技术·卷 I（原书第11版）/recentfile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Bookxnote/notebooks/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Bookxnote/notebooks/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Bookxnote/recentnotes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Bookxnote/recentnotes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/C++.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/C++.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/Concurrency_codes/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/Concurrency_codes/test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/STL_Codes/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../C++/STL_Codes/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/STL_Codes/array_stl.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/STL_Codes/list_stl.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/STL_Codes/multiset_stl.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/STL_Codes/multiset_stl0.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C++/STL_Codes/vector_stl.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6. 第六章 接口.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../6. 第六章 接口.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Test/Codes/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Test/IJ/Test/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Test/IJ/Test/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Test/IJ/Test/out/production/Test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Test/IJ/Test/out/production/Test/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Test/IJ/Test/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Test/IJ/Test/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第三章 Java的基本程序设计结构.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第四章 对象与类.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/3. 游戏制作.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/3. 游戏制作.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Charactor/Tps_Charactor_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/Charactor/Tps_Charactor_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/UI/MainUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Content/Game_Files/UI/MainUI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Content/ThirdPersonBP/Maps/ThirdPersonExampleMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Content/ThirdPersonBP/Maps/ThirdPersonExampleMap.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Intermediate/CachedAssetRegistry.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Intermediate/CachedAssetRegistry.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Intermediate/ReimportCache/3688439234.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Intermediate/ReimportCache/3688439234.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/AutoScreenshot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/Game_Files/UI/MainUI_Auto1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/Game_Files/UI/MainUI_Auto1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/Game_Files/UI/MainUI_Auto3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/Game_Files/UI/MainUI_Auto3.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto1.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto2.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto3.umap" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto3.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto4.umap" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto4.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto5.umap" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Autosaves/Game/ThirdPersonBP/Maps/ThirdPersonExampleMap_Auto5.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Config/CrashReportClient/UE4CC-Windows-342AE578431CF8B9F9C2388C63A39B13/CrashReportClient.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Config/CrashReportClient/UE4CC-Windows-772A36AE44805086272F5D99794785DB/CrashReportClient.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Config/CrashReportClient/UE4CC-Windows-F7F4270940A01316C8067CA9E370DAF6/CrashReportClient.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Config/CrashReportClient/UE4CC-Windows-FC4296DA4826E15244A78893F5AD6E1E/CrashReportClient.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Config/WorldState/3393405467.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Config/WorldState/3393405467.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.13-01.50.48.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.13-05.14.36.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.13-06.02.54.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.13-06.46.48.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.13-07.40.50.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.13-11.16.03.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.13-11.53.51.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.13-13.12.11.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.15-23.39.20.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame-backup-2023.01.16-01.21.30.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame_2-backup-2023.01.12-08.46.42.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame_2-backup-2023.01.13-01.32.43.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame_2-backup-2023.01.13-05.15.18.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame_2-backup-2023.01.13-07.05.09.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Unreal Engine 4/Projects_4.27/MyTpsGame/Saved/Logs/MyTpsGame_2-backup-2023.01.13-09.17.50.log" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2LEUedBjY0QGuExYXI43P4zfo5O" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;0cbc6611f5540bd0809a388dc95a615b&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="TestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Test" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="sia.test.TestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5417b29b-e087-41a5-bbdd-53797e515758" name="Changes" comment="" />
+      <created>1675435835759</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675435835759</updated>
+      <workItem from="1675435837005" duration="829000" />
+      <workItem from="1675436677854" duration="190000" />
+      <workItem from="1675436878838" duration="97000" />
+      <workItem from="1675436987508" duration="200000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

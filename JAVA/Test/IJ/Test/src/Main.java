@@ -1,3 +1,5 @@
+// 代码的目的是主要为了测试位于Object类中的hashCode方法以及散列值的特点
+
 import java.util.*;
 import java.io.*;
 public class Main {
@@ -27,8 +29,9 @@ public class Main {
         Integer f = 100;
         // 相当于调用Integer f = new Integer(100);
         int temp = e.intValue();
-
+        System.out.println("Test int and integer:");
         System.out.println(System.identityHashCode(e));
+        System.out.println(System.identityHashCode(temp));
         // int 类型的哈希值是和字符串的不一样的处理方法
         System.out.println(e.hashCode());
         System.out.println(temp);
