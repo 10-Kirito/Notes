@@ -11,9 +11,47 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" name="StudentManager" negative="1" />
+          <node kind="schema" negative="1">
+            <name name="StudentManager" />
+            <name name="student_manager" />
+            <name name="student_management" />
+          </node>
         </introspection-scope>
       </schema-mapping>
+    </data-source>
+    <data-source name="@8.130.52.192" uuid="b482a320-89b8-4e89-a839-687e711a25e0">
+      <database-info product="MySQL" version="8.0.32-0ubuntu0.22.04.2" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.32" exact-driver-version="8.0">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>kirito</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema">
+            <name qname="kirito" />
+            <name qname="stu_management" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+    <data-source name="SQL_Server" uuid="56ffac1f-df7c-41f3-8025-14dcd5a7ac09">
+      <database-info product="Microsoft SQL Server" version="16.00.1000" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 11.2 for SQL Server" driver-version="11.2.0.0" dbms="MSSQL" exact-version="16.0.1000" exact-driver-version="11.2">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <user-name>sa</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" negative="1" />
+        </introspection-scope>
+      </schema-mapping>
+      <ssl-config>
+        <enabled>true</enabled>
+        <mode>REQUIRE</mode>
+      </ssl-config>
     </data-source>
   </component>
 </project>

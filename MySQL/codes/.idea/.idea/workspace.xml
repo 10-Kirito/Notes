@@ -10,6 +10,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="student_management/48eea9b7-c48d-465c-9575-a29e96ce3da6:SCHEMA" value="3c3f41" />
+    </colors>
+  </component>
   <component name="ProjectId" id="2JUAvHoe2OnfmYdcCi1pmT0Cd56" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,10 +27,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
     "last_opened_file_path": "C:/Users/z1769",
-    "settings.editor.selected.configurable": "project.scopes"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
+      "sqlserver",
       "mysql"
     ],
     "com.intellij.ide.scratch.LRUPopupBuilder$1/": [

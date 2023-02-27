@@ -20,7 +20,7 @@ struct func{
 
 int main()
 {
-
+  
 	int some_local_state = 0;
 	func my_func(some_local_state);
 	thread my_thread(my_func);

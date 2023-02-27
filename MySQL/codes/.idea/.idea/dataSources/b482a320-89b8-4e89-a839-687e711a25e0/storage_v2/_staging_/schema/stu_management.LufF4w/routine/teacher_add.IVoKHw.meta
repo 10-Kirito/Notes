@@ -1,0 +1,2 @@
+#n:teacher_add
+#i:(char(10),char(10),char(2),datetime(6),char(10),char(20),varchar(13))

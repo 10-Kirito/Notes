@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <vector>
 using namespace std;
 
 class A
@@ -20,7 +20,6 @@ int main()
 {
 	B * b = new B;
 	delete (A *)b;
-
 	return 0;
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$USER_HOME$/Documents/Tencent Files/2875786463/FileRecv/student_manager.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../../../../../Desktop/Java/student_manage/student_manage/stu_management.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/../create_school.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/../实验四.sql" dialect="MySQL" />
   </component>
