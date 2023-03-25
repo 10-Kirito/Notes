@@ -1,0 +1,15 @@
+D:\Z_Disktop\Notes\C#\codes\MyApp\bin\Debug\net7.0\MyApp.exe
+D:\Z_Disktop\Notes\C#\codes\MyApp\bin\Debug\net7.0\MyApp.deps.json
+D:\Z_Disktop\Notes\C#\codes\MyApp\bin\Debug\net7.0\MyApp.runtimeconfig.json
+D:\Z_Disktop\Notes\C#\codes\MyApp\bin\Debug\net7.0\MyApp.dll
+D:\Z_Disktop\Notes\C#\codes\MyApp\bin\Debug\net7.0\MyApp.pdb
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\MyApp.csproj.AssemblyReference.cache
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\MyApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\MyApp.AssemblyInfoInputs.cache
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\MyApp.AssemblyInfo.cs
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\MyApp.csproj.CoreCompileInputs.cache
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\MyApp.dll
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\refint\MyApp.dll
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\MyApp.pdb
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\MyApp.genruntimeconfig.cache
+D:\Z_Disktop\Notes\C#\codes\MyApp\obj\Debug\net7.0\ref\MyApp.dll

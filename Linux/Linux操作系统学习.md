@@ -144,3 +144,97 @@ Linux系统中***“一切皆文件”***，所有的文件都放置在以根目
 >
 > 将正在前台运行的进程放到后台，并且暂停
 
+## 五. Linux新创建一个用户
+
+1. `sudo adduser username`***(推荐使用，简单方便)***;
+2. `sudo useradd **`;
+
+> 设置root用户密码：`sudo passwd root`;
+
+## 六. 用户组
+
+> 在Linux和Unix等操作系统中，用户组（User Group）是一种将用户（User）组织在一起的机制。一个用户可以属于一个或多个用户组，并且用户组可以包含一个或多个用户。
+>
+> 用户组在操作系统中扮演着重要的角色，它可以：
+>
+> 1. 管理用户的权限：用户组可以分配权限并控制哪些用户可以访问系统中的哪些资源。
+> 2. 管理文件和目录的所有权：文件和目录在Linux系统中有所有者和用户组的概念，用户组可以授权其他用户对其进行读写和执行操作。
+> 3. 管理进程的权限：在Linux系统中，每个进程都属于一个用户和用户组，这些用户和用户组的权限可以影响进程可以执行的操作和资源访问。
+>
+> 在Linux系统中，可以使用命令行工具（例如`useradd`、`usermod`和`userdel`等）来创建、修改和删除用户组。同时，也可以使用`chgrp`命令将文件和目录的所有者更改为指定的用户组，从而实现文件和目录的权限管理。
+
+***将用户添加到指定的用户组中：***
+
+```shell
+sudo useradd -a -G groupname username
+```
+
+其中，`groupname`是您要将用户添加到的用户组名称，username是要添加到用户组的用户名。
+
+例如，如果您要将用户“`testuser`”添加到用户组“developers”中，则可以使用以下命令：
+
+```shell
+sudo useradd -a -G developers testuser
+```
+
+在Linux系统中，可以使用以下命令将用户添加到用户组中：
+
+```
+cssCopy code
+sudo usermod -a -G groupname username
+```
+
+其中，`groupname`是您要将用户添加到的用户组名称，username是要添加到用户组的用户名。
+
+例如，如果您要将用户“`testuser`”添加到用户组“developers”中，则可以使用以下命令：
+
+```
+cssCopy code
+sudo usermod -a -G developers testuser
+
+// 添加用户到sudo用户组中
+// 先切换到root用户，然后将制定的用户添加到指定的用户组中
+usermod -a -G sudo kirito
+```
+
+执行上述命令后，用户“`testuser`”将被添加到“developers”用户组中。请注意，此命令使用了-a和-G选项。-a选项表示“追加”（append），即将用户添加到现有的用户组列表中而不是替换列表。-G选项指定要添加用户的用户组列表。
+
+在将用户添加到用户组中，你可以使用一下命令检查用户所属的所有用户组：
+
+```shell
+groups username
+```
+
+## 七. 网络设置
+
+***1. ping命令：***
+
+```shell
+sudo apt install iputils-ping
+```
+
+***2.` ip`命令：***
+
+```shell
+sudo apt install iproute2
+```
+
+***3. `ifconfig`命令：***
+
+```shell
+sudo apt install net-tools
+```
+
+***4. 安装`OpenSSH`***
+
+```shell
+sudo apt install openssh-server
+
+// 检查ssh服务器是否运行
+sudo service ssh status
+
+// 启动ssh服务器
+sudo service ssh start
+```
+
+ 

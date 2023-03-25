@@ -1,0 +1,26 @@
+version: '2'
+services:
+  a0:
+    image: kinogmt/centos-ssh:6.7
+    container_name: a0
+    ports:
+      - "19010:22"
+    restart: always
+
+  a1:
+    image: kinogmt/centos-ssh:6.7
+    container_name: a1
+    depends_on:
+      - a0
+    ports:
+      - "19011:22"
+    restart: always
+
+  a2:
+    image: kinogmt/centos-ssh:6.7
+    container_name: a2
+    depends_on:
+      - a1
+    ports:
+      - "19012:22"
+    restart: always
