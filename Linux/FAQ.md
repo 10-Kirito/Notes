@@ -90,12 +90,75 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
 // 视情况进行选择
 ```
 
-# 4. nodejs 安装与升级
+# 4. `nodejs` 安装与升级
+
+> 2023年4月1日12:47:27
+>
+> 下面的下载方法不要再去使用，比较麻烦:
+>
+> ```shell
+> // 升级nodejs
+> sudo npm install -g n
+> // 将nodejs 升级到最新版本
+> n latest
+> ```
+>
+> 推荐使用nvm：
+>
+> "NVM" stands for "Node Version Manager," which is a tool used to manage multiple versions of Node.js on a single machine.
+>
+> Node.js is a popular JavaScript runtime environment that allows developers to write server-side applications using JavaScript. As Node.js evolves, new versions are released with new features and bug fixes, and sometimes it's necessary to switch between different versions depending on the requirements of the project.
+>
+> NVM allows developers to easily install and manage multiple versions of Node.js on the same machine, and switch between them as needed. This is useful because different projects may require different versions of Node.js or different packages that only work with specific versions of Node.js.
+>
+> With NVM, developers can install multiple versions of Node.js and easily switch between them using simple command line commands. This makes it easy to test code with different versions of Node.js, and to keep up with the latest developments in the Node.js ecosystem.
 
 ```c++
-// 升级nodejs
-sudo npm install -g n
-// 将nodejs 升级到最新版本
-n latest
+// ubuntu 安装nvm:
+// https://github.com/nvm-sh/nvm#installing-and-updating
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
+
+> Running either of the above commands downloads a script and runs it. The script clones the nvm repository to ~/.nvm, and attempts to add the source lines from the snippet below to the correct profile file (~/.bash_profile, ~/.zshrc, ~/.profile, or ~/.bashrc).
+>
+> ```shell
+> export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+> [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+> ```
+
+***How to use nvm?***
+
+```shell
+# 罗列出所有的nodejs版本
+sudo nvm ls available
+# 下载执行的版本
+sudo nvm install 18.5.0
+sudo nvm install 19.8.1
+# nodejs 版本切换
+sudo nvm use 19.8.1
+# 罗列出所有的nodejs版本
+```
+
+# 5. 什么是软件存储库？
+
+> 参考：https://devpress.csdn.net/linux/62ed122f89d9027116a11db4.html
+
+所有的Linux发行版都拥有自己的软件存储库。Linux用户无需访问供应商的网站即可下载与Windows不同的应用程序。
+
+软件存储库是Linux系统从中检索、安装软件更新和应用程序的集中存储位置。这些存储库包含根据操作系统发行安和版本专门编译的包。
+
+<h2>5.1 什么是包管理器？</h2>
+
+包管理器是一个工具,它使 Linux 用户能够以自动化的方式下载、安装、卸载或升级软件包。
+
+它们在 Linux 软件管理中扮演着非常重要的角色。它们会跟踪您系统上安装的所有软件,并在应用程序或操作系统本身有可用的新更新或升级时通知您。
+
+每个 Linux 发行版,例如 `Ubuntu`、`Red Hat` 或` Arch Linux`,每个人都有自己的包管理器工具。
+
+<h2>5.2 什么是包？</h2>
+
+一个包包含了在我们的系统上实现特定功能或者软件应用程序所需要的所有的文件、元数据和说明。	
+
+在所有的基于`Debian`的操作系统配置软件存储库的位置可以在`/etc/apt/sources.list`文件中，也可以在`/etc/apt/souurces.list.d/`目录下的单独文件进行配置，文件名字必须要以`list`扩展名结尾。
 
