@@ -35,10 +35,11 @@ MATRIX_INT calc_common(const MATRIX_INT &a, const MATRIX_INT &b) {
   int i, j, k;
     for (i = 0; i < max; i++) {
       for (j = 0; j < max; j++) {
-        int & temp = result[i][j];
+        int temp = 0;
         for (k = 0; k < max; k++) {
           temp += a[i][k]* b[k][j];
         }
+        result[i][j] = temp;
       }
     }
   return result;
@@ -49,13 +50,14 @@ MATRIX_INT calc_parallel(const MATRIX_INT &a, const MATRIX_INT &b) {
   MATRIX_INT result(max, std::vector<int> (max, 0));
   int i, j, k;
   #pragma omp parallel for shared(a, b, result) private(j, k) schedule(dynamic)  
+    // #pragma omp parallel for 
     for (i = 0; i < max; i++) {
       for (j = 0; j < max; j++) {
-        int & temp = result[i][j];
-        // #pragma omp parallel for reduction(+:temp) schedule(dynamic, 10) 
+        int temp = 0;
         for (k = 0; k < max; k++) {
           temp += a[i][k]* b[k][j];
         }
+        result[i][j] = temp;
       }
     }
   return result;
