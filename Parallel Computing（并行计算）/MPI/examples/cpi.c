@@ -21,10 +21,14 @@ int main(int argc, char *argv[])
     double mypi, pi, h, sum, x;
     double startwtime = 0.0, endwtime;
     int namelen;
+    // 0. MPI中的一个常量，它代表了MPI实现中处理器名的最大长度
     char processor_name[MPI_MAX_PROCESSOR_NAME];
 
+    // 1. 初始化MPI运行时环境，并创建默认的通信子MPI_COMM_WORLD
     MPI_Init(&argc, &argv);
+    // 2. 获得默认通信子当中的进程数量，并存储在numprocs中
     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
+    // 3. 获取当前进程在当前通信子中的标识号，即进程号，并存储在myid变量当中
     MPI_Comm_rank(MPI_COMM_WORLD, &myid);
     MPI_Get_processor_name(processor_name, &namelen);
 
