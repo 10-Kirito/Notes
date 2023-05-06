@@ -10,7 +10,7 @@ struct Error
   double Max;
   double average;
 };
-#define max 2000
+#define max 2500
 
 void initialize(MATRIX_INT & array) {
   for (int i = 0; i < max; i++) {
@@ -49,6 +49,7 @@ MATRIX_INT calc_common(const MATRIX_INT &a, const MATRIX_INT &b) {
 MATRIX_INT calc_parallel(const MATRIX_INT &a, const MATRIX_INT &b) {
   MATRIX_INT result(max, std::vector<int> (max, 0));
   int i, j, k;
+  omp_set_num_threads(8);
   #pragma omp parallel for shared(a, b, result) private(j, k) schedule(dynamic)  
     // #pragma omp parallel for 
     for (i = 0; i < max; i++) {

@@ -55,6 +55,7 @@ CREATE TABLE 表名(
 例：`ALTER TABLE emp ADD nickname varchar(20) COMMENT '昵称';`
 
 修改数据类型：
+
 `ALTER TABLE 表名 MODIFY 字段名 新数据类型(长度);`
 修改字段名和字段类型：	 
 `ALTER TABLE 表名 CHANGE 旧字段名 新字段名 类型(长度) [COMMENT 注释] [约束];`

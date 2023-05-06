@@ -32,7 +32,7 @@ int main (int argc, char *argv[])
       sum = sum + 4.0/(1.0 + x * x);
     }
     #pragma omp critical
-    pi = step * sum;
+    pi += step * sum;
   }
   chrono::milliseconds end_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
 
