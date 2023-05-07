@@ -162,3 +162,23 @@ sudo nvm use 19.8.1
 
 在所有的基于`Debian`的操作系统配置软件存储库的位置可以在`/etc/apt/sources.list`文件中，也可以在`/etc/apt/souurces.list.d/`目录下的单独文件进行配置，文件名字必须要以`list`扩展名结尾。
 
+# 6. Clash for windows 配置网络代理
+
+网络代理设置为手动，并将HTTP代理、HTTPS代理、SOCKS代理设置为127.0.0.1，端口设置为Clash 对应的端口。
+
+# 7. Git 网络问题解决方法
+
+> https://blog.csdn.net/zpf1813763637/article/details/128340109?spm=1001.2014.3001.5506
+
+完成配置Clash for windows或者其他的翻墙软件之后，配置相关的代理：
+
+```shell
+# 配置sock5代理
+git config --global http.proxy socks5 127.0.0.1:7890
+git config --global https.proxy socks5 127.0.0.1:7890
+
+# 配置http代理
+git config --global http.proxy 127.0.0.1:7890
+git config --global https.proxy 127.0.0.1:7890
+```
+
