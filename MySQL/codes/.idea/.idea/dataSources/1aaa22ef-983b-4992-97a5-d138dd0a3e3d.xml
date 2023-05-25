@@ -5237,7 +5237,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>depart_name</UnderlyingIndexName>
     </key>
     <column id="1152" parent="382" name="record_id">
-      <AutoIncrement>46</AutoIncrement>
+      <AutoIncrement>47</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -5314,7 +5314,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>4</Position>
     </column>
     <column id="1168" parent="384" name="record_id">
-      <AutoIncrement>18</AutoIncrement>
+      <AutoIncrement>20</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
