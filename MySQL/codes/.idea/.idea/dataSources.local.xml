@@ -17,6 +17,7 @@
             <name qname="shopdb" />
             <name qname="stu_management" />
             <name qname="teachmanage" />
+            <name qname="test" />
           </node>
         </introspection-scope>
       </schema-mapping>

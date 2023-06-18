@@ -231,8 +231,7 @@ void func()
 }
 pthread_t tid[4];
 for(int i = 1; i < 4; ++i)
-   pthread_create(
-	&tid[i], 0, thunk, 0);
+   pthread_create(&tid[i], 0, thunk, 0);
 think();
 
 for(int i = 1; i <4; ++i)
@@ -332,46 +331,46 @@ cost time: 210ms
 > #define NUM_THREAD 5
 > int main (int argc, char *argv[])
 > {
-> int i, nthreads;
-> double pi, sum[NUM_THREAD];
+>   int i, nthreads;
+>   double pi, sum[NUM_THREAD];
 > 
-> step = 1.0/(double) num_steps;
-> omp_set_num_threads(NUM_THREAD);
+>   step = 1.0/(double) num_steps;
+>   omp_set_num_threads(NUM_THREAD);
 > 
-> chrono::milliseconds start = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()); 
-> double test_start = omp_get_wtime();
-> #pragma omp parallel
-> {
->  int i, id, nthrds;
->  double x;
->  id = omp_get_thread_num();
->  // 1. 当我们在并行区域当中请求一定数量的线程的时候，不一定系统就会给你分配对应数量的线程，
->  // 系统也可以选择给你很少的线程，所以说我们需要去检查一下我们最终得到了多少个线程资源
->  // When we enter a parallel region in openmp you request a number of threads but an environment can choose to give you fewer threads so i actually have to check how many threads i got.
->  // 所以说在这里我们选择了主线程去获得当前所有线程的数量
->  nthrds = omp_get_num_threads();
->  if(id == 0) 
->    nthreads = nthrds;
->  for (i = id, sum[id] = 0.0; i < num_steps; i = i + nthrds) {
->    // 此处的循环采用的是循环迭代的方法，可以实现一种线程之间一定不会发生竞争的问题
->    // thread_0 去处理 0 2 4 6 8 10………………
->    // thread_1 去处理 1 3 5 7 9 11………………
->    x = (i + 0.5) * step;
->    sum[id] += 4.0/(1.0 + x * x);
->  }
-> }
-> double test_end = omp_get_wtime();
+>   chrono::milliseconds start = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()); 
+>   double test_start = omp_get_wtime();
+>   #pragma omp parallel
+>   {
+>    int i, id, nthrds;
+>    double x;
+>    id = omp_get_thread_num();
+>    // 1. 当我们在并行区域当中请求一定数量的线程的时候，不一定系统就会给你分配对应数量的线程，
+>    // 系统也可以选择给你很少的线程，所以说我们需要去检查一下我们最终得到了多少个线程资源
+>    // When we enter a parallel region in openmp you request a number of threads but an environment can choose to give you fewer threads so i actually have to check how many threads i got.
+>    // 所以说在这里我们选择了主线程去获得当前所有线程的数量
+>    nthrds = omp_get_num_threads();
+>    if(id == 0) 
+>      nthreads = nthrds;
+>    for (i = id, sum[id] = 0.0; i < num_steps; i = i + nthrds) {
+>      // 此处的循环采用的是循环迭代的方法，可以实现一种线程之间一定不会发生竞争的问题
+>      // thread_0 去处理 0 2 4 6 8 10………………
+>      // thread_1 去处理 1 3 5 7 9 11………………
+>      x = (i + 0.5) * step;
+>      sum[id] += 4.0/(1.0 + x * x);
+>    }
+>   }
+>   double test_end = omp_get_wtime();
 > 
-> for (i = 0; i < nthreads; i++) {
->  pi += sum[i]*step;
-> }
-> chrono::milliseconds end = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
+>   for (i = 0; i < nthreads; i++) {
+>    pi += sum[i]*step;
+>   }
+>   chrono::milliseconds end = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
 > 
-> std::cout << "The threads number is: " << NUM_THREAD << std::endl;
-> cout << "result: " << pi << endl;
-> cout << "cost: " << chrono::milliseconds(end).count() - chrono::milliseconds(start).count() << "ms" << endl;
-> std::cout << "parallel cost: " << test_end - test_start << std::endl;
-> return 0;
+>   std::cout << "The threads number is: " << NUM_THREAD << std::endl;
+>   cout << "result: " << pi << endl;
+>   cout << "cost: " << chrono::milliseconds(end).count() - chrono::milliseconds(start).count() << "ms" << endl;
+>   std::cout << "parallel cost: " << test_end - test_start << std::endl;
+>   return 0;
 > }
 > ```
 >
@@ -466,7 +465,7 @@ int main (int argc, char *argv[])
 }
 ```
 
-我们会发现，我们将一维数组变成了二维数组，而且每一行是由8个double变量的，而我们一般缓存行的大小是64个字节的，这样的话我们不同的线程去访问数据的时候，一定是不会说不同的线程所访问的数据位于同一个缓存行当中，这样的话就不会出现***False Sharing***的情况，就可以一定程度上避免这个问题，比如说下面的该段程序的执行结果：
+我们会发现，我们将一维数组变成了二维数组，而且每一行是由8个dou ble变量的，而我们一般缓存行的大小是64个字节的，这样的话我们不同的线程去访问数据的时候，一定是不会说不同的线程所访问的数据位于同一个缓存行当中，这样的话就不会出现***False Sharing***的情况，就可以一定程度上避免这个问题，比如说下面的该段程序的执行结果：
 
 ```output
 The threads number is: 4
