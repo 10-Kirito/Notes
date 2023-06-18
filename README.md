@@ -123,9 +123,13 @@
 
 # Parallel Computing(并行计算)
 
-## 1. OpenMP学习：  [OpenMP.md](Parallel Computing（并行计算）\OpenMP\OpenMP.md) 
+## 1. OpenMP学习： 
 
-## 2. MPI学习：  [README.md](Parallel Computing（并行计算）\MPI\README.md) 
+>  [OpenMP.md](Parallel_Computing(并行计算)\OpenMP\OpenMP.md) 
+
+## 2. MPI学习： 
+
+>  [README.md](Parallel_Computing(并行计算)\MPI\README.md) 
 
 # QT学习
 
