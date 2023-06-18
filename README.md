@@ -49,6 +49,8 @@
 
 > ***参考的书籍有：***
 >
+> [C++并发编程实战](C++\C++ 并发编程实战（第二版）.pdf)
+>
 > [C++ 并发编程实战（第二版）.pdf](C++\C++ 并发编程实战（第二版）.pdf) 
 >
 > [C++ Concurrency in Action.pdf](C++\C++ Concurrency in Action.pdf) 
