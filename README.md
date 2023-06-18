@@ -31,7 +31,7 @@
 
 3.1 [1.STL源码剖析--一些我们可能不知道的语法.md](C++\1.STL源码剖析--一些我们可能不知道的语法.md) 
 
-3.2 [2.STL源码剖析--空间配置器 (allocator).md](C++\2.STL源码剖析--空间配置器 (allocator).md) 
+3.2 [2.STL源码剖析--空间配置器(allocator).md](C++\2.STL源码剖析--空间配置器(allocator).md) 
 
 3.3 [3.STL源码剖析--迭代器概念和traits编程技法.md](C++\3.STL源码剖析--迭代器概念和traits编程技法.md) 
 
