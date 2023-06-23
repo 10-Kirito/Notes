@@ -2270,3 +2270,239 @@ int main()
 # 21. Tuple
 
 `Pair`是将两个`value`视为一个单元，而`Tuple`则是将任意个不同类型的`value`视为一个单元。
+
+# 22. 静态链接和动态链接
+
+> 为了构造可执行文件，链接器必须完成两个主要任务：
+>
+> - 符号解析。***目标文件定义和引用符号***，每一个符号对应于一个函数、一个全剧变量或者一个静态变量（***就是C语言中任何以static属性声明的变量***）。符号解析的目的是将每一个符号引用和一个符号定义关联起来。
+> - 重定位。链接器通过讲每一个符号定义与一个内存位置关联起来，从而重新定位这些节，然后修改所有的相应符号的应用，使得他们指向这个内存位置。
+
+## 22.1 静态链接
+
+> 在Linux系统中，静态库以一种称为存档( archive)的特殊文件格式存放在磁盘当中。存档文件是一组连接起来的可重定位目标文件的集合，有一个头部会用来描述每一个成员目标文件的大小和位置。***存档文件名由后缀.a标识。***
+
+我们现在有一下几个示例文件：
+
+```C
+// addvec.c
+int addcnt = 0;
+
+void addvec(int *x, int *y, int *z, int n) {
+  int i;
+
+  addcnt++;
+
+  for (i = 0; i < n; i++) {
+    z[i] = x[i] + y[i];
+  }
+}
+```
+
+```C
+// multvec.c
+int multcnt = 0;
+
+void multvec(int *x, int *y, int *z, int n) {
+  int i;
+
+  multcnt++;
+
+  for (i = 0; i < n; i++) {
+    z[i] = x[i] + y[i];
+  }
+}
+```
+
+我们现在利用AR工具创建这些函数的静态库：
+
+```shell
+gcc -c addvec.c multvec.c
+ar rcs libvector.a addvec.o multvec.o
+```
+
+> 这个命令使用了AR工具来创建一个静态库文件 `libvector.a`，并将两个目标文件 `addvector.o` 和 `mulvector.o` 添加到库中。
+>
+> 解析命令的具体含义如下：
+>
+> - `ar`：是AR（Archiver）工具的命令。
+> - `rcs`：是AR工具的选项，用于指定操作类型和选项。
+>   - `r`：代表替换（replace），表示如果库中已经存在同名的目标文件，则替换它。
+>   - `c`：代表创建（create），表示创建一个新的库文件。
+>   - `s`：代表添加符号表（symbol table），表示在库中添加符号表以便于链接时使用。
+> - `libvector.a`：是要创建的库文件名，以 `lib` 开头和 `.a` 扩展名，这是静态库的命名约定。
+> - `addvector.o` 和 `mulvector.o`：是要添加到库中的目标文件。
+>
+> 综合起来，上述命令的作用是将 `addvector.o` 和 `mulvector.o` 这两个目标文件添加到静态库 `libvector.a` 中。静态库是一种包含预编译目标文件的归档文件，可以被其他程序链接并使用其中的函数和变量。
+>
+> 使用这个命令后，将会生成一个名为 `libvector.a` 的静态库文件，该文件包含了 `addvector.o` 和 `mulvector.o` 的内容，并可在链接时被其他程序引用和链接。
+
+我们随意的写一下头文件`vector.h`来定义函数的原型：
+
+```c
+#ifndef VECTOR_H
+#define VECTOR_H
+
+void addvec(int *, int *, int *, int);
+void multvec(int *, int *, int *, int);
+
+#endif // !DEBUG
+```
+
+接下来编写主函数：
+
+```C
+// main.c
+#include "vector.h"
+#include <stdio.h>
+
+int x[2] = {1, 2};
+int y[2] = {3, 4};
+int z[2];
+
+int main(int argc, char *argv[]) {
+  addvec(x, y, z, 2);
+
+  printf("z = [%d %d]\n", z[0], z[1]);
+
+  return 0;
+}
+```
+
+***我们接下来进行编译：***
+
+```shell
+╰─❯ gcc -c main.c
+╰─❯ gcc -static -o prog main.o .\libvector.a
+╰─❯ .\prog
+z = [4 6]
+
+# 或者使用以下等价的命令
+╰─❯ gcc -c main.c
+╰─❯ gcc -static -o prog1 main.c -L. -lvector
+╰─❯ ./prog1
+z = [4 6]
+```
+
+> -static参数告诉编译器，链接器应该构建一个完全链接的可执行目标文件，它可以加载到内存中并运行，在加载的时候无须更进一步的链接。
+>
+> `-lvector`参数是`libvector.a`的缩写， `-L.`参数告诉链接器在当前目录下查找`libvector.a`.
+
+## 22.2 动态链接
+
+> 共享库（***shared library***）是致力于解决静态库缺陷的一个现代化创新产物。共享库是一个目标模块，在运行或者加载的过程中，可以加载到任意的内存地址，并且和一个在内存中的程序链接起来。这个过程称为动态链接，是由一个叫做动态链接器的程序来执行的。共享库在Linux系统中通常使用`.so`后缀来表示。
+
+同样的以上面的文件示例：
+
+```shell
+gcc -shared -fpic -o libvector.so addvec.c multvec.c
+
+gcc -o prog main.c ./libvector.so
+```
+
+<img src="assets/image-20230623171110504.png" alt="image-20230623171110504" style="zoom: 67%;" />
+
+## 22.3 从应用程序中加载和链接共享库
+
+> Linux系统为动态链接库提供了一个简单的接口，允许应用程序在运行的时候加载和链接共享库.
+
+```C
+#include <dlfcn.h>
+
+void *dlopen(const char *filename, int flag);
+
+// 返回：若成功则为指向句柄的指针，若出错则为 NULL。
+```
+
+`dlopen` 函数加载和链接共享库 `filename` 用已用带 RTLD_GLOBAL 选项打开了的库解析 `filename` 中的外部符号。如果当前可执行文件是带 `- rdynamic` 选项编译的，那么对符号解析而言，它的全局符号也是可用的。flag 参数必须要么包括 RTLD_NOW，该标志告诉链接器立即解析对外部符号的引用，要么包括 RTLD_LAZY 标志，该标志指示链接器推迟符号解析直到执行来自库中的代码。这两个值中的任意一个都可以和 RTLD_GLOBAL 标志取或。
+
+
+
+```C
+#include <dlfcn.h>
+
+void *dlsym(void *handle, char *symbol);
+
+// 返回：若成功则为指向符号的指针，若出错则为 NULL。
+```
+
+`dlsym` 函数的输入是一个指向前面已经打开了的共享库的句柄和一个 symbol 名字，如果该符号存在，就返回符号的地址，否则返回 NULL.
+
+
+
+```C
+#include <dlfcn.h>
+
+int dlclose (void *handle);
+
+// 返回:若成功则为0，若出错则为-1.
+```
+
+如果没有其他共享库还在使用这个共享库，`dlclose`函数就卸载该共享库。
+
+
+
+```C
+include <dlfcn.h>
+
+const char *dlerror(void);
+
+// 返回：如果前面对 dlopen、dlsym 或 dlclose 的调用失败，
+// 则为错误消息，如果前面的调用成功，则为 NULL。
+```
+
+`dlerror `函数返回一个字符串，它描述的是调用 `dlopen`、`dlsym` 或者 `dlclose `函数时发生的最近的错误，如果没有错误发生，就返回 NULL。
+
+示例程序：
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <dlfcn.h>
+
+int x[2] = {1, 2};
+int y[2] = {3, 4};
+int z[2];
+
+int main()
+{
+    void *handle;
+    void (*addvec)(int *, int *, int *, int);
+    char *error;
+
+    /* Dynamically load the shared library containing addvec() */
+    handle = dlopen("./libvector.so", RTLD_LAZY);
+    if (!handle) {
+        fprintf(stderr, "%s\n", dlerror());
+        exit(1);
+    }
+
+    /* Get a pointer to the addvec() function we just loaded */
+    addvec = dlsym(handle, "addvec");
+    if ((error = dlerror()) != NULL) {
+        fprintf(stderr, "%s\n", error);
+        exit(1);
+    }
+
+    /* Now we can call addvec() just like any other function */
+    addvec(x, y, z, 2);
+    printf("z = [%d %d]\n", z[0], z[1]);
+
+    /* Unload the shared library */
+    if (dlclose(handle) < 0) {
+        fprintf(stderr, "%s\n", dlerror());
+        exit(1);
+    }
+    return 0;
+}
+```
+
+> 环境需要在Linux环境下进行测试，毕竟是Linux为其提供的接口。
+
+```shell
+➜  codes gcc -shared -fpic -o libvector.so addvec.c multvec.c 
+➜  codes gcc -rdynamic -o prog2r dll.c -ldl                  
+➜  codes ./prog2r 
+z = [4 6]
+```
+
