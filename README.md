@@ -9,7 +9,7 @@
 
 *下面部分为学习过程中的补充部分：*
 
-2. **ATT格式的汇编部分知识点总结：** [ATT格式的汇编.md](Assembly\ATT格式的汇编.md) 
+2. **ATT格式的汇编部分知识点总结：** [ATT格式的汇编.md](Assembly/ATT格式的汇编.md) 
 
 3. **汇编中的CALL和RET指令：** [CALL&&RET.md](Assembly\CALL&&RET.md) 
 
