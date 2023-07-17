@@ -5,7 +5,7 @@
 
 # Assembly
 
-## 1. **基本知识点总结**： [Assembly.md](Assembly\Assembly.md)
+## 1. **基本知识点总结**： [Assembly.md](Assembly/Assembly.md)
 
 *下面部分为学习过程中的补充部分：*
 
