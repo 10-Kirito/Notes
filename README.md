@@ -11,15 +11,15 @@
 
 2. **ATT格式的汇编部分知识点总结：** [ATT格式的汇编.md](Assembly/ATT格式的汇编.md) 
 
-3. **汇编中的CALL和RET指令：** [CALL&&RET.md](Assembly\CALL&&RET.md) 
+3. **汇编中的CALL和RET指令：** [CALL&&RET.md](Assembly/CALL&&RET.md) 
 
-4. **汇编中的内外中断：** [内外中断.md](Assembly\内外中断.md) 
+4. **汇编中的内外中断：** [内外中断.md](Assembly/内外中断.md) 
 
-5. **学习过程中一些有用的程序：** [有用的程序.md](Assembly\有用的程序.md) 
+5. **学习过程中一些有用的程序：** [有用的程序.md](Assembly/有用的程序.md) 
 
 # C++
 
-## 1.学习过程中一些知识点总结以及***C/C++知识点盲区总结***： [C++.md](C++\C++.md) 
+## 1.学习过程中一些知识点总结以及***C/C++知识点盲区总结***： [C++.md](C++/C++.md) 
 
 > ​		参考的书籍有：
 >
