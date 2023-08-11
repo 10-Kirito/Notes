@@ -49,7 +49,9 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
+https://gitee.com/yuxiaoxi/zsh-syntax-highlighting.git
 
+https://gitee.com/githubClone/zsh-autosuggestions.git
 
 # 2. 关于`wget:unable to resolve host address `问题
 
