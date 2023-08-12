@@ -3055,3 +3055,188 @@ int main (int argc, char *argv[])
 }
 ```
 
+# 31. 多态性和虚函数
+
+## 31.1 函数调用捆绑
+
+将函数体与函数调用相联系称为捆绑(***binding***)，也就是说函数调用的时候调用的函数体到底是什么的问题。当捆绑在程序运行之前完成时，这称为早捆绑。
+
+捆绑根据对象的类型，发生在运行的时候，这称为动态捆绑(***dynamic binding***)或者运行时捆绑(***runtime binding***)。
+
+## 31.2 设计风格良好的OOP程序
+
+```C++
+#include <iostream>
+using namespace std;
+
+enum note { middleC, Csharp, Cflat };
+class Instrument {
+public:
+  virtual void play(note) const { cout << "Instrument::play" << endl; }
+};
+
+// Wind objects are Instruments
+// because they have the same interface 
+class Wind : public Instrument {
+  // override interface function:
+  void play(note) const {
+    cout << "Wind::play" << endl;
+  }
+};
+
+void tune(Instrument& i) {
+  i.play(middleC);
+}
+
+int main (int argc, char *argv[])
+{
+  Wind flute;
+  tune(flute);
+  return 0;
+}
+```
+
+在一个设计风格良好的`OOP`程序中，大多数甚至所有的函数都沿用`tune()`模型，只与 ***基类接口通信***。这样的程序是可扩展的，因为可以通过从公共基类继承新数据类型而增加新功能。
+
+在对`tune()`的调用中，向上类型转换在对象的每一个不同的类型上完成。总可以得到我们想要的预期的结果， ***这可以被描述为“发送一条消息给一个对象，让这个对象考虑用它来做什么”***。
+
+`virtual`函数是的我们在分析项目的时候可以初步的确定： ***基类应该出现在哪里？应该如何扩展这个程序？***
+
+## 31.3 虚函数功能实现
+
+<img src="assets/image-20230812104545308.png" alt="image-20230812104545308" style="zoom:80%;" />
+
+```C++
+class Instrument {
+public:
+    virtual void play(note) const {
+        cout << "Instrument::play" << endl;
+    }
+    virtual char* what() const {
+        return "Instrument";
+    }
+    virtual void adjust(int) {}
+}
+
+class Wind : public Instrument {
+public:
+    void play(note) cosnt {
+        cout << "Wind::paly" << endl;
+    }
+    char * what() const {
+        return "Wind";
+    }
+    void adjust(int ) { }
+}
+
+class Brass : public Wind {
+public:
+    void play(note) const {
+        cout << "Brass::play" << endl;
+    }
+    
+    char* what() const {
+        return "Brass";
+    }
+}
+```
+
+重点注意一下上面的Brass类，该类是继承了Wind类，类里面又重新重写了Wind继承的虚函数`play(note)`和`what()`。
+
+观察其生成的虚函数表中的函数的地址。可以看到由于`void adjust(int) {}`函数它没有重写，所以说编译器使用的是基类的虚函数的地址。
+
+> 来自《Thinking in C++ 》
+>
+> 每当创建一个包含有虚函数的类或者包含有虚函数的类的派生一个类的时候，编译器就为这个类创建一个唯一的`vtable`比如说这个图的右面所示。在这个表中，编译器放置了在这个类中或者在它的基类中所有声明为`virtual`的函数的地址。如果在这个派生类中没有对在基类中声明`virtual`的函数进行重新定义，编译器就会使用基类的这个虚函数地址。
+>
+> ***然后编译器会在这个类中放置一个`vptr`，当使用简单继承的时候，每一个对象只有一个`vptr`。`vptr`必须被初始化为指向相应的`vtable`的起始地址。***
+>
+> 一旦`vptr`被初始化指向相应的虚函数表，对象就会知道自己到底是什么类型，但是只有当虚函数调用的时候，才会意识到自己是什么类型的数据，因为这里我们调用虚函数的时候，实际上需要从该对象的虚函数表中取出函数的地址，然后进行调用，这里在外界看来好像是他自己 ***知道*** 自己是什么类型。
+
+## 31.4 虚函数调用而产生的汇编代码
+
+```C++
+void fun(Instrument& i) {
+    i.adjust(1);
+}
+int main() {
+    Brass brass;
+    fun(brass);
+}
+```
+
+对于：
+
+```C++
+i.adjust(1);
+```
+
+某一个编译器所产生的输出：
+
+```C++
+push 1;
+push si;
+mov bx, word ptr [si];
+call word ptr [bx +4];
+add sp, 4;
+```
+
+## 31.5 抽象基类和纯虚函数
+
+在设计的时候，我们常常希望基类仅仅作为其派生类的一个接口。这也就是说，仅想要对基类进行向上的类型转换的时候，使用它的接口，而不是仅仅希望用户实际地创建一个基类的对象。
+
+这样的话，其实就是和Java开放当中接口类，然后我们去进行实现并且调用。
+
+## 31.6 对象切片
+
+```C++
+// 下面有两个类
+class Pet {
+    string pname;
+public: 
+    Pet(const string& name) : pname(name) {}
+    virtual string name() const {return pname;}
+    virtual string description() const {
+        return "This is " + pname;
+    }
+};
+
+class Dog : public Pet {
+    string favouriteActivity;
+public:
+    Dog(const string& name, const string& activity)
+        :Pet(name), favouriteActivity(activity) {}
+    string description const {
+        return Pet::name() + " like to " + favouriteActivity;
+    }
+};
+
+void describe(Pet P) {
+    cout << p.description() << endl;
+}
+
+int main() {
+    Dog d("Fluffy", "sleep");
+    describe(d);
+}
+```
+
+所谓的对象切片就是第22行代码所导致的：
+
+```C++
+void describe(Pet p);
+```
+
+这里的函数不是引用或者指针，所以不能使用对象向上类型转换。这意味着，如果说一个由Pet派生来的类的对象被传给`describe`函数的时候，编译器虽然会接受它，但是只拷贝这个对象的对应于Pet的部分， ***切除这个基类对象的派生部分。***
+
+<img src="assets/image-20230812114116690.png" alt="image-20230812114116690" style="zoom:50%;" />
+
+如上图所示，当切片之后，对象的 ***`vptr`***也进行了切换，切换为了基类的 ***`vptr`*** ， 而且多余的变量`favouriteActivity`也是被删除。 ***这就是切片!***
+
+这就会导致一个问题，如果我们写的时候万一不小心将`void describe(Pet& p)` 写成了`void describe(Pet b)`，岂不会引发很大的问题。所以说我们一般是将基类声明为抽象类，即将虚函数声明为纯虚函数，这样的话该类就不可以被实例化，这样的话我们就可以保证向上类型转换期间总是使用指针或者引用了。
+
+> 来自《Thinking in C++ 》
+>
+> 注意，纯虚函数禁止对抽象类的函数以传值方式进行调用，这也是为了防止 ***对象切片***的一种方法。通过抽象类，可以保证向上类型转换期间总是使用指针或者引用。
+>
+> ***阻止对对象进行切片，这可能是纯虚函数最重要的作用：如果有人试着这么做的话，将会通过生成一个编译错误来阻止对象切片。***
