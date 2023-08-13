@@ -1847,6 +1847,54 @@ Is V(rvalue V) noexcept? true
 Is V(lvalue V) noexcept? false
 ```
 
+## 16.5 自定义异常
+
+***头文件`header.h`:***
+
+```c++
+// // if we want to defined a exception by ourselves, we can inherit from
+// base class exception like below:
+
+#ifndef HEADER_H
+#define HEADER_H
+
+#include <exception>
+class MyException : public std::exception {
+  const char * what() const noexcept override{
+    return "This exception is designed by myself!";
+  }
+};
+#endif // !HEADER_H
+```
+
+> 有一些语法，在这里顺便说一下，`override` 关键字是从 C++11 标准开始引入的，并不是早期版本的特性。这可能解释了你为什么没有在一些早期的 C++ 代码中见过它。
+>
+> `override` 关键字用于显式地指示一个函数是在派生类中对基类中的虚函数进行重写。这样做的好处在于，编译器会帮助你检查是否成功地重写了基类的虚函数，以防止意外的错误。如果你试图重写虚函数但出现了签名错误，编译器会产生错误。
+
+***测试文件`my_exception.cpp`:***
+
+```C++
+#include "header.h"
+#include <iostream>
+
+using namespace std;
+
+void testfunc() noexcept(false) { throw MyException(); }
+
+int main(int argc, char *argv[]) {
+
+  try {
+    testfunc();
+  } catch (const exception &e) {
+    cerr << "Caught exception: " << e.what() << endl;
+  }
+
+  return 0;
+}
+```
+
+
+
 # 17. `decval`和`decltype`
 
 > 参看文章：https://stdrc.cc/post/2020/09/12/std-declval/
