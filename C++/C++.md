@@ -3288,3 +3288,111 @@ void describe(Pet p);
 > 注意，纯虚函数禁止对抽象类的函数以传值方式进行调用，这也是为了防止 ***对象切片***的一种方法。通过抽象类，可以保证向上类型转换期间总是使用指针或者引用。
 >
 > ***阻止对对象进行切片，这可能是纯虚函数最重要的作用：如果有人试着这么做的话，将会通过生成一个编译错误来阻止对象切片。***
+
+# 32. ADL(Argument-Dependent-LookUp)
+
+> 参考文章： http://www.gotw.ca/gotw/030.htm
+>
+> 主要目的是为了解决如果一个函数在多个命名空间中都存在的话，我们究竟会调用哪一个函数的问题！
+
+```C++
+namespace A {
+      struct X;
+      struct Y;
+      void f( int );
+      void g( X );
+}
+    
+namespace B {
+        void f( int i ) {
+            f( i );   // which f()?
+        }
+        void g( A::X x ) {
+            g( x );   // which g()?
+        }
+        void h( A::Y y ) {
+            h( y );   // which h()?
+        }
+}
+```
+
+在上面的代码当中，三种情况究竟会调用哪一个函数？
+
+如果 B 写了 `using namespace A; `或 `using A::f;`，那么在查找 `f(int)` 时，`A::f(int)` 就会作为候选函数出现，`f(i);` 调用就会在 `A::f(int)` 和 `B::f(int)` 之间产生歧义。然而，由于 B 没有将 `A::f(int)` 带入作用域，因此只有 `B::f(int)` 被考虑，所以调用是明确的。
+
+但是对于B中的`void g(A::X x);`函数来讲，其中的`g(x)`的调用是ambiguous（模糊的）。
+
+<img src="assets/image-20230821173324205.png" alt="image-20230821173324205" style="zoom:50%;" />
+
+这是为什么呢？就是因为所谓的ADL规则，也称为 ***Koenig 查找***。
+
+> fromhttp://www.gotw.ca/gotw/030.htm
+>
+> This call is ambiguous between A::g(X) and B::g(X). The programmer must explicitly qualify the call with the appropriate namespace name to get the g() he wants.
+>
+> You may at first wonder why this should be so. After all, as with f(), B hasn't written "using" anywhere to bring A::g(X) into its scope, and so you'd think that only B::g(X) would be visible, right? Well, this would be true but for an extra rule that C++ uses when looking up names:
+>
+> 此处的函数调用在`A::g(X)`和`B::g(X)`之间存在歧义，程序员必须使用适当的命名空间名称来限定调用。
+>
+> 你第一反应肯定是为什么这样？毕竟，就像上面的函数`void f(int i);`不是一样的道理吗？他有没有使用`using`将`A::g(X)`引入作用域，所以你会认为只有`B::g(X)`是可见的。对吗？如果不是因为C++中在查找名称的时候使用了额外的一条规则，情况就是你想象的这样。
+
+***Definition:***
+
+**Koenig Lookup (simplified)**
+
+If you supply a function argument of class type (here x, of type A::X), then to find the function name the compiler considers matching names in the namespace (here A) containing the argument's type.
+
+> 柯尼希查找:
+> 如果您提供了一个类类型的函数参数（此处为 x，类型为 A::X），那么在查找函数名时，编译器会考虑包含参数类型的名称空间（此处为 A）中的匹配名称。
+
+## 32.1 应用1 `std::cout << "Hello, World" << std::endl;`
+
+该条规则其实我们到处都在使用，只是我们不知道而已，比如说我们最经常使用的`<<`和`>>`运算符号：
+
+```C++
+#include <iostream>
+int main() {
+    std::cout << "Test\n"; 		// There is no operator<< in global namespace, but ADL
+                           				// examines std namespace because the left argument is in
+                           				// std and finds std::operator<<(std::ostream&, const char*)
+    operator<<(std::cout, "Test\n"); // same, using function call notation
+
+    // however,
+    std::cout << endl; // Error: 'endl' is not declared in this namespace.
+                       		   // This is not a function call to endl(), so ADL does not apply
+
+    endl(std::cout); // OK: this is a function call: ADL examines std namespace
+                     	       // because the argument of endl is in std, and finds std::endl
+
+    (endl)(std::cout); // Error: 'endl' is not declared in this namespace.
+                                       // The sub-expression (endl) is not a function call expression
+}
+```
+
+我们经常使用到的`>>`和`<<`运算符，在global namespace 当中是不存在`operator <<`的，该函数是定义在`std`命名空间当中的，这里就是利用到了ADL规则，编译器会利用参数`std::cout` 来在`std`当中寻找函数`operator << `，最终他找到了`std::operator<<(std::ostream&, const char*);`
+
+## 32.2 应用2
+
+> 参考文章： https://zhuanlan.zhihu.com/p/338917913?utm_id=0
+>
+> 引入两个重要的概念：
+>
+> - qualified name : 一个名称所属的作用域**被显式的指明**，例如`::`、`->`或者`.`。`this->count`就是一个 qualified name，但 count 不是，因为它的作用域没有被显示的指明，即使它和`this->count`是等价的。
+> - dependent name：依赖于模板参数的名称，也就是访问运算符左面的表达式类型依赖于模板参数。例如：std::vector<T>::iterator 是一个 Dependent Name，但假如 T 是一个已知类型的别名（using T = int），那就不是 Dependent Name。
+
+```C++
+namespace MyNamespace
+{
+    class MyClass {};
+    void doSomething(MyClass);
+}
+ 
+MyNamespace::MyClass obj; // global object
+ 
+ 
+int main()
+{
+    doSomething(obj); // Works Fine - MyNamespace::doSomething() is called.
+}
+```
+
