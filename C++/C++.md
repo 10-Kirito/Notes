@@ -3396,3 +3396,113 @@ int main()
 }
 ```
 
+# 31. 容器操作可能使迭代器失效
+
+> 但凡是使用了迭代器的循环体，都不要向迭代器所属的容器添加元素!!!!
+>
+> 这样做会导致迭代器失效，进而会导致未定义行为!!!!
+
+***示例：***
+
+```C++
+for (const auto &e : nums) {
+      for (auto &it = subsets.begin(); it != subsets.end(); ++it) {
+        subsets.push_back(*it + e);
+  	}
+}
+```
+
+上面这一份代码由于在循环体中对迭代器所属的容器进行修改，所以会导致迭代器失效！正确的做法应该是下面这样，选择一个临时的容器存储，之后再进行添加：
+
+```C++
+for (const auto &e : nums) {
+    vector<int> newElements; // 用于暂存新的元素
+    for (auto it = subsets.begin(); it != subsets.end(); ++it) {
+        newElements.push_back(*it + e);
+    }
+    subsets.insert(subsets.end(), newElements.begin(), newElements.end());
+}
+```
+
+## 31.1 缘由
+
+为什么会导致迭代器失效呢？
+
+这其实和容器的实现有关，大部分的容器是动态增长的，这也就意味着我们随时面临着 ***重新分配存储空间的可能性！！*** 这就会导致之前的那一片存储空间我们不再使用，我们又申请了一块新的内存空间，那么迭代器的底层实现就是指针，重新分配存储空间之前，***指针指向的是A存储区域***，重新分配存储空间之后，***指针指向的是B存储区域，那么自然之前的指针就会失效，也就是迭代器失效！！***
+
+在向容器添加元素之后:
+
+- 如果容器是vector或者string， 且存储空间被重新分配，则指向容器的迭代器、指针和引用都会失效。如果存储空间未重新分配，指向插入位置之前的元素的迭代器、指针和引用仍然有效，但是指向插入位置之后元素的迭代器、指针和引用都会失效。***尤其是我们在for循环当中经常使用到的vector<T>::end(), 尾部迭代器，是一定会失效的！！！***
+- 对于deque, 插入到首尾位置之外的位置都会导致迭代器、指针和引用失效。如果在首尾位置添加元素，迭代器会失效，但是指向存在的元素的引用和指针不会失效。
+- 对于list和forward_list，指向容器的迭代器（包括尾后迭代器和首前迭代器）、指针和引用仍有效。
+
+## 31.2 补充
+
+除了`string`之外，指向容器的迭代器、引用和指针在`swap`操作之后都不会失效。因为`swap`仅仅是交换两个容器的内部数据结构，并未交换数据本身。
+
+***示例：***
+
+```C++
+#include <array>
+#include <iostream>
+#include <vector>
+
+int main(int argc, char *argv[]) {
+  std::vector<int> vector_1{1, 2, 3, 4, 5};
+  std::vector<int> vector_2{6, 7, 8, 9, 10};
+  auto iter = vector_1.begin();
+  std::cout << "------vector test------" << std::endl;
+  std::cout << "Before exchange: " << *iter << std::endl;
+  swap(vector_1, vector_2);
+  std::cout << "After exchange: " << *iter << std::endl;
+
+  std::cout << "-------array test------" << std::endl;
+  std::array<int, 10> array_1{1, 2, 3, 4};
+  std::array<int, 10> array_2{5, 6, 7, 8, 9};
+  auto iter_array = array_1.begin();
+  std::cout << "Before exchange: " << *iter_array << std::endl;
+  swap(array_1, array_2);
+  std::cout << "After exchange: " << *iter_array << std::endl;
+
+  return 0;
+}
+```
+
+***Output:***
+
+```shell
+❯ ./swap
+------vector test------
+Before exchange: 1
+After exchange: 1
+-------array test------
+Before exchange: 1
+After exchange: 5
+```
+
+# 32. deque ==>> double-ended queue, 双端队列
+
+STL提供的容器含有deque, 不过注意，该容器实际上是双端队列，该种数据结构是一种特殊的数据结构，其具有队列和栈的特性，所以我们定义了stack和queue两种***容器适配器***。
+
+本质上，一个适配器是一种机制，是的某一种事物的行为看起来像另外一种事物一样，就比如stack和queue，其底层实现都继承了deque,然后对其功能进行限制和封装，将其 ***适配为了stack 和queue。***
+
+```C++
+deque<int > deq;
+// 初始化一个stack:
+stack<int> stk(deq); // 从deq拷贝元素到stk;
+```
+
+默认情况下，stack和queue都是基于deque进行实现的，（我们查看源码可以看到都继承自deque）还有priority_queue是在vector之上的基础上实现的。
+
+通常底层实现中这些适配器是具有默认的继承的容器类型的，如果我们想要修改其底层实现的话，我们可以添加一个类型参数：
+
+```C++
+// 在vector之上实现的空栈：
+stack<string, vector<string>> str_stk;
+```
+
+不过我们需要注意，并不是说底层实现的容器是随便重载的，有的容器不符合要求也是不能进行重载的！
+
+***此外：***
+
+标准库提供了三种顺序容器适配器：`stack`、`queue`、`priority_queue`。每个适配器都在其底层顺序容器类型之上定义了一个新的接口，进而限制容器适配器的行为，使其行为像另外的一种数据结构。
