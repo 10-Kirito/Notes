@@ -3506,3 +3506,181 @@ stack<string, vector<string>> str_stk;
 ***此外：***
 
 标准库提供了三种顺序容器适配器：`stack`、`queue`、`priority_queue`。每个适配器都在其底层顺序容器类型之上定义了一个新的接口，进而限制容器适配器的行为，使其行为像另外的一种数据结构。
+
+# 33.dependent-name-lookup-types
+
+## 33.1 起因
+
+> https://stackoverflow.com/questions/76989903/problems-encountered-in-writing-abstract-classes-and-derived-classes
+
+我在使用模板实现图这个数据结构的时候发现，我无法在派生类中使用在基类中已经定义的成员变量：
+
+```C++
+#pragma once
+#include <iostream>
+template <typename T> class A {
+public:
+  T a;
+  virtual void show() = 0;
+};
+
+template <typename T> class B : public A<T> {
+public:
+  B() { a = 0; }
+  void show() { std::cout << "Hello, world!" << std::endl; }
+};
+```
+
+但是我又发现如果我添加上`this`关键字的话，就会发现我们可以使用：
+
+```C++
+#pragma once
+#include <iostream>
+template <typename T> class A {
+public:
+  T a;
+  virtual void show() = 0;
+};
+
+template <typename T> class B : public A<T> {
+public:
+  B() { this->a = 0; }
+  void show() { std::cout << "Hello, world!" << std::endl; }
+};
+```
+
+## 33.2 解决方法
+
+Here’s the rule: the compiler does not look in dependent base classes (like `B<T>`) when looking up nondependent names (like `f`).
+
+***规则如下：编译器在查找非从属名称的时候，不会去从属基类的作用域下去寻找（如 A<T>）。***
+
+这里感觉说的也是不怎么对，因为我们上面示例中a命名是一个依赖型变量，但是为什么派生类中不能直接使用，因为编译器无法识别啥的别的原因吧！
+
+但是如果我们使用`this`关键字的话，`a`就会变成依赖型变量，编译器编译的时候就会去基类中进行查找。
+
+> 感叹：模板屁事真多！
+
+当然我们也可以在基类当中显示的声明,不过需要注意，我们这样显示声明的话对于成员变量来讲是可以的，***但是对于虚函数来讲，我们这样做的话，就会影响多态的作用机制!***
+
+```C++
+using A<T>::a;
+```
+
+## 33.3 https://isocpp.org/网站上看到的其他的关于模板的问题
+
+***FAQ Why am I getting errors when my template uses a nested type?***
+
+```C++
+template<typename Container, typename T>
+bool contains(const Container& c, const T& val)
+{
+  Container::iterator iter; // Error, "Container::iterator" is not a type
+  iter = std::find(c.begin(), c.end(), val);
+  return iter !=- c.end();
+}
+```
+
+这里的原因其实很简单，就是编译器会认为Container是一个类型，然后后面的内容是声明的部分，会发现后面的声明会出错。
+
+我们怎么解决呢？很简单，告诉编译器这个是一个类型就好了：
+
+```C++
+template<typename Container, typename T>
+bool contains(const Container& c, const T& val)
+{
+  typename Container::iterator iter;
+  iter = std::find(c.begin(), c.end(), val);
+  return iter !=- c.end();
+}
+```
+
+***FAQ Why am I getting errors when my template-derived-class uses a nested type it inherits from its template-base-class?***
+
+```C++
+template<typename T>
+class B {
+public:
+  class Xyz { /*...*/ };  // Type nested in class B<T>
+  typedef int Pqr;        // Type nested in class B<T>
+};
+template<typename T>
+class D : public B<T> {
+public:
+  void g()
+  {
+    Xyz x;  // Bad (even though some compilers erroneously (temporarily?) accept it)
+    Pqr y;  // Bad (even though some compilers erroneously (temporarily?) accept it)
+  }
+};
+```
+
+This might hurt your head; better if you sit down.
+
+Within `D<T>::g()`, name `Xyz` and `Pqr` do not depend on template parameter `T`, so they are known as a *nondependent names*. On the other hand, `B<T>` is dependent on template parameter `T` so `B<T>` is called a *dependent name*.
+
+Here’s the rule: the compiler does not look in dependent base classes (like `B<T>`) when looking up nondependent names (like `Xyz` or `Pqr`). As a result, the compiler does not know they even exist let alone are types.
+
+At this point, programmers sometimes prefix them with `B<T>::`, such as:
+
+```C++
+template<typename T>
+class D : public B<T> {
+public:
+  void g()
+  {
+    B<T>::Xyz x;  // Bad (even though some compilers erroneously (temporarily?) accept it)
+    B<T>::Pqr y;  // Bad (even though some compilers erroneously (temporarily?) accept it)
+  }
+};
+```
+
+Unfortunately this doesn’t work either because those names (are you ready? are you sitting down?) are not necessarily types. “Huh?!?” you say. “Not types?!?” you exclaim. “That’s crazy; any fool can *SEE* they are types; just look!!!” you protest. Sorry, the fact is that they might not be types. The reason is that there can be a specialization of `B<T>`, say `B<Foo>`, where `B<Foo>::Xyz` is a data member, for example. Because of this potential specialization, the compiler cannot assume that `B<T>::Xyz` is a type until it knows `T`. The solution is to give the compiler a hint via the `typename` keyword:
+
+```C++
+template<typename T>
+class D : public B<T> {
+public:
+  void g()
+  {
+    typename B<T>::Xyz x;  // Good
+    typename B<T>::Pqr y;  // Good
+  }
+};
+```
+
+***FAQ Why am I getting errors when my template-derived-class uses a member it inherits from its template-base-class?***
+
+这个问题其实是和我这次遇到的问题是很接近的，只不过一个是成员变量，而另一个是成员函数：
+
+```C++
+template<typename T>
+class B {
+public:
+  void f() { }  // Member of class B<T>
+};
+template<typename T>
+class D : public B<T> {
+public:
+  void g()
+  {
+    f();  // Bad (even though some compilers erroneously (temporarily?) accept it)
+  }
+};
+```
+
+This might hurt your head; better if you sit down.
+
+Within `D<T>::g()`, the name `f` does not depend on template parameter `T`, so `f` is known as a *nondependent name*. On the other hand, `B<T>` is dependent on template parameter `T` so `B<T>` is called a *dependent name*.
+
+Here’s the rule: the compiler does not look in dependent base classes (like `B<T>`) when looking up nondependent names (like `f`).
+
+This doesn’t mean that inheritance doesn’t work. Class `D<int>` is still derived from class `B<int>`, the compiler still lets you implicitly do the is-a conversions (e.g., `D<int>*` to `B<int>*`), dynamic binding still works when virtual functions are invoked, etc. But there is an issue about how names are looked up.
+
+Workarounds:
+
+- Change the call from `f()` to `this->f()`. Since `this` is always implicitly dependent in a template, `this->f` is dependent and the lookup is therefore deferred until the template is actually instantiated, at which point all base classes are considered.
+- Insert `using B<T>::f;` just prior to calling `f()`.
+- Change the call from `f()` to `B<T>::f()`. Note however that this might not give you what you want if `f()` is virtual, since it inhibits the virtual dispatch mechanism.
+
+总结，模板中涉及到多态以及派生模板类的话多多使用`this`吧！尤其是那些存在多态机制的模板类，一定要多使用`this`，否则的话，如果你使用`B<T>::f()`，这个会影响多态的作用机制。
