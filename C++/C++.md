@@ -3684,3 +3684,400 @@ Workarounds:
 - Change the call from `f()` to `B<T>::f()`. Note however that this might not give you what you want if `f()` is virtual, since it inhibits the virtual dispatch mechanism.
 
 总结，模板中涉及到多态以及派生模板类的话多多使用`this`吧！尤其是那些存在多态机制的模板类，一定要多使用`this`，否则的话，如果你使用`B<T>::f()`，这个会影响多态的作用机制。
+
+# 34. C++ 可调用对象
+
+## 34.1 基本概念
+
+- 调用运算符：`()`，跟随在函数名之后的一对括号`()`，起到调用函数的效果，传递给函数的实参放置在括号当中；
+- ***谓词***，是一个可调用表达式，其返回结果为一个能作为条件的值。根据可以接受的参数分为一元谓词和二元谓词；接受谓词参数的算法对输入序列中的每一个元素都调用谓词；
+- ***可调用对象***，对于一个对象或者一个表达式，如果可以对其使用调用运算符，则可以称之为可调用对象（***其实就是一个类对象，重载了()调用运算符而已***）；
+- ***调用形式，***一种调用形式对应了一个函数类型，指明了调用返回类型的以及传递的参数类型，比如说`int(int, int)`；
+
+## 34.2 函数对象
+
+如果类重载了调用运算符，则该类的对象称之为函数对象，即这些对象的行为像函数一样。
+
+***示例：***
+
+```C++
+#include <iostream>
+#include <string>
+
+class PrintString {
+  std::ostream &os;
+  char sep;
+
+public:
+  PrintString(std::ostream &o = std::cout, char c = ' ') : os(o), sep(c) {}
+  void operator()(const std::string &s) const { os << s << sep; }
+};
+
+int main (int argc, char *argv[])
+{
+  PrintString printString;
+  printString("Hello, world");
+  return 0;
+}
+```
+
+## 34.3 标准可中可调用对象
+
+标准库在头文件`functional`中定义了一系列模板类，每一类中都定义了一个执行命名操作的调用运算符，比如说：`less<T>`、`greater<T>`等等。
+
+***示例：***
+
+```C++
+#include <algorithm>
+#include <iostream>
+#include <functional>
+#include <string>
+#include <vector>
+
+int main (int argc, char *argv[])
+{
+  std::vector<std::string> vec {"111", "222", "333", "555"};
+
+  std::sort(vec.begin(), vec.end(), std::greater<std::string>());
+
+  std::for_each(vec.begin(), vec.end(), [](const std::string & s) { std::cout << s << " ";});
+
+  return 0;
+}
+```
+
+## 34.4 可调用对象与`function`
+
+不同类型的函数具有相同的调用形式：
+
+```C++
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <string>
+#include <vector>
+
+// 普通函数
+int add(int i, int j) { return i + j; }
+// 函数指针
+int (*addptr)(int i, int j) = add;
+
+// lambda表达式
+auto mod = [](int i, int j) { return i % j; };
+
+// 函数对象
+class divide {
+public:
+  int operator()(int i, int j) { return i / j; }
+};
+
+int main(int argc, char *argv[]) {
+  std::vector<std::string> vec{"111", "222", "333", "555"};
+
+  std::sort(vec.begin(), vec.end(), std::greater<std::string>());
+
+  std::for_each(vec.begin(), vec.end(),
+                [](const std::string &s) { std::cout << s << " "; });
+
+  std::function<int(int, int)> f1 = add;
+  std::function<int(int, int)> f2 = [](int i, int j) { return i % j; };
+  std::function<int(int, int)> f3 = addptr;
+  std::function<int(int, int)> f4 = divide();
+
+  return 0;
+}
+```
+
+## 34.5 bind函数
+
+首先说一下为什么要有`bind`函数，因为在某些时候，标准库中提供的算法当中有的函数只接受接受一元谓词，不接受其他的谓词，比如说`find_if`函数，这个时候我们有的是二元谓词，这个时候该怎么办呢？
+
+我们可以将`bind`函数看做一个***通用的函数适配器***，他可以接受一个可调用对象，然后对这个可调用对象经过一系列的魔改之后，会生成一个新的可调用对象来适应原函数的参数列表。
+
+比如说我们可以利用`bind`函数将一个三元谓词修改为一个一元谓词，这样的话，我们就可以利用`bind`函数来解决我们上面提到的问题。
+
+***示例：***
+
+```C++
+#include <functional>
+#include <iostream>
+using namespace std::placeholders;
+
+void fun(int n1, int n2, int n3) {
+  std::cout << n1 << " " << n2 << " " << n3 << std::endl;
+}
+
+void ref_test(int & test) {
+  test = 100;
+}
+
+int main (int argc, char *argv[])
+{
+  
+  auto f1 = std::bind(fun, 11, 22, _1);
+  f1(33);
+
+  auto f2 = std::bind(fun, _2, _1, 33);
+  f2(22, 11);
+
+  int test = 10;
+  auto f3 = std::bind(ref_test, std::ref(test));
+  f3();
+  std::cout << "After f3, the value of test is " << test << std::endl;
+  return 0;
+}
+```
+
+输出结果：
+
+```shell	
+❯ ./bind_test
+11 22 33
+11 22 33
+After f3, the value of test is 100
+```
+
+- `bind`函数可以进行参数绑定；
+- `bind`函数可以进行重排参数顺序；
+- `bind`函数还可以绑定引用参数，只不过需要注意的是，绑定引用参数需要使用标准库函数`ref`， 而绝非`&`;
+
+## 34.6 lambda
+
+${[capture\ list]\ (paramters)\ mutable\rightarrow returnType\{function\ body\}}$
+
+
+
+# 35.泛型算法
+
+## 35.1 迭代器模式
+
+迭代器模式，提供一种方法顺序访问一个聚合对象中各个元素，而又不暴露该对象的内部表示。当我们需要访问一个聚集对象，而且不管这些对象是什么都需要遍历这些对象的时候，我们都需要考虑使用 ***迭代器模式***。比如说我们接下来要学习的泛型算法，这些算法他们并不直接操作容器，而是只要求遍历由两个迭代器指定的一个元素范围来进行操作。
+
+***迭代器使得算法不依赖于容器，但是算法依赖于元素类型的操作。***
+
+迭代器的存在让算法不需要容器就可以直接访问容器当中的元素，但是我访问到指定的元素之后还需要元素类型支持某一些操作。这样的话，***算法就会永远不会执行容器的操作，他们只会运行于迭代器之上，执行迭代器的操作。***
+
+
+
+
+
+# 36. Smart Pointer
+
+## 36.1 shared_ptr
+
+***语义：共享式拥有。***
+
+## 36.2 weak_ptr
+
+`shared_ptr`最大的特点就是当自己指向的对象的引用数为0的时候，会自动释放那些不在被使用的对象的资源，但是有的时候，就是因为这样的机制，导致系统内资源无法正常释放，最终导致内存泄露。比如说下面两种情况：
+
+1. 也就是所谓的循环引用cyclic reference(环式指向)。
+
+```C++
+#include <iostream>
+#include <memory>
+
+class Node {
+  int _data;
+
+public:
+  std::shared_ptr<Node> ptr;
+  Node(const int &data) : _data(data) {}
+  ~Node() { std::cout << "delete" << _data << std::endl; }
+};
+
+int main(int argc, char *argv[]) {
+
+  std::shared_ptr<Node> ptr1 = std::make_shared<Node>(1);
+  std::shared_ptr<Node> ptr2 = std::make_shared<Node>(2);
+
+  ptr1->ptr = ptr2;
+  ptr2->ptr = ptr1;
+
+  return 0;
+}
+```
+
+该示例程序的最终运行结果不会输出任何字符，这也就意味着相应的申请的Node对象没有被正确释放：<img src="assets/image-20230903180532425.png" alt="image-20230903180532425" style="zoom:80%;" />
+
+至于原因是什么，其实很简单，在第15行的时候我们申请了一个对象，并使用智能指针指向该对象。此时该对象的引用数为1，而后来的第19行，另外的一个共享指针也指向了该对象，此时该对象的引用数为2。***关键是最终程序结束的时候，ptr1的生命周期已经结束，此时只会是相应的对象的引用减去1，但是仍然不为0，这就会导致该对象在程序结束的时候其引用仍然为1，所以相应的资源不会被释放。***
+
+同样的道理，对于共享指针ptr2也是同样的道理。
+
+2. 还有一种情况是，为了防止：***指针的生命周期要比指向的对象的声明周期长***，这样就会导致出现内存泄露的情况。
+
+比如说下面的代码示例：
+
+```C++
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+using namespace std;
+
+class Person {
+public:
+  string name;
+  shared_ptr<Person> mother;
+  shared_ptr<Person> father;
+
+  vector<shared_ptr<Person>> kids;
+  //vector<weak_ptr<Person>> kids;
+
+  Person(const string &n, shared_ptr<Person> m = nullptr,
+         shared_ptr<Person> f = nullptr)
+      : name(n), mother(m), father(f) {}
+
+  ~Person() { cout << "delete " << name << endl; }
+};
+
+shared_ptr<Person> initFamily(const string &name) {
+  shared_ptr<Person> mom = make_shared<Person>(name + "'s mom");
+  shared_ptr<Person> father = make_shared<Person>(name + "'s father");
+
+  shared_ptr<Person> kids = make_shared<Person>(name, mom, father);
+
+  mom->kids.push_back(kids);
+  father->kids.push_back(kids);
+
+  return kids;
+}
+
+int main(int argc, char *argv[]) {
+  shared_ptr<Person> p = initFamily("nico");
+
+  cout << "nico's family exists" << endl;
+
+  cout << "-nico is shared " << p.use_count() << " times" << endl;
+  cout << "-name of 1st kid if nico's mom " << p->mother->kids[0].lock()->name << endl;
+
+  p = initFamily("jim");
+  cout << "jim's family exists" << endl;
+
+  return 0;
+}
+
+```
+
+这段代码中，很显然对于p指向的对象，被共享三次。这就会存在一种语义：当p共享指针（这里的角色是孩子）销毁的时候，也就是说儿子 “死亡”的时候，按理来说，其应该就会调用析构函数析构，而且“其父母的儿子也应该不存在”，应当也指向`nullptr`。***但是实际上儿子对应的对象的析构函数没有被调用，即相应的资源没有被释放。***
+
+这里存在一种语义就是：***reference的寿命比其所指向的对象的寿命更长。***就比如说这里的父母的kids成员的寿命比其指向的对象（真正的儿子本人的寿命还要长）更长。
+
+我们怎么解决呢？其实这里很简单，我们所有的问题的根源都是源自，当该对象有一个新的和共享指针指向它的时候，相应的引用数会加一，***那么如果我们不让其加一的话，不就解决了这个问题吗？***
+
+这就是`weak_ptr`的由来，但是该指针又有一些不一样的地方。
+
+我们只需要将上面的kid对应类型修改为：
+
+```C++
+// vector<shared_ptr<Person>> kids;
+ vector<weak_ptr<Person>> kids;
+```
+
+这样虽然说，这个指针指向孩子但是，实际上我们只是 ***共享，但是我并不拥有，儿子就是儿子，儿子没了，那么我的儿子也就没了。***关键就是相应的对象的引用数并不增加。
+
+***注意：***
+
+我们是不能使用`*`以及`->`来访问`weak_ptr`指向的对象的，因为其可能已经不存在（其指向的资源已经自己主动释放）。如果我们想要访问的话，我们必须将其转化另外的一个`shared_ptr`即可, 或者检查自己是否指向某一个对象,比如下面示例：
+
+```C++
+std::shared_ptr<int> p1(new int(5));
+std::weak_ptr<int> wp1 = p1; //p1 owns the memory.
+
+{
+  std::shared_ptr<int> p2 = wp1.lock(); //Now p1 and p2 own the memory.
+  if(p2) //Always check to see if the memory still exists
+  { 
+    //Do something with p2
+  }
+} //p2 is destroyed. Memory is owned by p1.
+
+p1.reset(); //Memory is deleted.
+
+std::shared_ptr<int> p3 = wp1.lock(); //Memory is gone, so we get an empty shared_ptr.
+if(p3)
+{
+  //Will not execute this.
+}
+```
+
+## 36.3 错误的使用`shared_ptr`
+
+一种最常见的错误是：我们必须确保该对象是只被一组`shared_ptr`所共享，例如下面示例代码就是错误的：
+
+```C++
+#include <iostream>
+#include <memory>
+
+int main(int argc, char *argv[]) {
+  int *a = new int;
+
+  std::shared_ptr<int> p1(a);
+  std::shared_ptr<int> p2(a);
+
+  std::cout << "p1,use_count: " << p1.use_count() << std::endl;
+  std::cout << "p2.use_count: " << p2.use_count() << std::endl;
+
+  return 0;
+}
+```
+
+其运行结果如下面截图所示：<img src="assets/image-20230903184113944.png" alt="image-20230903184113944" style="zoom:80%;" />
+
+这里理解起来也简单，就是我们使用***同一块内存来构建了两个智能指针对象***。
+
+所以说上面的两个智能指针释放资源的时候都会释放相应的资源，就会导致该资源被释放两次。***所以说我们创建对象的时候直接创建智能指针：***
+
+```C++
+shared_ptr<int> sp1(new int);
+shared_ptr<int> sp2(sp1);
+```
+
+这样的错误我们随时都可能发生，比如说之前的父母儿子程序示例中添加下面的功能：
+
+```C++
+ void setParentAndTheirKids(shared_ptr<Person> m = nullptr,
+                             shared_ptr<Person> f = nullptr) {
+    mother = m;
+    father = f;
+    if (m) {
+      m->kids.push_back(shared_ptr<Person>(this));
+    }
+    if (f) {
+      f->kids.push_back(shared_ptr<Person>(this));
+    }
+  }
+```
+
+这段代码猛的一看是不存在问题的，但是给其母亲添加自己为其孩子的时候，出现了问题，我们是采用传入this指针来构建这个智能指针，这里也就是相当于上面的第一种错误示例，会导致开启一个 ***新的拥有者团队。***
+
+对付这个问题的方法之一很简单，我们不传入`this`不就可以解决这个问题了，比如说我们想办法将指向kid的那个`shared_ptr`作为第三个参数不就可以解决问题了。
+
+***但是这里C++标准库为我们提供了另外的一个选项：`class std::enable_shared_from_this<>`***.我们可以从`class std::enable_shared_from<>`派生我们自己的`class`，表现出被***shared pointer管理着***的对象，做法就是将class名称当做`template`实参传入。
+
+然后我们就可以使用一个派生的成员函数`shared_from_this()`建立起一个源自this的正确的shared_ptr:
+
+```C++
+class Person : public std :: enable_shared_from_this<Person> {
+...
+  void setParentAndTheirKids(shared_ptr<Person> m = nullptr,
+                             shared_ptr<Person> f = nullptr) {
+
+    mother = m;
+    father = f;
+
+    if (m) {
+      m->kids.push_back(shared_ptr<Person>(shared_from_this()));
+      // m->kids.push_back(shared_ptr<Person>(this));
+    }
+    if (f) {
+      f->kids.push_back(shared_ptr<Person>(shared_from_this()));
+      // f->kids.push_back(shared_ptr<Person>(this));
+    }
+  }
+};
+```
+
+像上面这样我们就可以利用派生而来的函数`shared_from_this()`来获得一个指向*this的`shared_ptr`。
+
+***注意，我们不可以在构造函数内去调用该函数，原因很简单，此时对象都还没建立起来，哪里来的共享指针呢！***
