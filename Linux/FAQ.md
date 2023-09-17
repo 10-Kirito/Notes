@@ -184,3 +184,64 @@ git config --global http.proxy 127.0.0.1:7890
 git config --global https.proxy 127.0.0.1:7890
 ```
 
+# 8. 安装输入法Fcitx5
+
+> https://zhuanlan.zhihu.com/p/508797663
+
+***需要安装三部分基本内容：***
+
+1. fcitx5主程序
+2. 中文输入引擎
+3. 图形界面相关
+
+```shell
+sudo apt install fcitx5 \
+fcitx5-chinese-addons \
+fcitx5-frontend-gtk4 fcitx5-frontend-gtk3 fcitx5-frontend-gtk2 \
+fcitx5-frontend-qt5
+```
+
+***安装中文词库：***
+
+```shell
+# 下载词库文件
+wget https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20220416.dict
+# 创建存储目录
+mkdir -p ~/.local/share/fcitx5/pinyin/dictionaries/
+# 移动词库文件至该目录
+mv zhwiki-20220416.dict ~/.local/share/fcitx5/pinyin/dictionaries/
+```
+
+***进行配置：***
+
+```shell
+im-config
+```
+
+根据弹出窗口的提示配置首选输入法，将其设置为fcitx5即可。
+
+设置开机启动，
+
+***fcitx5相关主题设置：***
+
+命令行界面输入`fcitx5-configtool`，然后在弹出来的窗口进行配置即可。
+
+另外主题可以Github上进行寻找，推荐：
+
+> https://github.com/tonyfettes/fcitx5-nord
+
+# 9.Kitty 无法输入中文的解决方案
+> https://blog.csdn.net/lxyoucan/article/details/124423741
+>
+> https://github.com/kovidgoyal/kitty/issues/469
+
+终端下编辑文件`.pam_environment`, 在里面写入：
+```
+NPUT_METHOD DEFAULT=fcitx5                                             
+GTK_IM_MODULE DEFAULT=fcitx5                                           
+QT_IM_MODULE DEFAULT=fcitx5                                            
+XMODIFIERS DEFAULT=\@im=fcitx5                                         
+SDL_IM_MODULE DEFAULT=fcitx                                            
+GLFW_IM_MODULE=ibus 
+```
+重启即可！
