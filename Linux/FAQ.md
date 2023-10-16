@@ -168,6 +168,14 @@ sudo nvm use 19.8.1
 
 网络代理设置为手动，并将HTTP代理、HTTPS代理、SOCKS代理设置为127.0.0.1，端口设置为Clash 对应的端口。
 
+我们直接可以在终端进行代理：
+
+```shell
+export http_proxy='http://localhost:7890'
+export https_proxy='http://localhost:7890'
+export PATH=$PATH:/home/zpf/downloads/Clash
+```
+
 # 7. Git 网络问题解决方法
 
 > https://blog.csdn.net/zpf1813763637/article/details/128340109?spm=1001.2014.3001.5506
@@ -245,3 +253,39 @@ SDL_IM_MODULE DEFAULT=fcitx
 GLFW_IM_MODULE=ibus 
 ```
 重启即可！
+
+# 10.好用的视频播放器
+
+***MPV 和 VLC***
+
+# 11.Clash For Windows 配置桌面应用图标
+
+> https://blog.zzsqwq.cn/posts/clash-for-windows-on-linux/#fn:2
+
+首先我们可以创建一个软链接来方便我们后面的操作，将软链接创建在我们熟悉的地方：
+
+```shell
+❯ln -s /home/kirito/Downloads/Clash_20_36/cfw /home/user/.local/bin/cfw
+```
+
+接着配置快速启动图标：
+
+```shell
+❯ sudo nvim ~/.local/share/applications/clash.desktop
+# 写入下面的内容：
+[Desktop Entry]
+Name=Clash Fow Windows
+Exec=/home/user/.local/bin/cfw
+Icon=图标的路径
+Type=Application
+StartupNotify=true
+```
+
+图标可以在这里下载： https://zh.wikipedia.org/zh-sg/File:Clash_Logo.png
+
+最后我们添加可执行权限之后就会在我们的桌面上发现一个应用程序图标：
+
+```shell
+sudo chmod +x ~/.local/share/applications/clash.desktop
+```
+

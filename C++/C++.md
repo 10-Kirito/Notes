@@ -4081,3 +4081,250 @@ class Person : public std :: enable_shared_from_this<Person> {
 像上面这样我们就可以利用派生而来的函数`shared_from_this()`来获得一个指向*this的`shared_ptr`。
 
 ***注意，我们不可以在构造函数内去调用该函数，原因很简单，此时对象都还没建立起来，哪里来的共享指针呢！***
+
+# 37.fold expression(since C++17)
+
+> 文章： https://mysteriouspreserve.com/blog/2021/09/18/Fold-Expression/
+
+---
+
+## 37.1 一元折叠语法
+
+1. $(pack\ \ \ op \ \ \ ...)$ 
+2. $(...\ \ \ op\ \ \ pack)$
+
+---
+
+1. $(E\ \ op \ \ ...)$展开之后：$(E_{1}\ \ op\ (...\ op \ (E_{n-1}\ op \ E_{n})))$, 注意括号的优先级，***这个是用来说明展开方向，真实结果当中并不会添加括号***，此为右折叠;
+2. $(...\ \ \ op\ \ \ pack)$展开之后：$(((E_1 \ \ op\ E_2)\ op\ ...)\ \ op\ \ E_n)$, 该种情况为左折叠；
+
+简单示例：
+
+```C++
+template <typename... T> void test(T... args) {
+  	/*左折叠*/
+  	(std::cout << ... << args);
+  	std::cout << std::endl;
+  	/*右折叠*/
+  	((std::cout << args<< std::endl), ...);
+}
+
+int main(int argc, char *argv[]) {
+  	test(string("Kirito"), string("Kirito_1"), string("Kirito_2"),
+       string("Kirito_3"));
+  	return 0;
+}
+```
+
+由于模板是在编译器进行推导的，所以说其实不必通过函数的参数传递参数，允许直接将参数直接传递给模板：
+
+```C++
+/* 由于模板是在编译期间进行推导的，所以说其实不必通过函数的参数传递参数，允许直接将参数直接传递给模板*/
+
+#include <iostream>
+template <auto ...T>
+void variadic_print() {
+  ((std::cout << T), ...) << std::endl;
+}
+
+int main (int argc, char *argv[])
+{
+  variadic_print<1,2,3,4>();  
+  return 0;
+}	
+```
+
+## 37.2 一元折叠技巧
+
+![image-20231016113541563](assets/image-20231016113541563.png)
+
+
+
+
+
+---
+
+
+
+***二元折叠语法：***
+
+1. $(pack\ \ \ op \ \ \ ...\ op\ \ init)$ 
+2. $(init\ \ op\ \ \ ...\ op \ \ \ pack)$ 
+
+
+
+
+
+
+
+
+
+
+
+# 38.可变参数模板的使用
+
+> 参考： https://www.cnblogs.com/qicosmos/p/4325949.html
+
+在此之前仅仅使用过像下面这样的写法：
+
+```C++
+void insert(cosnt int &value) {
+    ...
+}
+
+template<typename ...T>
+void insert(cosnt int &value, T ...args) {
+    insert(value);
+    insert(args...);
+}
+```
+
+这些之前自己使用起来已经足够，最近需要写一个函数，该函数也是需要可变参数模板来进行实现，但是不像上面的这样每一次处理的时候都只需要处理一个元素，而是需要处理两个元素，这就把我难倒了！
+
+通过上面的文章，***我们是无法获取参数包`args`中的每一个参数的，我们只能通过展开参数包的方式来获取参数包中的每一个参数，这是可变模板参数的一个主要特点，也是最大的难点，即如何展开可变模板参数。***
+
+
+
+## 38.1 递归函数方式展开参数包
+
+该种方式就是上面所展示的代码，我们通过一个递归终止函数来终止递归。
+
+```C++
+#include <iostream>
+#include <string>
+
+using std::string;
+
+void hello_world(const string &name) {
+  std::cout << "Hello, " << name << std::endl;
+}
+
+template <typename... T> void hello_world(const string &name, T... args) {
+  hello_world(name);
+  hello_world(args...);
+}
+
+int main(int argc, char *argv[]) {
+
+  hello_world(string("Kirito"), string("Kirito_1"), string("Kirito_2"),
+              string("Kirito_3"));
+
+  return 0;
+}
+```
+
+## 38.2 `...`参数展开(Parameter Pack Expansion)
+
+比如说最简单的例子：
+
+```C++
+template <typename ... T> 
+void do_something(T ... args) {
+    auto temp = {args ...};
+    for(auto &v : temp)
+        std::cout << v << std::endl;
+}
+```
+
+![image-20231016105540222](assets/image-20231016105540222.png)
+
+这里我们仅仅是通过`...`的语法将参数展开，`args...`这种只是简单的使用方法。模板参数还可以在更复杂的表达式中展开，比如说,可以在lambda表达式中进行展开：
+
+```c++
+#include <iostream>
+template <typename... T> void do_something(T... args) {
+  auto temp = {args...};
+  for (auto &v : temp) {
+    std::cout << v << std::endl;
+  }
+}
+
+template <typename... T> void do_something_else(T... args) {
+  auto temp = {
+      ([&args] { std::cout << "hello, world!" << std::endl; }(), 1)...};
+}
+int main(int argc, char *argv[]) {
+  do_something_else(1, 2, 3, 4, 5, 6);
+  return 0;
+}
+```
+
+![image-20231016110330653](assets/image-20231016110330653.png)
+
+还有这些：
+
+![image-20231016110830133](assets/image-20231016110830133.png)
+
+# 39. C++完美转发
+
+> 搬自微信公众号号《阿Q正砖》合集 #面经 里面的“小米C++软开一二面面经”。
+
+C++ 中的完美转发是一项在函数模板中的技术，用于在不丢失函数参数信息的情况下将参数传递给其他函数。
+
+完美转发的主要应用场景之一是在函数模板中传递参数给其他函数，同时保留参数的值类别（左值或右值）和 const 限定。这在实现通用的包装器或回调函数时特别有用。
+
+- 右值引用和 std::forward：完美转发使用右值引用（Rvalue Reference）来捕获传递给函数的参数。同时，为了将参数传递给其他函数，它使用 `std::forward` 来保持参数的值类别。	
+
+```C++
+template <typename T>
+void wrapper(T&& arg) 
+{    
+    other_function(std::forward<T>(arg));
+}
+```
+
+- 模板参数和转发：完美转发通常结合模板参数来实现。函数模板接受通用引用（Universal Reference），即 `T&&`，这允许函数接受左值和右值。
+
+```C++
+template <typename T>
+void forwarder(T&& arg) 
+{   
+    target_function(std::forward<T>(arg));
+}
+```
+
+# 40.初始化列表
+
+```C++
+auto temp = {1, 2, 3, 4};
+for(auto &v : temp) {
+    std::cout << v << std::endl;
+}
+```
+
+ `temp` 的类型就是`std::initializer_list<int>`。初始化列表的值不能包含不同的类型，下面的代码就会进行报错：
+
+```C++
+auto temp  = {"kirito", 1, 2, 3};  // error
+```
+
+也不能是`void`值， 下面的代码也会编译错误：
+
+```C++
+auto temp = {void, void, void}; // error
+```
+
+# 41. 逗号表达式
+
+在C++中，假如表达式使用逗号进行分隔的话，最后一个的值就是表达式的值，比如说：
+
+```C++
+#include <iostream>
+
+int funa() { std::cout << "Kirito_1" << std::endl; return 1;}
+int funb() { std::cout << "Kirito_2" << std::endl; return 2;}
+int func() { std::cout << "Kirito_3" << std::endl; return 3;}
+int fund() { std::cout << "Kirito_4" << std::endl; return 4;}
+
+int main(int argc, char *argv[]) {
+  auto a = (func(), funa(), funb(), fund());
+  std::cout << "the value of a is "<< a << std::endl;
+  return 0;
+}
+```
+
+![image-20231016101717419](assets/image-20231016101717419.png)
+
+# 42. `constexpr if `和`constexpr lambda`
+
+> 文章： https://mysteriouspreserve.com/blog/2021/09/12/Cpp-constexpr-if-and-constexpr-lambda/
