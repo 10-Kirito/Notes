@@ -289,3 +289,80 @@ StartupNotify=true
 sudo chmod +x ~/.local/share/applications/clash.desktop
 ```
 
+# 12.VMWare虚拟机使用主机代理
+
+> ***环境：***
+>
+> 虚拟机系统：ubuntu-22.04.4-live-server-amd64
+>
+> 虚拟机软件：VMWare
+>
+> 主机系统：Windows10
+>
+> 代理软件：Clash for Windows
+
+虚拟机采用NAT模式：
+
+> 什么是NAT模式？NAT是“Network Address Translation”的缩写，中文意思是“网络地址转换”，它允许一个整体机构以一个公用IP地址出现在Internet之上。顾名思义，它是一种将内部私有网络地址转换为合法网络IP地址的技术。
+
+该模式下，主机的IP地址与虚拟机的IP地址应该是位于同一个子网当中的：
+
+***主机：***
+
+<img src="assets/image-20240306093038643.png" alt="image-20240306093038643" style="zoom:80%;" />
+
+***虚拟机IP设置：***
+
+<img src="assets/image-20240306093218345.png" alt="image-20240306093218345" style="zoom:80%;" />
+
+***虚拟机网络编辑器：***
+
+<img src="assets/image-20240306093351392.png" alt="image-20240306093351392" style="zoom:67%;" />
+
+***网络适配器设置IP：***
+
+<img src="assets/image-20240306093927076.png" alt="image-20240306093927076" style="zoom:80%;" />
+
+这个就是NAT模式下虚拟出来的虚拟网卡供我们使用。我们需要手动指定其IP地址为192.168.64.*， 注意不能和NAT的网关一样即可。
+
+<img src="assets/image-20240306094109884.png" alt="image-20240306094109884" style="zoom:67%;" />
+
+之后打开Clash的局域网设置，并查看WLAN信息：
+
+<img src="assets/image-20240306094641544.png" alt="image-20240306094641544" style="zoom:67%;" />
+
+此时进入虚拟机配置代理即可：
+
+```shell
+export http_proxy=http://192.168.1.3:7890
+export https_proxy=http://192.168.1.3:7890
+export all_proxy=socks5://192.168.1.3:7890
+```
+
+这样即可实现代理上网：
+
+```shell
+kirito@kirito:~$ curl google.com
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com/">here</A>.
+```
+
+在终端配置代理的话，还可以使用一些工具来配置相应的代理，比如说`proxychains`.
+
+```shell
+# 安装proxychains:
+sudo apt install proxychains
+# 编辑配置文件：
+sudo vim /etc/proxychains.conf
+# 在文件的末尾添加你的代理配置：
+http your_proxy_server your_proxy_port
+https your_proxy_server your_proxy_port
+socks4 your_proxy_server your_proxy_port
+socks5 your_proxy_server your_proxy_port
+# 在终端使用使用proxychains：
+prochains curl http://example.com
+```
+
