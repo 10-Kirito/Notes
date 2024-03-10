@@ -366,3 +366,15 @@ socks5 your_proxy_server your_proxy_port
 prochains curl http://example.com
 ```
 
+> 注意!!!
+>
+> 之前的配置都是基于无线网络的情况下，在有网线的情况下，我们只需要修改相应的IP地址即可：
+>
+> <img src="assets/image-20240308155350995.png" alt="image-20240308155350995" style="zoom:80%;" />
+>
+> <img src="assets/image-20240308155246637.png" alt="image-20240308155246637" style="zoom:80%;" />
+>
+> <img src="assets/image-20240308155325010.png" alt="image-20240308155325010" style="zoom:80%;" />
+
+
+
