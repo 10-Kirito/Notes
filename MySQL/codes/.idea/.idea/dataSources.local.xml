@@ -22,8 +22,8 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
-    <data-source name="@8.130.52.192" uuid="b482a320-89b8-4e89-a839-687e711a25e0">
-      <database-info product="MySQL" version="8.0.32-0ubuntu0.22.04.2" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.32" exact-driver-version="8.0">
+    <data-source name="ubuntu_vm" uuid="93251bad-977c-436f-a1d2-2660c34dc69d">
+      <database-info product="MySQL" version="8.0.36-0ubuntu0.22.04.1" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.36" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
@@ -33,42 +33,9 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
-            <name qname="kirito" />
-            <name qname="stu_management" />
-          </node>
-        </introspection-scope>
-      </schema-mapping>
-    </data-source>
-    <data-source name="stumansys@124.71.166.37" uuid="ec66891f-1be5-4a97-8545-28234ef6dfc3">
-      <database-info product="MySQL" version="8.0.27" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.27" exact-driver-version="8.0">
-        <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="schema">
-            <name qname="ebooksys" />
-            <name qname="stumansys" />
-          </node>
-        </introspection-scope>
-      </schema-mapping>
-    </data-source>
-    <data-source name="云服务器" uuid="1aaa22ef-983b-4992-97a5-d138dd0a3e3d">
-      <database-info product="MySQL" version="8.0.33" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.33" exact-driver-version="8.0">
-        <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="schema">
-            <name qname="teachmanage" />
+            <name qname="chatserver" />
             <name qname="@" />
+            <name qname="information_schema" />
           </node>
         </introspection-scope>
       </schema-mapping>
