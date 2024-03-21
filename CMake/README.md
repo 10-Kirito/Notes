@@ -123,7 +123,34 @@ CMake的三种依赖关系分别对应为:
 
 Specify libraries or flags to use when linking a given target and/or its dependents.就是链接对应的库到给定的目标。
 
+- [`message()`](https://cmake.org/cmake/help/latest/command/message.html)
 
+```cmake
+message(STATUS "Using protobuf ${Protobuf_VERSION}")
+message(STATUS "${Protobuf_INCLUDE_DIRS}")
+message(STATUS "${PROTOBUF_LIBRARIES}")
+```
+
+- [`get_filename_component()`](https://cmake.org/cmake/help/latest/command/get_filename_component.html)
+
+该函数的作用是为了获取当前文件的全称当中的某些部分，比如说文件名字(`NAME`)、文件所在的路径(`PATH`)、文件的绝对路径(`ABSOLUTE`)、文件的相对路径(`DIRECTORY`):
+
+```cmake
+DIRECTORY = Directory without file name
+NAME      = File name without directory
+EXT       = File name longest extension (.b.c from d/a.b.c)
+NAME_WE   = File name with neither the directory nor the longest extension
+LAST_EXT  = File name last extension (.c from d/a.b.c)
+NAME_WLE  = File name with neither the directory nor the last extension
+PATH      = Legacy alias for DIRECTORY (use for CMake <= 2.8.11)
+```
+
+- [`aux_source_directory()`](https://cmake.org/cmake/help/latest/command/aux_source_directory.html#command:aux_source_directory)
+
+```cmake
+aux_source_directory(. DIR_SRCS)
+add_executable(protobuf_test ${DIR_SRCS})
+```
 
 
 
@@ -302,4 +329,37 @@ if(USE_MYMATH)
     target_link_libraries(MathFunctions PRIVATE SqrtLibrary)
 endif()
 ```
+
+## 4. 如何查找系统当中的包？
+
+主要是使用[`find_packages()`](https://cmake.org/cmake/help/v3.5/command/find_package.html)这条命令：
+
+```cmake
+cmake_minimum_required(VERSION 3.10)
+project(protobuf_test)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+find_package(Protobuf 3.20.3 REQUIRED)
+message(STATUS "Using protobuf ${Protobuf_VERSION}")
+message(STATUS "${Protobuf_INCLUDE_DIRS}")
+message(STATUS "${PROTOBUF_LIBRARIES}")
+
+aux_source_directory(. DIR_SRCS)
+
+add_executable(protobuf_test ${DIR_SRCS})
+
+target_include_directories(protobuf_test PRIVATE ${Protobuf_INCLUDE_DIRS})
+target_link_libraries(protobuf_test ${Protobuf_LIBRARIES})
+```
+
+其中`find_package`命令具有两种模式：***MODULE***以及***CONFIG***.
+
+- ***MODULE模式：***使用CMake自带的`Find.cmake`模块或者在`CMAKE_MODULE_PATH`变量当中指定的路径查找库；
+- ***CONFIG模式：***CMake使用对应库自带的Config.cmake查找库，第三方库会在该文件当中声明相关的变量；
+
+更多用法可以查看：https://cmake.org/cmake/help/v3.5/command/find_package.html
+
+- 设置相应的版本：`find_package(Protobuf 3.20.3 REQUIRED)`;
 

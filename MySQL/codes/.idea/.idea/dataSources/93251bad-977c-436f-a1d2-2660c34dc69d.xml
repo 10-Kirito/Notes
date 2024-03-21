@@ -1474,7 +1474,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <System>1</System>
     </view>
     <column id="383" parent="299" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>200002</AutoIncrement>
       <Comment>the group id</Comment>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
@@ -1568,7 +1568,8 @@ friendid</ColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
     <index id="400" parent="301" name="PRIMARY">
-      <ColNames>groupid</ColNames>
+      <ColNames>groupid
+userid</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
@@ -1581,7 +1582,7 @@ friendid</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="403" parent="302" name="userid">
+    <column id="403" parent="302" name="fromId">
       <Comment>user id</Comment>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
@@ -1593,23 +1594,26 @@ friendid</ColNames>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <foreign-key id="405" parent="302" name="fk_message_user_id">
-      <ColNames>userid</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>User</RefTableName>
-    </foreign-key>
-    <index id="406" parent="302" name="PRIMARY">
-      <ColNames>userid</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="407" parent="302" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
+    <column id="405" parent="302" name="toId">
+      <Comment>the send user&apos;s id </Comment>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="406" parent="302" name="msgtype">
+      <Comment>the message&apos;s type</Comment>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="407" parent="302" name="time">
+      <Comment>the message send time</Comment>
+      <DasType>varchar(100)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
     <column id="408" parent="303" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>2021</AutoIncrement>
       <Comment>user id</Comment>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
