@@ -3224,6 +3224,7 @@ i.adjust(1);
 ```C++
 push 1;
 push si;
+# 取出虚函数表的地址，调用相应的函数
 mov bx, word ptr [si];
 call word ptr [bx +4];
 add sp, 4;
@@ -3904,6 +3905,8 @@ int main(int argc, char *argv[]) {
 
 同样的道理，对于共享指针ptr2也是同样的道理。
 
+<img src="assets/image-20240325100553914.png" alt="image-20240325100553914" style="zoom:67%;" />
+
 2. 还有一种情况是，为了防止：***指针的生命周期要比指向的对象的声明周期长***，这样就会导致出现内存泄露的情况。
 
 比如说下面的代码示例：
@@ -4328,3 +4331,121 @@ int main(int argc, char *argv[]) {
 # 42. `constexpr if `和`constexpr lambda`
 
 > 文章： https://mysteriouspreserve.com/blog/2021/09/12/Cpp-constexpr-if-and-constexpr-lambda/
+
+
+
+
+
+# 43.向上转型和向下转型
+
+C++ 中基类的指针可以接受派生类的对象。这是多态性的一个重要概念，称为"向上转型"或"向上造型"。
+
+当您将派生类的对象赋值给基类的指针时，只会将派生类对象的基类部分复制给基类指针，这意味着派生类特有的属性和方法将不可见。这种行为允许您以统一的方式处理不同类型的对象，而无需知道其确切类型。
+
+以下是一个简单的示例：
+
+```
+cppCopy code#include <iostream>
+
+// 基类
+class Base {
+public:
+    virtual void print() {
+        std::cout << "Base class print" << std::endl;
+    }
+};
+
+// 派生类
+class Derived : public Base {
+public:
+    void print() override {
+        std::cout << "Derived class print" << std::endl;
+    }
+};
+
+int main() {
+    Derived derivedObj;
+    Base* basePtr = &derivedObj; // 向上转型
+
+    // 调用的是派生类的方法
+    basePtr->print();
+
+    return 0;
+}
+```
+
+在这个例子中，`Base`类有一个`print()`方法，`Derived`类继承自`Base`类并重写了`print()`方法。在`main()`函数中，我们创建了`Derived`类的对象，并将其地址赋值给了一个`Base`类的指针`basePtr`。即使`basePtr`是一个指向基类的指针，但当调用`print()`方法时，实际上调用的是`Derived`类的`print()`方法，因为它是根据对象的实际类型来调用虚函数的。
+
+
+
+C++ 中存在向下转型。向下转型是指将基类指针或引用转换为派生类指针或引用的过程。它允许您在编程时访问派生类特有的属性和方法。
+
+然而，向下转型需要谨慎使用，并且在进行向下转型之前，通常需要使用 `dynamic_cast` 或 `static_cast` 进行类型检查和转换。
+
+下面是一个简单的示例：
+
+```
+cppCopy code#include <iostream>
+
+// 基类
+class Base {
+public:
+    virtual void print() {
+        std::cout << "Base class print" << std::endl;
+    }
+};
+
+// 派生类
+class Derived : public Base {
+public:
+    void print() override {
+        std::cout << "Derived class print" << std::endl;
+    }
+
+    void derivedMethod() {
+        std::cout << "Derived class specific method" << std::endl;
+    }
+};
+
+int main() {
+    Derived derivedObj;
+    Base* basePtr = &derivedObj; // 向上转型
+
+    // 尝试向下转型
+    Derived* derivedPtr = dynamic_cast<Derived*>(basePtr);
+    if (derivedPtr) {
+        // 向下转型成功
+        derivedPtr->derivedMethod();
+    } else {
+        std::cout << "Dynamic cast failed" << std::endl;
+    }
+
+    return 0;
+}
+```
+
+在这个例子中，我们使用 `dynamic_cast` 尝试将 `basePtr` 向下转型为 `Derived` 类型的指针 `derivedPtr`。如果成功，我们就可以调用 `Derived` 类的特定方法。否则，如果向下转型失败，`dynamic_cast` 将返回 `nullptr`，我们可以在这种情况下进行错误处理。
+
+需要注意的是，向下转型通常在您确信基类指针或引用实际上指向派生类对象时才安全使用。否则，向下转型可能导致未定义行为或运行时错误。
+
+
+
+# 44. C++当中的`<fstream>`
+
+```C++
+explicit basic_ofstream( const char* filename, std::ios_base::openmode mode = ios_base::out );
+explicit basic_ofstream( const std::filesystem::path::value_type* filename, std::ios_base::openmode mode = ios_base::out );
+explicit basic_ofstream( const std::string& filename, std::ios_base::openmode mode = ios_base::out );
+template< class FsPath >
+explicit basic_ofstream( const FsPath& filename, std::ios_base::openmode mode = ios_base::out );
+```
+
+其中构造函数的第二个参数`mode`，就是我们打开相对应的流的时候，可以选择相应的模式进行设置：
+
+1. `std::ios::app`:在每一次写入之前重新定位到流的末尾，通常用于将数据追加到文件的末尾，而不去覆盖现有内容；
+2. `std::ios::binary`:指示以二进制模式而不是文本模式打开文件。在二进制模式之下，数据被以原始字节形式读取或者写入，而不进行解释。在处理非文本文件或者需要精确控制数据的时候；
+3. `std::ios::in`:指示以读取模式打开文件。
+4. `std::ios::out`:指示以写入模式打开文件。***如果文件已存在，则其内容将被覆盖。***
+5. `std::ios::trunc`:如果文件已存在，则在打开时丢弃其内容。通常与 `out` 标志一起使用，***以确保在向文件写入新数据之前清除文件。***
+6. `std::ios::ate`:在打开后立即将流定位到流的末尾。***通常在希望将文件指针定位到文件末尾进行写入时使用。***
+7. `std::ios::noreplace`：这是 C++23 中新增的一个标志，它以独占模式打开文件，这意味着如果文件已存在，则打开操作将失败。***这有助于确保不会意外覆盖现有文件。***

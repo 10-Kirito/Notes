@@ -100,8 +100,6 @@ sudo make install
 sudo ldconfig
 ```
 
-
-
 ******
 
 ## 3. How to use Protobuf?
