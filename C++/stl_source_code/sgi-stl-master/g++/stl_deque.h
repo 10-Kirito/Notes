@@ -107,6 +107,7 @@ struct __deque_iterator {
 #endif
 
   typedef random_access_iterator_tag iterator_category;
+  // 由于deque也和vector一样是一片连续的线性空间，所以说我们使用原生指针就可以代表其迭代器
   typedef T value_type;
   typedef Ptr pointer;
   typedef Ref reference;
@@ -119,6 +120,7 @@ struct __deque_iterator {
   T* cur;
   T* first;
   T* last;
+  // 指向缓冲区所在的缓冲区指针数组的某一个元素，也就是指向某一个缓冲区
   map_pointer node;
 
   __deque_iterator(T* x, map_pointer y) 
@@ -281,6 +283,9 @@ public:                         // Iterators
 #endif /* __STL_CLASS_PARTIAL_SPECIALIZATION */
 
 protected:                      // Internal typedefs
+  // -->
+  // 数组，其中每一个元素都是一个指针，指向一片连续线性空间，称之为缓存区。
+  // <--
   typedef pointer* map_pointer;
   typedef simple_alloc<value_type, Alloc> data_allocator;
   typedef simple_alloc<pointer, Alloc> map_allocator;
@@ -291,10 +296,13 @@ protected:                      // Internal typedefs
   static size_type initial_map_size() { return 8; }
 
 protected:                      // Data members
+  // 提供的接口，供外部进行访问
   iterator start;
   iterator finish;
 
+  // map变量用来存储所有的缓存区指针
   map_pointer map;
+  // 记录缓存区的个数
   size_type map_size;
 
 public:                         // Basic accessors
@@ -311,12 +319,14 @@ public:                         // Basic accessors
   const_reverse_iterator rend() const {
     return const_reverse_iterator(start);
   }
-
+  // 提供了随机访问的接口:
   reference operator[](size_type n) { return start[difference_type(n)]; }
   const_reference operator[](size_type n) const {
     return start[difference_type(n)];
   }
 
+  // 基本的操作:
+  // 1. 取出双端数组的前面或者后面的元素:
   reference front() { return *start; }
   reference back() {
     iterator tmp = finish;
@@ -329,12 +339,15 @@ public:                         // Basic accessors
     --tmp;
     return *tmp;
   }
-
+  // 2. 当前数组容量的大小
   size_type size() const { return finish - start;; }
+  // 3. 这里返回的其实是无符号整数类型的最大值，因为双端数组的大小是动态的，所以说很大很大
   size_type max_size() const { return size_type(-1); }
+  // 4. 判断双端数组是否为空
   bool empty() const { return finish == start; }
 
 public:                         // Constructor, destructor.
+  // deque的构造函数以及析构函数
   deque()
     : start(), finish(), map(0), map_size(0)
   {
@@ -344,6 +357,7 @@ public:                         // Constructor, destructor.
   deque(const deque& x)
     : start(), finish(), map(0), map_size(0)
   {
+ 	// 深拷贝构造函数
     create_map_and_nodes(x.size());
     __STL_TRY {
       uninitialized_copy(x.begin(), x.end(), start);
@@ -354,24 +368,28 @@ public:                         // Constructor, destructor.
   deque(size_type n, const value_type& value)
     : start(), finish(), map(0), map_size(0)
   {
+    // 构造函数，传入参数(n, value), 构造一个长度为n，初始值为value的deque对象
     fill_initialize(n, value);
   }
 
   deque(int n, const value_type& value)
     : start(), finish(), map(0), map_size(0)
   {
+    // 上一个构造函数的重载版本,功能实现一模一样
     fill_initialize(n, value);
   }
  
   deque(long n, const value_type& value)
     : start(), finish(), map(0), map_size(0)
   {
+    // 上一个构造函数的另一个重载版本，功能实现一模一样
     fill_initialize(n, value);
   }
 
   explicit deque(size_type n)
     : start(), finish(), map(0), map_size(0)
   {
+    // 构造函数，传入参数(size_type n),构造一个长度为n，初始值为value_type()默认构造的值
     fill_initialize(n, value_type());
   }
 
@@ -381,6 +399,7 @@ public:                         // Constructor, destructor.
   deque(InputIterator first, InputIterator last)
     : start(), finish(), map(0), map_size(0)
   {
+    // 构造函数，传入一个区间[first, last),以此区间的数据来初始化一个deque
     range_initialize(first, last, iterator_category(first));
   }
 

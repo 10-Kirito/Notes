@@ -110,6 +110,7 @@ public:
   vector(InputIterator first, InputIterator last) :
     start(0), finish(0), end_of_storage(0)
   {
+    // 调用范围初始化函数
     range_initialize(first, last, iterator_category(first));
   }
 #else /* __STL_MEMBER_TEMPLATES */
@@ -127,11 +128,15 @@ public:
   }
   vector<T, Alloc>& operator=(const vector<T, Alloc>& x);
   void reserve(size_type n) {
+  	// 调整容器的size大小
     if (capacity() < n) {
       const size_type old_size = size();
+	  // 这里申请n大小的空间，然后将[start, finish)之间的数据进行一个copy
       iterator tmp = allocate_and_copy(n, start, finish);
+	  // 销毁原来的容器里面的数据，并释放相应的空间
       destroy(start, finish);
       deallocate();
+	  // 修改原来的start、finish和end_of_storage的指向，原来的容器当中的iterator全部失效
       start = tmp;
       finish = tmp + old_size;
       end_of_storage = start + n;
@@ -156,11 +161,13 @@ public:
   }
   iterator insert(iterator position, const T& x) {
     size_type n = position - begin();
+	// 如果说容器仍存在空间并且插入的位置为容器的末尾，就直接在末尾插入并且更新finish迭代器即可
     if (finish != end_of_storage && position == end()) {
       construct(finish, x);
       ++finish;
     }
     else
+	  // 如果是其他的情况的话，调用辅助插入函数来进行插入
       insert_aux(position, x);
     return begin() + n;
   }
@@ -188,13 +195,26 @@ public:
     destroy(finish);
   }
   iterator erase(iterator position) {
+    // 如果传入的参数不是最后一个参数，那么我们需要将(position+1, finish)之间的内容复制到(position, finish - 1)的位置
+    // 这样刚好可以实现将相应的资源释放。
     if (position + 1 != end())
       copy(position + 1, finish, position);
+	// 如果传入的参数position已经是最后一个参数的话，我们只需要调整finish
+    // 指向的位置，然后将最后一个数据资源释放即可。
     --finish;
     destroy(finish);
     return position;
   }
   iterator erase(iterator first, iterator last) {
+    // copy(first, last, result);
+    // 这里是将我们传入的last参数与finish之间的参数复制到first的位置
+    // vector里面的空间分布：
+    // +++++++++++++++++++++++++++++++++++---------------
+    // |(start)                          |(finish)      |(end_of_storage)
+    //           |(first)       |(last)
+    // first和last是我们传入erase函数的一个区间，我们要删除该部分的数据的话，
+    // 可以先将(last, finish)之间的数据复制到first处，我们想要删除的数据就会
+    // 被覆盖，之后我们只需要调整finish迭代器所指向的内容即可。
     iterator i = copy(last, finish, first);
     destroy(i, finish);
     finish = finish - (last - first);
@@ -202,11 +222,18 @@ public:
   }
   void resize(size_type new_size, const T& x) {
     if (new_size < size()) 
+	  // 如果说是缩小数据容量：
+	  // 将该部分的数据删除：[begin() + new_size, end())
       erase(begin() + new_size, end());
     else
+	  // 如果说是扩大数据容量：
+	  // 就插入相应的数据，并且赋予其相应的初值。
       insert(end(), new_size - size(), x);
   }
+  // 重载版本的resize函数，参数只有new_size，我们只需要传入相应的新的size即可，
+  // 其会调用resize(size_type new_size, const T& x)函数。
   void resize(size_type new_size) { resize(new_size, T()); }
+  // 清除容器内的所有的数据，调用erase函数来清除所有的数据。
   void clear() { erase(begin(), end()); }
 
 protected:
@@ -247,6 +274,7 @@ protected:
   template <class InputIterator>
   void range_initialize(InputIterator first, InputIterator last,
                         input_iterator_tag) {
+    // 
     for ( ; first != last; ++first)
       push_back(*first);
   }
@@ -322,14 +350,19 @@ vector<T, Alloc>& vector<T, Alloc>::operator=(const vector<T, Alloc>& x) {
 template <class T, class Alloc>
 void vector<T, Alloc>::insert_aux(iterator position, const T& x) {
   if (finish != end_of_storage) {
+  	// 如果说容器当中仍存在剩余空间:
+  	// 利用new(finish) T(*(finish-1))，在finish指向的位置构造一个对象，该对象初值为容器当中最后一个元素的数据
     construct(finish, *(finish - 1));
+	// 修改finish指向新的尾部;
     ++finish;
     T x_copy = x;
+	// copy_backward(first, last, result);
     copy_backward(position, finish - 2, finish - 1);
     *position = x_copy;
   }
   else {
     const size_type old_size = size();
+	// 这里我们看到当我们插入新的元素的时候，如果发现空间不足的话，就将容器的空间扩充为原来的两倍
     const size_type len = old_size != 0 ? 2 * old_size : 1;
     iterator new_start = data_allocator::allocate(len);
     iterator new_finish = new_start;

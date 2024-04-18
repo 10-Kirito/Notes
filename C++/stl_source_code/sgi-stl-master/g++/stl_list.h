@@ -82,10 +82,12 @@ struct __list_iterator {
     ++*this;
     return tmp;
   }
+  // --ptr
   self& operator--() { 
     node = (link_type)((*node).prev);
     return *this;
   }
+  // ptr--
   self operator--(int) { 
     self tmp = *this;
     --*this;

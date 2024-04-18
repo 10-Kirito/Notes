@@ -346,6 +346,33 @@ class MyClass
 
 分两种情况，一种情况可以重载，另一种情况不可以重载。
 
+
+
+### 4.5.3 常量指针和指针常量
+
+```c++
+#include <iostream>
+int main() {
+  int x = 10;
+  int y = 20;
+  // test pointer to const
+  const int *ptr = &x;
+  ptr = &y;
+  std::cout << *ptr << std::endl;
+  // test const pointer
+  int * const ptr2 = &x;
+  // ptr2 = &y; wrong
+  *ptr2 = 30;
+  std::cout << *ptr2 << std::endl;
+}
+```
+
+*指针常量就是指针本身是一个常量，我们只可以修改指针指向的数据，但是不能将指针指向其余的数据。*
+
+*常量指针就是指针指向一个常量，该常量的值不能被修改，但是我们可以将该指针指向其余的数据。*
+
+
+
 # 5. `constexpr`的用法
 
 `constexpr`主要用来将变量声明为该种类型，以便由编译器来验证变量的值是否是一个常量表达式。声明为`constexpr`的变量一定是一个常量，而且必须使用常量表达式来初始化。
@@ -4428,7 +4455,98 @@ int main() {
 
 需要注意的是，向下转型通常在您确信基类指针或引用实际上指向派生类对象时才安全使用。否则，向下转型可能导致未定义行为或运行时错误。
 
+## 44.1 补充(static_cast和dynamic_cast的安全性)
 
+C++当中的向上转型和向下转型，我们知道向上转型一般都是安全的。*原因很简单：二者之间的继承关系可以保证子类对象自然而然的具有父类对象的所有属性和方法，尽管他还可能包含额外的属性和方法，但是我们不会损失任何父类对象所期待的信息。*
+
+但是向下转型一般是不安全的。这里的原因一开始想不清楚，其实原因很简单，*向上转型的话，只有一个选择，只能转换为Base类型；向下转型就不一样，一个Base类可能有多个Derived类型，这就可能导致向下转型的时候遇到一些未定义的问题。*
+
+接下来看一个示例:
+
+```C++	
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+  void test() { cout << "Base::test()" << endl; }
+};
+
+class Derived1 : public Base {
+public:
+  void test1() { cout << "Derived1::test1()" << endl; }
+};
+
+class Derived2 : public Base {
+public:
+  void test2() { cout << "Derived2::test2()" << endl; }
+};
+
+int main() {
+  Base *base = new Derived2;
+  Derived1 *d1 = static_cast<Derived1 *>(base);
+  d1->test1();
+}
+```
+
+这里是没有虚函数的情况下，也就是没有发生多态的情况下，我们使用`static_cast`对其进行转换。我们看到一开始的时候，`base`指向的是`Derived2`派生类对象的类型，这个时候结果会将该基类转换为`Derived1`派生类对象，这里看着好像是不会发生什么问题，其结果也正确调用了相应的函数，执行了我们想要的结果。
+
+```shell
+$ ./a.out 
+Derived1::test1()
+```
+
+但是我们将多态考虑进来的话：
+
+```C++
+class Base {
+public:
+  virtual void test() { cout << "Base::test()" << endl; }
+};
+
+class Derived1 : public Base {
+public:
+  void test() override { cout << "Derived1::testderived1()" << endl; }
+  void test1() { cout << "Derived1::test1()" << endl; }
+};
+
+class Derived2 : public Base {
+public:
+  void test() override { cout << "Derived2::testderived2()" << endl; }
+};
+
+int main() {
+  Base *base = new Derived2;
+  Derived1 *d1 = static_cast<Derived1 *>(base);
+  d1->test();
+}
+```
+
+我们这里在`Base`类当中里面添加一个虚函数，在各个派生类当中对其进行重写。我们调用`d1->test()`：
+
+```shell
+$ ./a.out 
+Derived2::testderived2()
+```
+
+我们会看到这里我们本以为其会转换为我们的理想类型`Derived1`派生类，但是执行结果却不是我们所想要看到的，我们这里仅仅是做一个简单的输出，但是在复杂的系统当中，可能会发生各种未定义行为。***但是这里明显不对，static_cast还不会发现，所以我们针对于这种情况一般是使用dynamic_cast来进行我们的类型转换。***
+
+```C++
+int main() {
+  Base *base = new Derived2;
+  Derived1 *d1 = dynamic_cast<Derived1 *>(base);
+  d1->test();
+}
+```
+
+我们修改代码如上所示，可以发现会进行报错：
+
+```shell
+$ ./a.out 
+Segmentation fault (core dumped)
+```
+
+这是因为`dynamic_cast`函数是运行时进行类型检查，需要运行时类型信息，而这个信息是存储在类的虚函数表当中，所以说这里在进行类型转换的时候，会发现要转换的目标类型和被转换的类型其中的虚函数不对应，所以会导致失败。所以说`dynamic_cast`类型转换是安全的，当类型不一致的时候，转换过来的是空指针，而`static_cast`类型转换是不安全的。
 
 # 44. C++当中的`<fstream>`
 
@@ -4449,3 +4567,96 @@ explicit basic_ofstream( const FsPath& filename, std::ios_base::openmode mode = 
 5. `std::ios::trunc`:如果文件已存在，则在打开时丢弃其内容。通常与 `out` 标志一起使用，***以确保在向文件写入新数据之前清除文件。***
 6. `std::ios::ate`:在打开后立即将流定位到流的末尾。***通常在希望将文件指针定位到文件末尾进行写入时使用。***
 7. `std::ios::noreplace`：这是 C++23 中新增的一个标志，它以独占模式打开文件，这意味着如果文件已存在，则打开操作将失败。***这有助于确保不会意外覆盖现有文件。***
+
+# 45. 判断某一个对象是否位于stack当中？
+
+> 节选自《More Effective C++》当中的条款27.
+
+<img src="assets/image-20240329161317910.png" alt="image-20240329161317910" style="zoom:50%;" />
+
+我们知道：程序的地址空间是以线性序列组织而成的，其中Stack高地址往往向低地址成长，heap往往向高地址成长。
+
+```C++
+bool onHeeap(const void * address) {
+  char onTheStack; // local stack variable
+  
+  return address < & onTheStack;
+}
+```
+
+这个怎么可以判断某一个对象是否位于Heap当中呢？
+
+在`onHeap`函数里面，`onTheStack`是一个局部变量，所以说他被置于`stack`当中。当`onHeap`函数被调用的时候，其stack frame就会被放在stack的顶端（也就是栈的最下面），所以说`onTheStack`的地址一定比任何一个其他的位于stack的变量更低。因此如果说一个地址比`onTheStack`的地址更低的话，说明其位于Heap或者static objects当中。
+
+# 46. 内存泄漏的分类
+
+1. 堆内存泄漏(Heap leak)
+
+也就是说我们通过`malloc`、`realloc`、`new`等符号来从堆当中分配的一块内存在之后的使用过程中没有很好的释放掉。
+
+2. 系统资源泄漏(Resource Leak)
+
+主要指程序使⽤系统分配的资源⽐如 Bitmap,handle ,SOCKET等没有使⽤相应的函数释放掉，导致系统资源的浪费，严重的话可导致系统效能降低，系统运⾏不稳定。
+
+3. 没有将基类的析构函数定义为虚函数
+
+当基类指针指向子类对象时，如果基类的析构函数不是`virtual`，那么子类的析构函数将不会被调用，子类的资源没有正确释放，因此会导致内存泄漏。
+
+
+
+# 47. 全局命名空间(默认命名空间)
+
+全局变量默认定义在全局命名空间当中!!!
+
+全局命名空间(默认命名空间)就是`main`函数所在的命名空间，`main`函数也必须要位于全局命名空间当中。***如果有的时候，我们需要重写一些定义在std命名空间里面的函数，然后使用我们自己定义的同名函数，我们可以使用`::`来指明使用全局命名空间当中的函数或者变量。***
+
+***示例：***
+
+```C++
+#include <iostream>
+#include <iterator>
+#include <list>
+#include <vector>
+template <typename Iterator>
+void advance_impl(Iterator &it,
+                  typename std::iterator_traits<Iterator>::difference_type n,
+                  std::random_access_iterator_tag) {
+  std::cout << "random_access_iterator_tag\n";
+  it += n;
+}
+template <typename Iterator>
+void advance_impl(Iterator &it,
+                  typename std::iterator_traits<Iterator>::difference_type n,
+                  std::input_iterator_tag) {
+  std::cout << "input_iterator_tag\n";
+  while (n--)
+    ++it;
+}
+template <typename Itertor>
+void advance(Itertor &it,
+             typename std::iterator_traits<Itertor>::difference_type n) {
+  advance_impl(it, n,
+               typename std::iterator_traits<Itertor>::iterator_category());
+}
+int main() {
+  std::vector<int> vec{1, 2, 3, 4, 5, 6};
+  auto it = vec.begin();
+  ::advance(it, 2);
+  std::cout << *it << std::endl;
+  std::list<int> List{1, 2, 3, 4, 5, 6, 7, 7};
+  auto litera = List.begin();
+  ::advance(litera, 3);
+  std::cout << *litera << std::endl;
+}
+```
+
+***执行结果为:***
+
+```shell
+$ ./a.out 
+random_access_iterator_tag
+3
+input_iterator_tag
+4
+```
+
