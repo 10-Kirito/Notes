@@ -6,39 +6,40 @@
 
 ```
 MySQL/
-├── 📖 参考书籍与PDF
-├── 📝 学习笔记
-├── 💻 代码与脚本
-├── 📸 图片资源
-├── 🎓 课程资料
-└── 🔗 数据库连接示例
+├── 📖 books/           # PDF书籍资料
+├── 📝 notes/           # Markdown学习笔记
+├── 💻 scripts/         # SQL脚本文件
+├── 📸 pictures/        # 图片资源
+├── 🎓 Course/          # 课程资料
+└── 🔗 Connection/      # 数据库连接示例
 ```
 
 ---
 
-## 📖 参考书籍与PDF
+## 📖 参考书籍 (books/)
 
 | 文件名 | 描述 |
 |--------|------|
-| [MySQL必知必会.pdf](./MySQL必知必会.pdf) | 经典入门书籍，涵盖MySQL基础操作 |
-| [MySQL是怎样运行的(小孩子4919).pdf](./MySQL是怎样运行的(小孩子4919).pdf) | 深入讲解MySQL内部运行原理 |
-| [高性能MySQL(第3版).pdf](./高性能MySQL(第3版).pdf) | MySQL性能优化权威指南 |
-| [数据库系统概论（第5版）.pdf](./数据库系统概论（第5版）.pdf) | 数据库理论基础教材 |
+| [MySQL必知必会.pdf](./books/MySQL必知必会.pdf) | 经典入门书籍，涵盖MySQL基础操作 |
+| [MySQL是怎样运行的(小孩子4919).pdf](./books/MySQL是怎样运行的(小孩子4919).pdf) | 深入讲解MySQL内部运行原理 |
+| [高性能MySQL(第3版).pdf](./books/高性能MySQL(第3版).pdf) | MySQL性能优化权威指南 |
+| [数据库系统概论（第5版）.pdf](./books/数据库系统概论（第5版）.pdf) | 数据库理论基础教材 |
+| [Mysql_study.pdf](./books/Mysql_study.pdf) | MySQL学习笔记PDF版本 |
+| [Mysql_others.pdf](./books/Mysql_others.pdf) | 其他MySQL笔记PDF版本 |
 
 ---
 
-## 📝 学习笔记
+## 📝 学习笔记 (notes/)
 
 ### 核心笔记
 
 | 文件名 | 描述 |
 |--------|------|
-| [MYSQL必知必会.md](./MYSQL必知必会.md) | 《MySQL必知必会》读书笔记，包含第4-22章SQL示例 |
-| [MYSQL必知必会4-15.sql](./MYSQL必知必会4-15.sql) | 《MySQL必知必会》第4-15章SQL实践代码 |
-| [Mysql_study.md](./Mysql_study.md) | MySQL学习笔记，涵盖数据库基础、InnoDB存储结构、索引等 |
-| [Mysql_others.md](./Mysql_others.md) | 其他MySQL相关笔记，包含存储引擎、索引使用等进阶内容 |
-| [索引.md](./索引.md) | 数据库索引专题笔记，包含ER图、数据模型等内容 |
-| [随记.md](./随记.md) | 日常学习随记 |
+| [MYSQL必知必会.md](./notes/MYSQL必知必会.md) | 《MySQL必知必会》读书笔记，包含第4-22章SQL示例 |
+| [Mysql_study.md](./notes/Mysql_study.md) | MySQL学习笔记，涵盖数据库基础、InnoDB存储结构、索引等 |
+| [Mysql_others.md](./notes/Mysql_others.md) | 其他MySQL相关笔记，包含存储引擎、索引使用等进阶内容 |
+| [索引.md](./notes/索引.md) | 数据库索引专题笔记，包含ER图、数据模型等内容 |
+| [随记.md](./notes/随记.md) | 日常学习随记 |
 
 ### 笔记主要内容概览
 
@@ -66,31 +67,22 @@ MySQL/
 
 ---
 
-## 💻 代码与脚本
+## 💻 SQL脚本 (scripts/)
 
-### 根目录脚本
 | 文件名 | 描述 |
 |--------|------|
-| [MYSQL必知必会4-15.sql](./MYSQL必知必会4-15.sql) | 《MySQL必知必会》实践SQL代码 |
-
-### codes/ 目录
-| 文件名 | 描述 |
-|--------|------|
-| [begin.sql](./codes/begin.sql) | 基础SQL脚本 |
-| [create_school.sql](./codes/create_school.sql) | 学校数据库创建脚本 |
-| [Populate.sql](./codes/Populate.sql) | 数据填充脚本 |
-| [实验四.sql](./codes/实验四.sql) | 第四次实验SQL代码 |
-| [实验5.sql](./codes/实验5.sql) | 第五次实验SQL代码 |
-
-### mysql_scripts/ 目录
-| 文件名 | 描述 |
-|--------|------|
-| [create.sql](./mysql_scripts/create.sql) | 《MySQL必知必会》示例表创建脚本 |
-| [populate.sql](./mysql_scripts/populate.sql) | 《MySQL必知必会》示例数据填充脚本 |
+| [MYSQL必知必会4-15.sql](./scripts/MYSQL必知必会4-15.sql) | 《MySQL必知必会》第4-15章SQL实践代码 |
+| [create.sql](./scripts/create.sql) | 《MySQL必知必会》示例表创建脚本 |
+| [populate.sql](./scripts/populate.sql) | 《MySQL必知必会》示例数据填充脚本 |
+| [begin.sql](./scripts/begin.sql) | 基础SQL脚本 |
+| [create_school.sql](./scripts/create_school.sql) | 学校数据库创建脚本 |
+| [Populate.sql](./scripts/Populate.sql) | 数据填充脚本 |
+| [实验四.sql](./scripts/实验四.sql) | 第四次实验SQL代码 |
+| [实验5.sql](./scripts/实验5.sql) | 第五次实验SQL代码 |
 
 ---
 
-## 📸 图片资源
+## 📸 图片资源 (pictures/)
 
 [pictures/](./pictures/) 目录包含笔记中使用的图片资源：
 - 数据库结构图
@@ -99,7 +91,7 @@ MySQL/
 
 ---
 
-## 🎓 课程资料
+## 🎓 课程资料 (Course/)
 
 [Course/](./Course/) 目录包含数据库课程的周进度资料：
 
@@ -117,7 +109,7 @@ MySQL/
 
 ---
 
-## 🔗 数据库连接示例
+## 🔗 数据库连接示例 (Connection/)
 
 [Connection/](./Connection/) 目录包含数据库连接的代码示例：
 - **FirstConnect**: Visual Studio C++ 数据库连接项目
@@ -137,18 +129,18 @@ CREATE DATABASE study;
 USE study;
 
 # 运行建表脚本
-source mysql_scripts/create.sql;
+source scripts/create.sql;
 
 # 填充示例数据
-source mysql_scripts/populate.sql;
+source scripts/populate.sql;
 ```
 
 ### 2. 学习路线建议
 
-1. **入门阶段**：阅读 [MySQL必知必会.pdf](./MySQL必知必会.pdf) + 配套笔记 [MYSQL必知必会.md](./MYSQL必知必会.md)
-2. **基础巩固**：学习 [Mysql_study.md](./Mysql_study.md) 了解数据库设计原理
-3. **深入理解**：阅读 [MySQL是怎样运行的](./MySQL是怎样运行的(小孩子4919).pdf) 理解底层原理
-4. **性能优化**：参考 [高性能MySQL](./高性能MySQL(第3版).pdf) 学习优化技巧
+1. **入门阶段**：阅读 [MySQL必知必会.pdf](./books/MySQL必知必会.pdf) + 配套笔记 [MYSQL必知必会.md](./notes/MYSQL必知必会.md)
+2. **基础巩固**：学习 [Mysql_study.md](./notes/Mysql_study.md) 了解数据库设计原理
+3. **深入理解**：阅读 [MySQL是怎样运行的](./books/MySQL是怎样运行的(小孩子4919).pdf) 理解底层原理
+4. **性能优化**：参考 [高性能MySQL](./books/高性能MySQL(第3版).pdf) 学习优化技巧
 5. **实践练习**：完成 [Course/](./Course/) 中的各周实验
 
 ---
